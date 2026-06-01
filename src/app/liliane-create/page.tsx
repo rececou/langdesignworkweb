@@ -1,0 +1,31 @@
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
+
+export default function LilianeCreatePage() {
+  return (
+    <>
+      <Header locale="en" />
+
+      <section className="bg-gray-50 py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h1 className="text-4xl font-bold mb-4">Liliane — Creation</h1>
+          <p className="text-gray-600">Video gallery showcasing Liliane's creative process and projects from ideation to creation.</p>
+        </div>
+      </section>
+
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid md:grid-cols-2 gap-8">
+            {[1, 2, 3, 4].map((i) => (
+              <div key={i} className="bg-black aspect-video rounded-lg flex items-center justify-center">
+                <span className="text-white text-sm">Video {i}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <Footer locale="en" />
+    </>
+  );
+}

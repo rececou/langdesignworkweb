@@ -1,0 +1,26 @@
+# https://www.langdesignwork.com llms.txt
+
+> LangDesignWork is a creative platform built around three pillars: Create, Community, and Commerce. It brings together independent makers, partner brands, and audiences in one place. Based in Hong Kong.
+
+## Creators
+
+- [Liliane Xiaoxu Lang](/liliane): Ideas, prototyping, and hands-on experimentation - from AI projects to handmade crafts.
+- [Liliane - Creation](/liliane-create): Video gallery showcasing Liliane's creative process and projects from ideation to creation.
+- [Elizabeth Xiaoyue Lang](/elizabeth): Art and custom design - oil painting, illustration, and handmade work inspired by emotion and colour.
+- [Elizabeth - Custom Design](/elizabeth-custom-design): Custom illustration and design portfolio by Elizabeth Xiaoyue Lang.
+
+## Partner Brands
+
+- [Kidlab UK](/partner/kidslabuk): DIY STEM kits and educational wooden toys for curious kids. Hands-on learning from £9.99. Available on Etsy UK, TikTok Shop UK, and eBay UK.
+- [Velvet Essence Design](/partner/velvetessencedesign): Hand-printed t-shirts and tote bags - wearable art made with care. Available on Etsy UK.
+
+## Platform
+
+- [About Remecou](/remecou): Remecou is the commerce arm of LangDesignWork - connecting independent brands with audiences through community, content, and strategic e-commerce partnerships.
+- [Blog](/en/home/blog): Creative ideas, design inspiration, and insights from the LangDesignWork community.
+- [Home](/): LangDesignWork - a portfolio community for makers and creators, and a launchpad for real products everyone can enjoy.
+
+## Blog Posts
+- [How Did I Do My First Oil Painting: From Canvas to Creation](/en/elizabeth/blog/oil-painting): Elizabeth Xiaoyue Lang shares her first oil painting experience - from sketching proportions to colour, texture, and the challenges of hair and fabric. Created at the Hong Kong Art School.
+- [Looking for Your Next Creative Idea? Discover Inspiration Through Everyday Design](/en/liliane/blog/tote-bag): Liliane Xiaoxu Lang on finding creative inspiration through everyday design - including handmade tote bags that tell personal stories through wearable art.
+- [How Can AI and Creativity Revolutionize Learning?](/en/home/blog/ai-creativity-learning): How Liliane and Elizabeth Lang built REME, a smart home device for elderly care, winning recognition at the 2024 Global Technovation Girls Competition - a case study in learning through action.

@@ -1,65 +1,146 @@
-import Image from "next/image";
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
+import Link from 'next/link';
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
+    <>
+      <Header locale="en" />
+
+      {/* Hero Section */}
+      <section className="bg-black text-white py-20 relative overflow-hidden">
+        {/* Canvas animation placeholder */}
+        <canvas className="absolute inset-0 opacity-20" id="hero-canvas" />
+        
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <h1 className="text-5xl md:text-7xl font-bold mb-6">
+            <span className="text-white">Create.</span>{' '}
+            <span className="text-white">Experiment.</span>{' '}
+            <span className="text-[#FF6B6B]">Fun.</span>
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+          <p className="text-lg text-gray-300 max-w-2xl mb-8">
+            A portfolio community for makers and creators, a launchpad for real products everyone can enjoy.
           </p>
+          <div className="flex gap-4">
+            <Link
+              href="/liliane"
+              className="bg-[#FF6B6B] text-white px-6 py-3 rounded hover:bg-[#ff5252] transition-colors font-medium"
+            >
+              Explore the Portfolio
+            </Link>
+            <a
+              href="#contact"
+              className="contact-modal-trigger border border-white text-white px-6 py-3 rounded hover:bg-white hover:text-black transition-colors font-medium"
+            >
+              Partner with us
+            </a>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
+      </section>
+
+      {/* Portfolio Section */}
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <p className="text-sm text-gray-400 uppercase tracking-widest mb-2">OUR PORTFOLIO</p>
+          <h2 className="text-3xl font-bold mb-8">Meet the creators</h2>
+          
+          <div className="grid md:grid-cols-2 gap-8">
+            {/* Liliane */}
+            <Link href="/liliane" className="group relative overflow-hidden rounded-lg bg-gray-100 aspect-[4/3] block">
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10" />
+              {/* Placeholder for creator image */}
+              <div className="absolute inset-0 bg-gray-200 flex items-center justify-center">
+                <span className="text-gray-400 text-sm">Liliane Xiaoxu Lang</span>
+              </div>
+              <div className="absolute bottom-0 left-0 right-0 p-6 z-20">
+                <p className="text-xs text-white/80 uppercase tracking-widest mb-1">IDEAS & PROTOTYPING</p>
+                <h3 className="text-xl font-bold text-white">Liliane Xiaoxu Lang</h3>
+              </div>
+            </Link>
+
+            {/* Elizabeth */}
+            <Link href="/elizabeth" className="group relative overflow-hidden rounded-lg bg-gray-100 aspect-[4/3] block">
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10" />
+              {/* Placeholder for creator image */}
+              <div className="absolute inset-0 bg-gray-200 flex items-center justify-center">
+                <span className="text-gray-400 text-sm">Elizabeth Xiaoyue Lang</span>
+              </div>
+              <div className="absolute bottom-0 left-0 right-0 p-6 z-20">
+                <p className="text-xs text-white/80 uppercase tracking-widest mb-1">ART & CUSTOM DESIGN</p>
+                <h3 className="text-xl font-bold text-white">Elizabeth Xiaoyue Lang</h3>
+              </div>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Partners Section */}
+      <section className="py-16 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <p className="text-sm text-gray-400 uppercase tracking-widest mb-2">OUR PARTNERS</p>
+          <h2 className="text-3xl font-bold mb-8">Partner brands</h2>
+          
+          <div className="grid md:grid-cols-2 gap-8">
+            {/* Kidlab UK */}
+            <div className="bg-white rounded-lg p-8 shadow-sm">
+              <div className="w-16 h-16 bg-yellow-100 rounded-full mb-4 flex items-center justify-center">
+                <span className="text-2xl">💡</span>
+              </div>
+              <p className="text-sm text-gray-400 uppercase tracking-widest mb-1">EDUCATIONAL TOYS</p>
+              <h3 className="text-xl font-bold mb-2">Kidlab UK</h3>
+              <p className="text-gray-600 mb-4">
+                DIY wooden STEM kits that get children building, thinking, and exploring through hands-on play.
+              </p>
+              <Link
+                href="/partner/kidslabuk"
+                className="text-[#FF6B6B] hover:text-[#ff5252] font-medium inline-flex items-center gap-1"
+              >
+                Shop on Etsy →
+              </Link>
+            </div>
+
+            {/* Velvet Essence */}
+            <div className="bg-white rounded-lg p-8 shadow-sm">
+              <div className="w-16 h-16 bg-pink-100 rounded-full mb-4 flex items-center justify-center">
+                <span className="text-2xl">🎨</span>
+              </div>
+              <p className="text-sm text-gray-400 uppercase tracking-widest mb-1">FASHION & PRINT</p>
+              <h3 className="text-xl font-bold mb-2">Velvet Essence Design</h3>
+              <p className="text-gray-600 mb-4">
+                Hand-printed t-shirts and tote bags, wearable art made with care and creativity.
+              </p>
+              <Link
+                href="/partner/velvetessencedesign"
+                className="text-[#FF6B6B] hover:text-[#ff5252] font-medium inline-flex items-center gap-1"
+              >
+                Shop on Etsy →
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section id="work-with-us" className="py-16 bg-black text-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <p className="text-sm text-gray-400 uppercase tracking-widest mb-2">WORK WITH US</p>
+          <h2 className="text-3xl font-bold mb-4">
+            Great brands deserve{' '}
+            <span className="text-[#FF6B6B]">greater reach.</span>
+          </h2>
+          <p className="text-gray-300 mb-8 max-w-2xl">
+            Remecou bridges the gap between independent brands and the audiences through community, content, and strategic partnerships.
+          </p>
           <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="#contact"
+            className="contact-modal-trigger text-[#FF6B6B] hover:text-[#ff5252] font-medium inline-flex items-center gap-1"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
+            Explore partnership opportunities →
           </a>
         </div>
-      </main>
-    </div>
+      </section>
+
+      <Footer locale="en" />
+    </>
   );
 }
