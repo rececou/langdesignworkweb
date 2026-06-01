@@ -129,12 +129,12 @@ export default function VelvetEssencePage() {
           </p>
           <div className="flex flex-wrap gap-4">
             <Link
-              href="https://www.etsy.com/shop/VelvetEssenceDesign?etsrc=sdt&search_query=tshirt"
+              href="https://www.etsy.com/shop/VelvetEssenceDesign?etsrc=sdt"
               target="_blank"
               rel="noopener noreferrer"
               className="bg-[#FF6B6B] text-white px-6 py-3 rounded hover:bg-[#ff5252] transition-colors font-medium"
             >
-              Shop T-Shirts on Etsy →
+              Shop on Etsy →
             </Link>
             <Link
               href="https://www.tiktok.com/@velvetessencetotebags"
@@ -166,12 +166,12 @@ export default function VelvetEssencePage() {
               <p className="text-sm text-gray-500 mt-1">Hand-printed wearable art — browse all designs on Etsy</p>
             </div>
             <Link
-              href="https://www.etsy.com/shop/VelvetEssenceDesign?etsrc=sdt&search_query=tshirt"
+              href="https://www.etsy.com/shop/VelvetEssenceDesign?etsrc=sdt"
               target="_blank"
               rel="noopener noreferrer"
               className="text-[#FF6B6B] hover:text-[#ff5252] font-medium text-sm"
             >
-              View all on Etsy →
+              Shop on Etsy →
             </Link>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
