@@ -4,46 +4,77 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useContactModal } from '@/components/ContactModal';
 
+// Pulled automatically from Etsy RSS feed: https://www.etsy.com/shop/kidlabuk/rss
 const products = [
   {
-    name: "Pick & Mix DIY Kit",
-    description: "4-in-1 STEM DIY wooden Montessori toy — build, learn, and have fun!",
-    image: "/kidlab-pick-and-mix.jpg",
-  },
-  {
     name: "DIY STEM Drone",
-    description: "Wooden educational drone quadcopter aircraft with remote control.",
-    image: "/kidlab-pick-and-mix.jpg",
+    shortDesc: "Wooden quadcopter with remote control and night-flight LEDs",
+    price: "£18.00",
+    image: "https://i.etsystatic.com/65159532/r/il/43038d/7904845705/il_570xN.7904845705_bf4q.jpg",
+    link: "https://www.etsy.com/listing/4479841381",
   },
   {
-    name: "DIY STEM Music Box",
-    description: "Build-your-own musical piano — wooden science experiment kit.",
-    image: "/kidlab-pick-and-mix.jpg",
+    name: "DIY STEM Electric Train",
+    shortDesc: "Build a motorized locomotive with trailing carriages",
+    price: "£6.50",
+    image: "https://i.etsystatic.com/65159532/r/il/7b17e7/7949253075/il_570xN.7949253075_jwcl.jpg",
+    link: "https://www.etsy.com/listing/4486938805",
   },
   {
-    name: "DIY STEM RC Car",
-    description: "Wooden remote control car racer — engineering meets fun.",
-    image: "/kidlab-pick-and-mix.jpg",
+    name: "Pick & Mix STEM Kit",
+    shortDesc: "4-in-1 bundle — mix and match from 16 different kits",
+    price: "£6.00",
+    image: "https://i.etsystatic.com/65159532/r/il/8e22b3/7902687466/il_570xN.7902687466_dm8t.jpg",
+    link: "https://www.etsy.com/listing/4486953490",
   },
   {
-    name: "DIY STEM Tensile Structure",
-    description: "Defy gravity with a floating wooden sculpture — hands-on physics.",
-    image: "/kidlab-pick-and-mix.jpg",
+    name: "DIY STEM Electric Tank (Tracks)",
+    shortDesc: "Rubber track belt system with multi-wheel transmission",
+    price: "£6.00",
+    image: "https://i.etsystatic.com/65159532/r/il/3be447/8045129881/il_570xN.8045129881_3npd.jpg",
+    link: "https://www.etsy.com/listing/4501479034",
   },
   {
-    name: "DIY STEM Newton's Pendulum",
-    description: "Discover the laws of motion with a wooden pendulum kit.",
-    image: "/kidlab-pick-and-mix.jpg",
+    name: "DIY STEM Crawler Tank",
+    shortDesc: "Armored explorer with pulley and belt propulsion",
+    price: "£6.00",
+    image: "https://i.etsystatic.com/65159532/r/il/4dbd91/8045082757/il_570xN.8045082757_ks0l.jpg",
+    link: "https://www.etsy.com/listing/4501475648",
+  },
+  {
+    name: "DIY STEM Crab Robot",
+    shortDesc: "Bionic walking robot with motorized scuttling movement",
+    price: "£6.50",
+    image: "https://i.etsystatic.com/65159532/r/il/8c6d6a/7949272769/il_570xN.7949272769_ftol.jpg",
+    link: "https://www.etsy.com/listing/4486952462",
+  },
+  {
+    name: "DIY STEM Aircraft",
+    shortDesc: "Single propeller aircraft with motorized thrust",
+    price: "£6.50",
+    image: "https://i.etsystatic.com/65159532/r/il/9edf86/7949314537/il_570xN.7949314537_7ljg.jpg",
+    link: "https://www.etsy.com/listing/4486947817",
   },
   {
     name: "DIY STEM Electric Tank",
-    description: "Wooden tracked tank with motor — engineering adventure.",
-    image: "/kidlab-pick-and-mix.jpg",
+    shortDesc: "Motorized explorer with reduction gear box system",
+    price: "£5.50",
+    image: "https://i.etsystatic.com/65159532/r/il/5908d0/7949262891/il_570xN.7949262891_fie7.jpg",
+    link: "https://www.etsy.com/listing/4486940015",
   },
   {
-    name: "DIY STEM Solar Rover",
-    description: "Wooden solar-powered rover — learn about renewable energy.",
-    image: "/kidlab-pick-and-mix.jpg",
+    name: "DIY STEM Music Box",
+    shortDesc: "Build-your-own mechanical piano music box",
+    price: "£6.00",
+    image: "https://i.etsystatic.com/65159532/r/il/48a414/7901292124/il_570xN.7901292124_jawr.jpg",
+    link: "https://www.etsy.com/listing/4486943920",
+  },
+  {
+    name: "DIY STEM Newton's Pendulum",
+    shortDesc: "Classic Newton's Cradle with polished steel spheres",
+    price: "£6.00",
+    image: "https://i.etsystatic.com/65159532/r/il/251fbe/7949224381/il_570xN.7949224381_9lbi.jpg",
+    link: "https://www.etsy.com/listing/4486934303",
   },
 ];
 
@@ -71,7 +102,7 @@ export default function KidlabPage() {
             </div>
           </div>
           <p className="text-gray-600 max-w-2xl mb-8">
-            DIY wooden STEM kits that get children building, thinking, and exploring through hands-on play. Starting from just £9.99.
+            DIY wooden STEM kits that get children building, thinking, and exploring through hands-on play. Starting from just £5.50.
           </p>
           <div className="flex gap-4">
             <Link href="https://kidlabuk.etsy.com/" target="_blank" rel="noopener noreferrer" className="bg-[#FF6B6B] text-white px-6 py-3 rounded hover:bg-[#ff5252] transition-colors font-medium">
@@ -85,23 +116,30 @@ export default function KidlabPage() {
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl font-bold mb-2">Memories are built, not scrolled</h2>
-          <p className="text-gray-600 mb-8">Wooden DIY Stem Kits — hands-on fun for curious minds.</p>
+          <p className="text-gray-600 mb-8">Wooden DIY STEM Kits — hands-on fun for curious minds. All items stocked in the UK for fast delivery.</p>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {products.map((product) => (
-              <div key={product.name} className="bg-gray-50 rounded-lg overflow-hidden hover:shadow-md transition-shadow">
+              <a
+                key={product.name}
+                href={product.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-gray-50 rounded-lg overflow-hidden hover:shadow-md transition-shadow group block"
+              >
                 <div className="relative aspect-square">
                   <Image
                     src={product.image}
                     alt={product.name}
                     fill
-                    className="object-cover"
+                    className="object-cover group-hover:scale-105 transition-transform duration-300"
                   />
                 </div>
                 <div className="p-4">
-                  <h3 className="font-bold mb-1">{product.name}</h3>
-                  <p className="text-sm text-gray-600">{product.description}</p>
+                  <h3 className="font-bold mb-1 text-sm leading-tight">{product.name}</h3>
+                  <p className="text-xs text-gray-500 mb-2">{product.shortDesc}</p>
+                  <p className="text-sm font-semibold text-[#FF6B6B]">{product.price}</p>
                 </div>
-              </div>
+              </a>
             ))}
           </div>
         </div>
