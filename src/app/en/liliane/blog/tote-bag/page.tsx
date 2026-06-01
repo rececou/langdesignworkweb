@@ -169,11 +169,11 @@ export default function ToteBagBlogPage() {
 
             <p>
               You can find more inspirational ideas from{' '}
-              <a href="https://www.etsy.com/shop/ShantellsShop" target="_blank" rel="noopener noreferrer" className="text-pink-600 hover:text-pink-500 font-medium hover:underline">
+              <a href="https://www.etsy.com/shop/VelvetEssenceDesign" target="_blank" rel="noopener noreferrer" className="text-pink-600 hover:text-pink-500 font-medium hover:underline">
                 Shantell's shop at Etsy
               </a>{' '}
               or view more on{' '}
-              <a href="https://www.instagram.com/langdesignwork/" target="_blank" rel="noopener noreferrer" className="text-pink-600 hover:text-pink-500 font-medium hover:underline">
+              <a href="https://www.instagram.com/velvetessencedesign" target="_blank" rel="noopener noreferrer" className="text-pink-600 hover:text-pink-500 font-medium hover:underline">
                 Instagram
               </a>
               .
