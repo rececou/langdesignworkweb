@@ -5,39 +5,68 @@ import Footer from '@/components/Footer';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useContactModal } from '@/components/ContactModal';
-import { useEffect, useState } from 'react';
 
-interface Product {
-  name: string;
-  shortDesc: string;
-  price: string;
-  image: string;
-  link: string;
-}
+// Products from Etsy shop: https://www.etsy.com/shop/VelvetEssenceDesign
+const products = [
+  {
+    name: "Pink Guitar Tote Bag",
+    shortDesc: "Rock girl aesthetic shopper — perfect for music lovers",
+    price: "£11.99",
+    image: "https://i.etsystatic.com/56112249/r/il/db3dce/7680860369/il_570xN.7680860369_g45e.jpg",
+    link: "https://www.etsy.com/listing/4445932040/pink-guitar-acoustic-tote-bag-rock-girl",
+  },
+  {
+    name: "Dog Lover Tote Bag",
+    shortDesc: "Easily distracted by dogs and books — gift for bookworms",
+    price: "£11.99",
+    image: "https://i.etsystatic.com/56112249/r/il/8e21b1/7943473378/il_570xN.7943473378_fzdp.jpg",
+    link: "https://www.etsy.com/listing/4355938777/easily-distracted-by-dogs-and-books-tote",
+  },
+  {
+    name: "Galaxy Tote Bag",
+    shortDesc: "Colourful planet canvas shopper — space aesthetic art",
+    price: "£11.99",
+    image: "https://i.etsystatic.com/56112249/r/il/ab1c3b/7690665237/il_570xN.7690665237_r3j0.jpg",
+    link: "https://www.etsy.com/listing/4447431926/galaxy-tote-bag-colourful-planet-canvas",
+  },
+  {
+    name: "Space Quote Tote Bag",
+    shortDesc: "All I Need Is Space — astronaut quote canvas shopper",
+    price: "£11.99",
+    image: "https://i.etsystatic.com/56112249/r/il/85215a/7642674506/il_570xN.7642674506_94y6.jpg",
+    link: "https://www.etsy.com/listing/4447424395/space-tote-bag-o-astronaut-quote-shopper",
+  },
+  {
+    name: "Dark Romance Tote Bag",
+    shortDesc: "Gothic rose aesthetic shopper — dramatic art canvas",
+    price: "£11.99",
+    image: "https://i.etsystatic.com/56112249/r/il/2c216a/7991432097/il_570xN.7991432097_k4io.jpg",
+    link: "https://www.etsy.com/listing/4446004575/dark-romance-tote-bag-gothic-rose",
+  },
+  {
+    name: "Bird Tote Bag",
+    shortDesc: "Cute Kingfisher canvas tote — nature lover gift",
+    price: "£11.99",
+    image: "https://i.etsystatic.com/56112249/r/il/0afbae/7635859759/il_570xN.7635859759_qoj0.jpg",
+    link: "https://www.etsy.com/listing/4438927415/bird-tote-bag-cute-kingfisher-canvas",
+  },
+  {
+    name: "Witchy Tote Bag",
+    shortDesc: "Dark feminine gothic autumn art canvas — gifts for witchy friends",
+    price: "£11.99",
+    image: "https://i.etsystatic.com/56112249/r/il/baa891/7681888563/il_570xN.7681888563_ka97.jpg",
+    link: "https://www.etsy.com/listing/4446085627/gifts-for-witchy-friends-witchy-tote-bag",
+  },
+  {
+    name: "Champagne Coaster Set",
+    shortDesc: "Pink champagne ceramic coasters set of 4 — elegant home decor",
+    price: "£14.99",
+    image: "https://i.etsystatic.com/56112249/r/il/0e298c/8039177077/il_570xN.8039177077_7vva.jpg",
+    link: "https://www.etsy.com/listing/4500552833/champagne-ceramic-coaster-set-gift-for",
+  },
+];
 
-async function fetchProducts(): Promise<Product[]> {
-  try {
-    const res = await fetch('https://api.rss2json.com/v1/api.json?rss_url=https://www.etsy.com/shop/VelvetEssenceDesign/rss', {
-      cache: 'no-store',
-    });
-    const data = await res.json();
-    if (!data.items) return [];
-
-    return data.items.slice(0, 8).map((item: any) => {
-      const imgMatch = item.description?.match(/src="([^"]+)"/);
-      const image = imgMatch ? imgMatch[1] : '';
-      const priceMatch = item.description?.match(/(\d+\.\d+)\s*GBP/);
-      const price = priceMatch ? `£${priceMatch[1]}` : '';
-      const name = item.title?.replace(/ by VelvetEssenceDesign$/, '') || '';
-      const cleanDesc = item.description?.replace(/<[^>]*>/g, '').substring(0, 100) + '...' || '';
-      return { name, shortDesc: cleanDesc, price, image, link: item.link || '' };
-    });
-  } catch {
-    return [];
-  }
-}
-
-function ProductCard({ product }: { product: Product }) {
+function ProductCard({ product }: { product: typeof products[0] }) {
   return (
     <a
       href={product.link}
@@ -72,15 +101,6 @@ function ProductCard({ product }: { product: Product }) {
 
 export default function VelvetEssencePage() {
   const { open } = useContactModal();
-  const [products, setProducts] = useState<Product[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    fetchProducts().then((items) => {
-      setProducts(items);
-      setLoading(false);
-    });
-  }, []);
 
   return (
     <>
@@ -137,33 +157,16 @@ export default function VelvetEssencePage() {
         </div>
       </section>
 
-      {/* Products from RSS */}
+      {/* Products */}
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl font-bold mb-2">Collection</h2>
-          <p className="text-sm text-gray-500 mb-8">Auto-synced from Etsy • Updates daily</p>
-
-          {loading ? (
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-              {Array.from({ length: 12 }).map((_, i) => (
-                <div key={i} className="bg-gray-50 rounded-lg overflow-hidden animate-pulse">
-                  <div className="bg-gray-200 aspect-square" />
-                  <div className="p-3 space-y-2">
-                    <div className="h-3 bg-gray-200 rounded w-3/4" />
-                    <div className="h-2 bg-gray-200 rounded w-1/2" />
-                  </div>
-                </div>
-              ))}
-            </div>
-          ) : products.length > 0 ? (
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-              {products.map((product, i) => (
-                <ProductCard key={i} product={product} />
-              ))}
-            </div>
-          ) : (
-            <p className="text-gray-500">Products loading from Etsy...</p>
-          )}
+          <p className="text-sm text-gray-500 mb-8">Handpicked from Etsy — tote bags and accessories</p>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            {products.map((product) => (
+              <ProductCard key={product.name} product={product} />
+            ))}
+          </div>
         </div>
       </section>
 
