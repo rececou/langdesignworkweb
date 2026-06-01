@@ -1,5 +1,6 @@
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import MatrixRain from '@/components/MatrixRain';
 import Link from 'next/link';
 
 export default function Home() {
@@ -9,8 +10,8 @@ export default function Home() {
 
       {/* Hero Section */}
       <section className="bg-black text-white py-20 relative overflow-hidden">
-        {/* Canvas animation placeholder */}
-        <canvas className="absolute inset-0 opacity-20" id="hero-canvas" />
+        {/* Matrix rain animation */}
+        <MatrixRain />
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <h1 className="text-5xl md:text-7xl font-bold mb-6">

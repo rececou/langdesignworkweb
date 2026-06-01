@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect } from 'react';
 import HubSpotForm from './HubSpotForm';
 
 const FORM_ID = 'a7ceb992-15d6-4c34-a5f0-c5fcdb438f0c';
@@ -8,40 +8,41 @@ const FORM_ID = 'a7ceb992-15d6-4c34-a5f0-c5fcdb438f0c';
 export default function ContactModal() {
   const [isOpen, setIsOpen] = useState(false);
 
-  const openModal = useCallback(() => {
+  const openModal = (e: Event) => {
+    e.preventDefault();
     setIsOpen(true);
     document.body.style.overflow = 'hidden';
-  }, []);
+  };
 
-  const closeModal = useCallback(() => {
+  const closeModal = () => {
     setIsOpen(false);
     document.body.style.overflow = '';
-  }, []);
+  };
 
   useEffect(() => {
-    // Attach click listeners to all trigger elements
-    const triggers = document.querySelectorAll('.contact-modal-trigger, [href="#contact"]');
-    
-    triggers.forEach(trigger => {
-      trigger.addEventListener('click', (e) => {
-        e.preventDefault();
-        openModal();
+    // Wait for DOM to be ready
+    const timeout = setTimeout(() => {
+      const triggers = document.querySelectorAll('.contact-modal-trigger');
+      
+      triggers.forEach(trigger => {
+        // Remove any existing listeners
+        const newTrigger = trigger.cloneNode(true) as Element;
+        trigger.parentNode?.replaceChild(newTrigger, trigger);
+        
+        newTrigger.addEventListener('click', openModal);
       });
-    });
+    }, 100);
 
-    // Close on Escape key
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') closeModal();
     };
     document.addEventListener('keydown', handleKeyDown);
 
     return () => {
-      triggers.forEach(trigger => {
-        trigger.removeEventListener('click', openModal);
-      });
+      clearTimeout(timeout);
       document.removeEventListener('keydown', handleKeyDown);
     };
-  }, [openModal, closeModal]);
+  }, []);
 
   if (!isOpen) return null;
 
@@ -62,12 +63,10 @@ export default function ContactModal() {
           </div>
           <button
             onClick={closeModal}
-            className="w-8 h-8 flex items-center justify-center text-gray-400 hover:text-gray-600 transition-colors"
+            className="w-8 h-8 flex items-center justify-center text-gray-400 hover:text-gray-600 transition-colors rounded-full hover:bg-gray-100"
             aria-label="Close"
           >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-            </svg>
+            ✕
           </button>
         </div>
 
