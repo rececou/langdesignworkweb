@@ -1,7 +1,26 @@
+import type { Metadata } from "next";
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Link from 'next/link';
 import Image from 'next/image';
+
+export const metadata: Metadata = {
+  title: "Lang Design Work Blog Home",
+  description: "Explore ideas, creative projects, and reflections from Lang Design Work authors. Follow their journeys of art, craft, and discovery as they share inspiration, insights, and creations drawn from everyday life.",
+  openGraph: {
+    title: "Lang Design Work Blog Home",
+    description: "Explore ideas, creative projects, and reflections from Lang Design Work authors. Follow their journeys of art, craft, and discovery as they share inspiration, insights, and creations drawn from everyday life.",
+    images: ["/images/og-home.png"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Lang Design Work Blog Home",
+    description: "Explore ideas, creative projects, and reflections from Lang Design Work authors. Follow their journeys of art, craft, and discovery as they share inspiration, insights, and creations drawn from everyday life.",
+  },
+  alternates: {
+    canonical: "https://www.langdesignwork.com/en/home/blog",
+  },
+};
 
 const posts = [
   {

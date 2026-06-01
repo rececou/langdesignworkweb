@@ -1,14 +1,48 @@
 'use client';
 
+import SeoMeta from '@/components/SeoMeta';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useContactModal } from '@/components/ContactModal';
 
+
+
 export default function AiCreativityBlogPage() {
+  const blogSchema = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: "How Can AI and Creativity Revolutionize Learning?",
+    description: "Reflection on the future of education, discover how Liliane Lang and Elizabeth Lang used AI to create a smart device for seniors.",
+    image: "https://www.langdesignwork.com/hubfs/REME-1.png",
+    author: {
+      "@type": "Person",
+      name: "Liliane Xiaoxu Lang",
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "LangDesignWork",
+      logo: { "@type": "ImageObject", url: "https://www.langdesignwork.com/hubfs/LangDesignWorkLogo.svg" },
+    },
+    datePublished: "2024-12-01",
+    dateModified: "2024-12-01",
+    mainEntityOfPage: "https://www.langdesignwork.com/en/home/blog/ai-creativity-learning",
+  };
+
   return (
     <>
+      <SeoMeta
+        title="How Can AI and Creativity Revolutionize Learning?"
+        description="Reflection on the future of education, discover how Liliane Lang and Elizabeth Lang used AI to create a smart device for seniors."
+        ogImage="/images/og-blog-ai-learning.png"
+        canonical="https://www.langdesignwork.com/en/home/blog/ai-creativity-learning"
+        twitterCard="summary"
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(blogSchema) }}
+      />
       <Header locale="en" />
 
       <article className="py-16 bg-white">

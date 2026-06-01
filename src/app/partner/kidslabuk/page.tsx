@@ -1,10 +1,13 @@
 'use client';
 
+import SeoMeta from '@/components/SeoMeta';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useContactModal } from '@/components/ContactModal';
+
+
 
 // Pulled automatically from Etsy RSS feed: https://www.etsy.com/shop/kidlabuk/rss
 const products = [
@@ -83,7 +86,32 @@ const products = [
 export default function KidlabPage() {
   return (
     <>
+      <SeoMeta
+        title="Kidlab UK | DIY STEM Kits | LangDesignWork Partner"
+        description="Swap screen time for hands-on discovery. KidLab UK DIY STEM kits and educational toys for curious kids — fun, practical, eco-friendly. From £9.99."
+        ogImage="/images/og-kidlab.jpeg"
+        canonical="https://www.langdesignwork.com/partner/kidslabuk"
+        twitterCard="summary"
+      />
       <Header locale="en" />
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            name: "Kidlab UK",
+            url: "https://www.langdesignwork.com/partner/kidslabuk",
+            description: "DIY wooden STEM kits and educational toys for curious kids. Hands-on learning from £9.99.",
+            logo: "/kidlab-logo.jpg",
+            sameAs: [
+              "https://kidlabuk.etsy.com/",
+              "https://www.tiktok.com/@kidlab.uk",
+            ],
+          }),
+        }}
+      />
 
       {/* Hero */}
       <section className="bg-yellow-50 py-16">

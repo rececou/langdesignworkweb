@@ -1,11 +1,14 @@
 'use client';
 
+import SeoMeta from '@/components/SeoMeta';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useContactModal } from '@/components/ContactModal';
 import { useState, useEffect } from 'react';
+
+
 
 // Animated counter component
 function Counter({ target, suffix = '' }: { target: string; suffix?: string }) {
@@ -39,6 +42,32 @@ export default function RemecouPage() {
 
   return (
     <>
+      <SeoMeta
+        title="Remecou | Sustainable Goods Operations | LangDesignWork"
+        description="Hong Kong operations model for sustainable goods. AI-assisted sourcing from China, content co-creation with local partners, and in-market distribution."
+        ogImage="/images/og-remecou.jpeg"
+        canonical="https://www.langdesignwork.com/remecou"
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'Organization',
+            name: 'Remecou Trading Limited',
+            description: 'Hong Kong operations model for sustainable goods. AI-assisted sourcing from China, content co-creation with local partners, and in-market distribution.',
+            url: 'https://www.langdesignwork.com/remecou',
+            logo: 'https://www.langdesignwork.com/images/remecou-logo.jpeg',
+            image: 'https://www.langdesignwork.com/images/og-remecou.jpeg',
+            address: {
+              '@type': 'PostalAddress',
+              addressLocality: 'Hong Kong',
+              addressCountry: 'HK',
+            },
+            sameAs: ['https://www.langdesignwork.com/remecou'],
+          }),
+        }}
+      />
       <Header locale="en" />
 
       {/* Hero */}

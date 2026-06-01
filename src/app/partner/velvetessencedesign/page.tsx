@@ -1,10 +1,13 @@
 'use client';
 
+import SeoMeta from '@/components/SeoMeta';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useContactModal } from '@/components/ContactModal';
+import { useEffect, useState } from 'react';
+
 
 // Products from Etsy shop: https://www.etsy.com/shop/VelvetEssenceDesign
 const products = [
@@ -104,6 +107,12 @@ export default function VelvetEssencePage() {
 
   return (
     <>
+      <SeoMeta
+        title="Velvet Essence Design | Hand-Printed T-Shirts & Tote Bags | LangDesignWork Partner"
+        description="Hand-printed t-shirts and tote bags, wearable art made with care and creativity by Velvet Essence Design in London. Available on Etsy UK."
+        ogImage="/images/velvet-essence-logo.jpg"
+        canonical="https://www.langdesignwork.com/partner/velvetessencedesign"
+      />
       <Header locale="en" />
 
       {/* Hero */}

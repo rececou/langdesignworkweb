@@ -6,9 +6,27 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useContactModal } from '@/components/ContactModal';
 
+const SITE_URL = "https://www.langdesignwork.com";
+const PAGE_PATH = "/elizabeth";
+
 export default function ElizabethPage() {
   return (
     <>
+      {/* JSON-LD Person Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Person",
+            name: "Elizabeth Xiaoyue Lang",
+            url: `${SITE_URL}${PAGE_PATH}`,
+            jobTitle: "Artist & Designer",
+            description: "Explore the creative journey of Elizabeth Xiaoyue Lang, featuring artworks inspired by those around her and inviting you to discover more.",
+          }),
+        }}
+      />
+
       <Header locale="en" />
 
       {/* Hero */}

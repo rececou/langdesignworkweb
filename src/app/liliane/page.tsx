@@ -1,5 +1,6 @@
 'use client';
 
+import SeoMeta from '@/components/SeoMeta';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Link from 'next/link';
@@ -10,6 +11,27 @@ import YouTubeVideo from '@/components/YouTubeVideo';
 export default function LilianePage() {
   return (
     <>
+      <SeoMeta
+        title="Liliane Xiaoxu Lang | Ideas & Prototyping | LangDesignWork"
+        description="Join Liliane Xiaoxu Lang on the Discover Channel! Explore debates, creative projects, and inspirational insights."
+        ogImage="/images/og-liliane.png"
+        canonical="https://www.langdesignwork.com/liliane"
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'Person',
+            name: 'Liliane Xiaoxu Lang',
+            url: 'https://www.langdesignwork.com/liliane',
+            image: 'https://www.langdesignwork.com/images/og-liliane.png',
+            jobTitle: 'Creator & Prototyper',
+            description:
+              'Liliane Xiaoxu Lang — From AI prototypes to handmade crafts, a world of ideas in motion.',
+          }),
+        }}
+      />
       <Header locale="en" />
 
       {/* Hero */}

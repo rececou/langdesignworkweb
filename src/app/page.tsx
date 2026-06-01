@@ -1,5 +1,6 @@
 'use client';
 
+import SeoMeta from '@/components/SeoMeta';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import MatrixRain from '@/components/MatrixRain';
@@ -7,9 +8,17 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useContactModal } from '@/components/ContactModal';
 
+
+
 export default function Home() {
   return (
     <>
+      <SeoMeta
+        title="LangDesignWork | Home"
+        description="Creativity. Community. Commerce. LangDesignWork brings together independent makers, partner brands, and the audiences in one place."
+        ogImage="/images/og-home.png"
+        canonical="https://www.langdesignwork.com"
+      />
       <Header locale="en" />
 
       {/* Hero Section */}
