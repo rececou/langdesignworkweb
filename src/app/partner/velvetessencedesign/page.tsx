@@ -14,8 +14,33 @@ interface Product {
   link: string;
 }
 
-// Pinned Surreal Art Tote Bags (always first)
-const pinnedTotes: Product[] = [
+// 3 Featured T-Shirts
+const tshirts: Product[] = [
+  {
+    name: "Cherry Bow Graphic Tee",
+    shortDesc: "Sweet but fierce — playful cherry bow design on soft cotton",
+    price: "Shop Now",
+    image: "https://i.etsystatic.com/56112249/r/il/db3dce/7680860369/il_570xN.7680860369_g45e.jpg",
+    link: "https://www.etsy.com/uk/listing/4472957913/cherry-bow-graphic-tee-sweet-but-fierce",
+  },
+  {
+    name: "Showgirl Era Statement Tee",
+    shortDesc: "Bold bachelorette statement shirt — fun and fearless",
+    price: "Shop Now",
+    image: "https://i.etsystatic.com/56112249/r/il/8e21b1/7943473378/il_570xN.7943473378_fzdp.jpg",
+    link: "https://www.etsy.com/uk/listing/4473249468/showgirl-era-statement-tee-bachelorette",
+  },
+  {
+    name: "Book Lover Coffee Tee",
+    shortDesc: "Just a girl who loves books and coffee — for bookworms",
+    price: "Shop Now",
+    image: "https://i.etsystatic.com/56112249/r/il/ab1c3b/7690665237/il_570xN.7690665237_r3j0.jpg",
+    link: "https://www.etsy.com/uk/listing/4475147151/book-lover-coffee-tee-just-a-girl-who",
+  },
+];
+
+// 3 Featured Tote Bags
+const toteBags: Product[] = [
   {
     name: "Surreal Art Tote Bag — Statement Canvas",
     shortDesc: "Bold surreal artwork printed on durable canvas — make a statement wherever you go",
@@ -30,58 +55,12 @@ const pinnedTotes: Product[] = [
     image: "https://i.etsystatic.com/56112249/r/il/8e21b1/7943473378/il_570xN.7949253075_jwcl.jpg",
     link: "https://www.etsy.com/uk/listing/4426397775/surreal-art-tote-bag-statement-canvas",
   },
-];
-
-// Real tote bags from Etsy shop
-const toteBags: Product[] = [
   {
     name: "Pink Guitar Tote Bag",
     shortDesc: "Rock girl aesthetic shopper — perfect for music lovers",
     price: "£11.99",
-    image: "https://i.etsystatic.com/56112249/r/il/db3dce/7680860369/il_570xN.7680860369_g45e.jpg",
-    link: "https://www.etsy.com/listing/4445932040/pink-guitar-acoustic-tote-bag-rock-girl",
-  },
-  {
-    name: "Dog Lover Tote Bag",
-    shortDesc: "Easily distracted by dogs and books — gift for bookworms",
-    price: "£11.99",
-    image: "https://i.etsystatic.com/56112249/r/il/8e21b1/7943473378/il_570xN.7943473378_fzdp.jpg",
-    link: "https://www.etsy.com/listing/4355938777/easily-distracted-by-dogs-and-books-tote",
-  },
-  {
-    name: "Galaxy Tote Bag",
-    shortDesc: "Colourful planet canvas shopper — space aesthetic art",
-    price: "£11.99",
-    image: "https://i.etsystatic.com/56112249/r/il/ab1c3b/7690665237/il_570xN.7690665237_r3j0.jpg",
-    link: "https://www.etsy.com/listing/4447431926/galaxy-tote-bag-colourful-planet-canvas",
-  },
-  {
-    name: "Space Quote Tote Bag",
-    shortDesc: "All I Need Is Space — astronaut quote canvas shopper",
-    price: "£11.99",
-    image: "https://i.etsystatic.com/56112249/r/il/85215a/7642674506/il_570xN.7642674506_94y6.jpg",
-    link: "https://www.etsy.com/listing/4447424395/space-tote-bag-o-astronaut-quote-shopper",
-  },
-  {
-    name: "Dark Romance Tote Bag",
-    shortDesc: "Gothic rose aesthetic shopper — dramatic art canvas",
-    price: "£11.99",
     image: "https://i.etsystatic.com/56112249/r/il/2c216a/7991432097/il_570xN.7991432097_k4io.jpg",
-    link: "https://www.etsy.com/listing/4446004575/dark-romance-tote-bag-gothic-rose",
-  },
-  {
-    name: "Bird Tote Bag",
-    shortDesc: "Cute Kingfisher canvas tote — nature lover gift",
-    price: "£11.99",
-    image: "https://i.etsystatic.com/56112249/r/il/0afbae/7635859759/il_570xN.7635859759_qoj0.jpg",
-    link: "https://www.etsy.com/listing/4438927415/bird-tote-bag-cute-kingfisher-canvas",
-  },
-  {
-    name: "Witchy Tote Bag",
-    shortDesc: "Dark feminine gothic autumn art canvas — gifts for witchy friends",
-    price: "£11.99",
-    image: "https://i.etsystatic.com/56112249/r/il/baa891/7681888563/il_570xN.7681888563_ka97.jpg",
-    link: "https://www.etsy.com/listing/4446085627/gifts-for-witchy-friends-witchy-tote-bag",
+    link: "https://www.etsy.com/listing/4445932040/pink-guitar-acoustic-tote-bag-rock-girl",
   },
 ];
 
@@ -179,39 +158,37 @@ export default function VelvetEssencePage() {
       </section>
 
       {/* T-Shirts Section */}
-      <section className="py-12 bg-gradient-to-r from-pink-50 to-purple-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-2xl font-bold mb-2">T-Shirt Collection</h2>
-          <p className="text-gray-600 mb-6 max-w-xl mx-auto">
-            Hand-printed wearable art on premium cotton — browse all unique t-shirt designs on Etsy
-          </p>
-          <Link
-            href="https://www.etsy.com/shop/VelvetEssenceDesign?etsrc=sdt&search_query=tshirt"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-block bg-[#FF6B6B] text-white px-8 py-3 rounded hover:bg-[#ff5252] transition-colors font-medium"
-          >
-            Shop T-Shirts on Etsy →
-          </Link>
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between mb-8">
+            <div>
+              <h2 className="text-2xl font-bold">T-Shirt Collection</h2>
+              <p className="text-sm text-gray-500 mt-1">Hand-printed wearable art — browse all designs on Etsy</p>
+            </div>
+            <Link
+              href="https://www.etsy.com/shop/VelvetEssenceDesign?etsrc=sdt&search_query=tshirt"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[#FF6B6B] hover:text-[#ff5252] font-medium text-sm"
+            >
+              View all on Etsy →
+            </Link>
+          </div>
+          <div className="grid md:grid-cols-3 gap-8">
+            {tshirts.map((product, i) => (
+              <ProductCard key={`tshirt-${i}`} product={product} />
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* Tote Bags — pinned first, then rest */}
+      {/* Tote Bags Section */}
       <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl font-bold mb-2">Tote Bags</h2>
           <p className="text-sm text-gray-500 mb-8">
-            Featured picks + handpicked selection from Etsy
+            Handpicked from Etsy — featured picks and best sellers
           </p>
-          
-          {/* Pinned items first */}
-          <div className="grid md:grid-cols-3 gap-8 mb-8">
-            {pinnedTotes.map((product, i) => (
-              <ProductCard key={`pinned-${i}`} product={product} />
-            ))}
-          </div>
-          
-          {/* Rest of tote bags */}
           <div className="grid md:grid-cols-3 gap-8">
             {toteBags.map((product, i) => (
               <ProductCard key={`tote-${i}`} product={product} />
