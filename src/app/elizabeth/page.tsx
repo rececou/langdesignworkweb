@@ -52,7 +52,7 @@ export default function ElizabethPage() {
               <h3 className="text-xl font-bold mb-2">Elizabeth Xiaoyue Railway</h3>
               <p className="text-gray-600 mb-4">
                 Designed during my time at{' '}
-                <a href="https://www.arts.ac.uk/study-at-ual/short-courses" target="_blank" rel="noopener noreferrer" className="text-[#FF6B6B] hover:underline">Central Saint Martins College of Art</a>{' '}
+                <a href="https://www.arts.ac.uk/study-at-ual/short-courses/stories/exploring-architecture-with-a-short-course-elizabeths-story" target="_blank" rel="noopener noreferrer" className="text-[#FF6B6B] hover:underline">Central Saint Martins College of Art</a>{' '}
                 in London in the summer of 2025.
               </p>
               <p className="text-gray-600">
