@@ -82,8 +82,8 @@ export default function AiCreativityBlogPage() {
               indicate the elderly demographic is set to reach 31% by 2039.
             </p>
 
-            {/* Video placeholder 1 */}
-            <HubSpotVideo videoId="TODO_HUBSPOT_VIDEO_1" />
+            {/* Video 1: Research */}
+            <BlogVideo src="/ai-creativity-research.mp4" caption="REME Project — Research Phase" />
 
             <p>
               Liliane and Elizabeth didn't start with a complex AI model — they broke down the problem into manageable steps:
@@ -99,8 +99,8 @@ export default function AiCreativityBlogPage() {
               This learn-while-doing approach ensured that every technical hurdle, from implementing Natural Language Processing (NLP) for voice commands to designing a simple interface, was overcome out of necessity, not abstract assignment. The REME project forced the girls to use both creative and critical thinking during their creation journey.
             </p>
 
-            {/* Video placeholder 2 */}
-            <HubSpotVideo videoId="TODO_HUBSPOT_VIDEO_2" />
+            {/* Video 2: Technical */}
+            <BlogVideo src="/ai-creativity-technical.mp4" caption="REME Project — Technical Implementation" />
 
             <h3 className="text-xl font-bold text-gray-900 mt-8">Looking Forward: The Future of Learning</h3>
 
@@ -123,8 +123,8 @@ export default function AiCreativityBlogPage() {
               <a href="https://www.forbes.com/sites/katiejennings/2024/05/01/ai-could-help-seniors-age-in-place/" target="_blank" rel="noopener noreferrer" className="text-[#FF6B6B] hover:underline">Forbes: AI in Senior Care</a>.
             </p>
 
-            {/* Video placeholder 3 */}
-            <HubSpotVideo videoId="TODO_HUBSPOT_VIDEO_3" />
+            {/* Video 3: Learning */}
+            <BlogVideo src="/ai-creativity-learning.mp4" caption="REME Project — Learning & Impact" />
 
             {/* Let's Connect */}
             <div className="mt-12 pt-8 border-t border-gray-200">
@@ -143,11 +143,24 @@ export default function AiCreativityBlogPage() {
   );
 }
 
-function HubSpotVideo({ videoId }: { videoId: string }) {
+function BlogVideo({ src, caption }: { src: string; caption: string }) {
   return (
-    <div className="bg-gray-100 rounded-lg aspect-video my-6 flex items-center justify-center">
-      <span className="text-gray-400 text-sm">Video player — {videoId}</span>
-    </div>
+    <figure className="my-6">
+      <video
+        controls
+        preload="metadata"
+        className="w-full rounded-lg shadow-md"
+        poster=""
+      >
+        <source src={src} type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+      {caption && (
+        <figcaption className="text-sm text-gray-500 text-center mt-2 italic">
+          {caption}
+        </figcaption>
+      )}
+    </figure>
   );
 }
 
