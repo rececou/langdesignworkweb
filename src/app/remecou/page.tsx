@@ -210,9 +210,6 @@ export default function RemecouPage() {
           <FadeIn>
             <p className="text-sm text-emerald-600 uppercase tracking-widest mb-4">WORK WITH REMECOU</p>
             <h2 className="text-3xl font-bold mb-4">Interested in partnering with us?</h2>
-            <p className="text-gray-600 mb-8 max-w-lg mx-auto">
-              If you're an independent brand with a great product and want to reach a real audience — let's talk.
-            </p>
             <p className="text-sm text-gray-500 mb-8">Contact: lucy@langdesignwork.com</p>
             <button
               onClick={open}
