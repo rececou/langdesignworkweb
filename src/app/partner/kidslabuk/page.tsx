@@ -120,7 +120,7 @@ export default function KidlabPage() {
           <h2 className="text-2xl font-bold mb-2">Memories are built, not scrolled</h2>
           <p className="text-gray-600 mb-8">Wooden DIY STEM Kits — hands-on fun for curious minds. All items stocked in the UK for fast delivery.</p>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            {products.map((product) => (
+            {products.slice(0, 8).map((product) => (
               <a
                 key={product.name}
                 href={product.link}
@@ -143,25 +143,6 @@ export default function KidlabPage() {
                 </div>
               </a>
             ))}
-            {/* View All cards to fill the grid */}
-            <a
-              href="https://kidlabuk.etsy.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-gradient-to-br from-[#FF6B6B] to-[#ff8c8c] rounded-lg overflow-hidden hover:shadow-md transition-shadow group block flex flex-col items-center justify-center text-white text-center p-6"
-            >
-              <span className="text-3xl mb-2">🔧</span>
-              <span className="font-bold text-sm">View Full Collection</span>
-            </a>
-            <a
-              href="https://www.tiktok.com/@kidlab.uk"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-gradient-to-br from-gray-900 to-gray-700 rounded-lg overflow-hidden hover:shadow-md transition-shadow group block flex flex-col items-center justify-center text-white text-center p-6"
-            >
-              <span className="text-3xl mb-2">▶️</span>
-              <span className="font-bold text-sm">Follow on TikTok</span>
-            </a>
           </div>
         </div>
       </section>
