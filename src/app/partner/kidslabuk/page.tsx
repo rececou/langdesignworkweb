@@ -115,7 +115,7 @@ export default function KidlabPage() {
             New kits, behind-the-scenes builds, and learning tips — follow Kidlab UK across platforms for exclusive previews and updates.
           </p>
           <div className="flex gap-6">
-            <Link href="https://www.etsy.com/shop/kidlabuk/" target="_blank" rel="noopener noreferrer" className="bg-white px-6 py-3 rounded shadow-sm hover:shadow-md transition-shadow font-medium text-gray-800">
+            <Link href="https://kidlabuk.etsy.com" target="_blank" rel="noopener noreferrer" className="bg-white px-6 py-3 rounded shadow-sm hover:shadow-md transition-shadow font-medium text-gray-800">
               Etsy UK
             </Link>
             <Link href="https://www.tiktok.com/@kidlab.uk" target="_blank" rel="noopener noreferrer" className="bg-white px-6 py-3 rounded shadow-sm hover:shadow-md transition-shadow font-medium text-gray-800">
