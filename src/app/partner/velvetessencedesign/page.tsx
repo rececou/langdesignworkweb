@@ -103,8 +103,14 @@ export default function VelvetEssencePage() {
       <section className="bg-pink-50 py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-4 mb-6">
-            <div className="w-20 h-20 bg-pink-200 rounded-full flex items-center justify-center">
-              <span className="text-3xl">🎨</span>
+            <div className="w-20 h-20 rounded-full overflow-hidden bg-pink-100">
+              <Image
+                src="/images/velvet-essence-logo.jpg"
+                alt="Velvet Essence Design"
+                width={80}
+                height={80}
+                className="object-cover"
+              />
             </div>
             <div>
               <p className="text-sm text-gray-400 uppercase tracking-widest">FASHION & PRINT</p>
