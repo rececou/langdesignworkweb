@@ -23,7 +23,7 @@ async function fetchProducts(): Promise<Product[]> {
     const data = await res.json();
     if (!data.items) return [];
 
-    return data.items.slice(0, 12).map((item: any) => {
+    return data.items.slice(0, 8).map((item: any) => {
       const imgMatch = item.description?.match(/src="([^"]+)"/);
       const image = imgMatch ? imgMatch[1] : '';
       const priceMatch = item.description?.match(/(\d+\.\d+)\s*GBP/);
