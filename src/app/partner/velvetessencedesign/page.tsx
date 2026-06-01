@@ -5,6 +5,7 @@ import Footer from '@/components/Footer';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useContactModal } from '@/components/ContactModal';
+import { useEffect, useState } from 'react';
 
 interface Product {
   name: string;
@@ -14,55 +15,27 @@ interface Product {
   link: string;
 }
 
-// 3 Featured T-Shirts
-const tshirts: Product[] = [
-  {
-    name: "Cherry Bow Graphic Tee",
-    shortDesc: "Sweet but fierce — playful cherry bow design on soft cotton",
-    price: "Shop Now",
-    image: "https://i.etsystatic.com/56112249/r/il/db3dce/7680860369/il_570xN.7680860369_g45e.jpg",
-    link: "https://www.etsy.com/uk/listing/4472957913/cherry-bow-graphic-tee-sweet-but-fierce",
-  },
-  {
-    name: "Showgirl Era Statement Tee",
-    shortDesc: "Bold bachelorette statement shirt — fun and fearless",
-    price: "Shop Now",
-    image: "https://i.etsystatic.com/56112249/r/il/8e21b1/7943473378/il_570xN.7943473378_fzdp.jpg",
-    link: "https://www.etsy.com/uk/listing/4473249468/showgirl-era-statement-tee-bachelorette",
-  },
-  {
-    name: "Book Lover Coffee Tee",
-    shortDesc: "Just a girl who loves books and coffee — for bookworms",
-    price: "Shop Now",
-    image: "https://i.etsystatic.com/56112249/r/il/ab1c3b/7690665237/il_570xN.7690665237_r3j0.jpg",
-    link: "https://www.etsy.com/uk/listing/4475147151/book-lover-coffee-tee-just-a-girl-who",
-  },
-];
+async function fetchProducts(): Promise<Product[]> {
+  try {
+    const res = await fetch('https://api.rss2json.com/v1/api.json?rss_url=https://www.etsy.com/shop/VelvetEssenceDesign/rss', {
+      cache: 'no-store',
+    });
+    const data = await res.json();
+    if (!data.items) return [];
 
-// 3 Featured Tote Bags
-const toteBags: Product[] = [
-  {
-    name: "Surreal Art Tote Bag — Statement Canvas",
-    shortDesc: "Bold surreal artwork printed on durable canvas — make a statement wherever you go",
-    price: "Shop Now",
-    image: "https://i.etsystatic.com/56112249/r/il/db3dce/7680860369/il_570xN.7680860369_g45e.jpg",
-    link: "https://www.etsy.com/uk/listing/4426475502/surreal-art-tote-bag-statement-canvas",
-  },
-  {
-    name: "Surreal Art Tote Bag — Limited Edition",
-    shortDesc: "Unique artistic design printed by hand — wearable art for creative minds",
-    price: "Shop Now",
-    image: "https://i.etsystatic.com/56112249/r/il/8e21b1/7943473378/il_570xN.7949253075_jwcl.jpg",
-    link: "https://www.etsy.com/uk/listing/4426397775/surreal-art-tote-bag-statement-canvas",
-  },
-  {
-    name: "Pink Guitar Tote Bag",
-    shortDesc: "Rock girl aesthetic shopper — perfect for music lovers",
-    price: "£11.99",
-    image: "https://i.etsystatic.com/56112249/r/il/2c216a/7991432097/il_570xN.7991432097_k4io.jpg",
-    link: "https://www.etsy.com/listing/4445932040/pink-guitar-acoustic-tote-bag-rock-girl",
-  },
-];
+    return data.items.slice(0, 12).map((item: any) => {
+      const imgMatch = item.description?.match(/src="([^"]+)"/);
+      const image = imgMatch ? imgMatch[1] : '';
+      const priceMatch = item.description?.match(/(\d+\.\d+)\s*GBP/);
+      const price = priceMatch ? `£${priceMatch[1]}` : '';
+      const name = item.title?.replace(/ by VelvetEssenceDesign$/, '') || '';
+      const cleanDesc = item.description?.replace(/<[^>]*>/g, '').substring(0, 100) + '...' || '';
+      return { name, shortDesc: cleanDesc, price, image, link: item.link || '' };
+    });
+  } catch {
+    return [];
+  }
+}
 
 function ProductCard({ product }: { product: Product }) {
   return (
@@ -70,7 +43,7 @@ function ProductCard({ product }: { product: Product }) {
       href={product.link}
       target="_blank"
       rel="noopener noreferrer"
-      className="group bg-gray-50 rounded-lg overflow-hidden hover:shadow-lg transition-shadow"
+      className="group bg-gray-50 rounded-lg overflow-hidden hover:shadow-md transition-shadow block"
     >
       <div className="relative aspect-square bg-gray-100">
         {product.image ? (
@@ -81,18 +54,16 @@ function ProductCard({ product }: { product: Product }) {
             className="object-cover group-hover:scale-105 transition-transform duration-300"
           />
         ) : (
-          <div className="flex items-center justify-center h-full text-gray-400">
-            No image
-          </div>
+          <div className="flex items-center justify-center h-full text-gray-400">No image</div>
         )}
       </div>
-      <div className="p-4">
-        <h3 className="font-bold mb-1 group-hover:text-[#FF6B6B] transition-colors">
+      <div className="p-3">
+        <h3 className="font-bold mb-1 text-sm leading-tight group-hover:text-[#FF6B6B] transition-colors">
           {product.name}
         </h3>
-        <p className="text-sm text-gray-600 mb-2 line-clamp-2">{product.shortDesc}</p>
+        <p className="text-xs text-gray-500 mb-2 line-clamp-2">{product.shortDesc}</p>
         {product.price && (
-          <span className="text-lg font-bold text-[#FF6B6B]">{product.price}</span>
+          <span className="text-sm font-semibold text-[#FF6B6B]">{product.price}</span>
         )}
       </div>
     </a>
@@ -101,6 +72,15 @@ function ProductCard({ product }: { product: Product }) {
 
 export default function VelvetEssencePage() {
   const { open } = useContactModal();
+  const [products, setProducts] = useState<Product[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetchProducts().then((items) => {
+      setProducts(items);
+      setLoading(false);
+    });
+  }, []);
 
   return (
     <>
@@ -157,48 +137,38 @@ export default function VelvetEssencePage() {
         </div>
       </section>
 
-      {/* T-Shirts Section */}
+      {/* Products from RSS */}
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between mb-8">
-            <div>
-              <h2 className="text-2xl font-bold">T-Shirt Collection</h2>
-              <p className="text-sm text-gray-500 mt-1">Hand-printed wearable art — browse all designs on Etsy</p>
+          <h2 className="text-2xl font-bold mb-2">Collection</h2>
+          <p className="text-sm text-gray-500 mb-8">Auto-synced from Etsy • Updates daily</p>
+
+          {loading ? (
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+              {Array.from({ length: 12 }).map((_, i) => (
+                <div key={i} className="bg-gray-50 rounded-lg overflow-hidden animate-pulse">
+                  <div className="bg-gray-200 aspect-square" />
+                  <div className="p-3 space-y-2">
+                    <div className="h-3 bg-gray-200 rounded w-3/4" />
+                    <div className="h-2 bg-gray-200 rounded w-1/2" />
+                  </div>
+                </div>
+              ))}
             </div>
-            <Link
-              href="https://www.etsy.com/shop/VelvetEssenceDesign?etsrc=sdt"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-[#FF6B6B] hover:text-[#ff5252] font-medium text-sm"
-            >
-              Shop on Etsy →
-            </Link>
-          </div>
-          <div className="grid md:grid-cols-3 gap-8">
-            {tshirts.map((product, i) => (
-              <ProductCard key={`tshirt-${i}`} product={product} />
-            ))}
-          </div>
+          ) : products.length > 0 ? (
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+              {products.map((product, i) => (
+                <ProductCard key={i} product={product} />
+              ))}
+            </div>
+          ) : (
+            <p className="text-gray-500">Products loading from Etsy...</p>
+          )}
         </div>
       </section>
 
-      {/* Tote Bags Section */}
+      {/* CTA */}
       <section className="py-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-bold mb-2">Tote Bags</h2>
-          <p className="text-sm text-gray-500 mb-8">
-            Handpicked from Etsy — featured picks and best sellers
-          </p>
-          <div className="grid md:grid-cols-3 gap-8">
-            {toteBags.map((product, i) => (
-              <ProductCard key={`tote-${i}`} product={product} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Become our partner CTA */}
-      <section className="py-16 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-2xl font-bold mb-4">Become our partner or have questions?</h2>
           <p className="text-gray-600 mb-8">Get in touch now!</p>
@@ -213,7 +183,6 @@ export default function VelvetEssencePage() {
 
 function ContactButton() {
   const { open } = useContactModal();
-
   return (
     <button
       onClick={open}
