@@ -27,7 +27,7 @@ const posts = [
     title: "How Can AI and Creativity Revolutionize Learning?",
     author: "Liliane Xiaoxu Lang",
     date: "November 14, 2025",
-    category: "Blog",
+    category: "Qian",
     excerpt: "How Liliane and Elizabeth Lang built REME, a smart home device for elderly care, winning recognition at the 2024 Global Technovation Girls Competition.",
     image: "/blog-reme-profile.jpg",
   },
@@ -51,7 +51,7 @@ export default function BlogIndexPage() {
             {posts.map((post) => (
               <Link
                 key={post.slug}
-                href={post.category === 'Blog' ? `/en/home/blog/${post.slug}` : `/en/${post.category.toLowerCase()}/blog/${post.slug}`}
+                href={post.category === 'Qian' ? `/en/home/blog/${post.slug}` : `/en/${post.category.toLowerCase()}/blog/${post.slug}`}
                 className="block bg-gray-50 rounded-lg overflow-hidden hover:shadow-md transition-shadow"
               >
                 <div className="md:flex">
