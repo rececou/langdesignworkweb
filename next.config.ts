@@ -10,6 +10,11 @@ const nextConfig: NextConfig = {
         hostname: 'i.etsystatic.com',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'img.youtube.com',
+        pathname: '/**',
+      },
     ],
   },
   async redirects() {
