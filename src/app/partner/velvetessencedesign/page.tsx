@@ -77,7 +77,7 @@ function ProductCard({ product }: { product: Product }) {
       href={product.link}
       target="_blank"
       rel="noopener noreferrer"
-      className="group bg-white rounded-lg overflow-hidden hover:shadow-lg transition-shadow"
+      className="group bg-gray-50 rounded-lg overflow-hidden hover:shadow-lg transition-shadow"
     >
       <div className="relative aspect-square bg-gray-100">
         {product.image ? (
@@ -94,12 +94,12 @@ function ProductCard({ product }: { product: Product }) {
         )}
       </div>
       <div className="p-4">
-        <h3 className="font-bold mb-1 text-sm leading-tight group-hover:text-[#FF6B6B] transition-colors">
+        <h3 className="font-bold mb-1 group-hover:text-[#FF6B6B] transition-colors">
           {product.name}
         </h3>
-        <p className="text-xs text-gray-500 mb-2 line-clamp-2">{product.shortDesc}</p>
+        <p className="text-sm text-gray-600 mb-2 line-clamp-2">{product.shortDesc}</p>
         {product.price && (
-          <span className="text-sm font-semibold text-[#FF6B6B]">{product.price}</span>
+          <span className="text-lg font-bold text-[#FF6B6B]">{product.price}</span>
         )}
       </div>
     </a>
@@ -203,13 +203,13 @@ export default function VelvetEssencePage() {
           </p>
           
           {loading ? (
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-              {[1, 2, 3, 4].map((i) => (
-                <div key={i} className="bg-white rounded-lg overflow-hidden animate-pulse">
+            <div className="grid md:grid-cols-3 gap-8">
+              {[1, 2, 3].map((i) => (
+                <div key={i} className="bg-gray-50 rounded-lg overflow-hidden animate-pulse">
                   <div className="bg-gray-200 aspect-square" />
-                  <div className="p-3 space-y-2">
-                    <div className="h-3 bg-gray-200 rounded w-3/4" />
-                    <div className="h-2 bg-gray-200 rounded w-1/2" />
+                  <div className="p-4 space-y-3">
+                    <div className="h-4 bg-gray-200 rounded w-3/4" />
+                    <div className="h-3 bg-gray-200 rounded w-1/2" />
                   </div>
                 </div>
               ))}
@@ -217,14 +217,14 @@ export default function VelvetEssencePage() {
           ) : (
             <>
               {/* Pinned items first */}
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-8">
+              <div className="grid md:grid-cols-3 gap-8 mb-8">
                 {pinnedTotes.map((product, i) => (
                   <ProductCard key={`pinned-${i}`} product={product} />
                 ))}
               </div>
               {/* RSS items below */}
               {rssProducts.length > 0 && (
-                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                <div className="grid md:grid-cols-3 gap-8">
                   {rssProducts.map((product, i) => (
                     <ProductCard key={`rss-${i}`} product={product} />
                   ))}
