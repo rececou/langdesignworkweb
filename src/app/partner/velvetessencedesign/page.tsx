@@ -15,7 +15,7 @@ interface Product {
   link: string;
 }
 
-// Parse Etsy RSS feed and filter for t-shirts only
+// Parse Etsy RSS feed for tote bags and other products
 async function fetchVelvetEssenceProducts(): Promise<Product[]> {
   try {
     const res = await fetch('https://api.rss2json.com/v1/api.json?rss_url=https://www.etsy.com/shop/VelvetEssenceDesign/rss');
@@ -23,26 +23,23 @@ async function fetchVelvetEssenceProducts(): Promise<Product[]> {
     
     if (!data.items) return [];
     
+    // Filter OUT t-shirts (we show those separately)
     const tshirtKeywords = ['t shirt', 't-shirt', 'tshirt', 'graphic tee', 'tee shirt'];
     
     return data.items
       .filter((item: any) => {
         const title = item.title?.toLowerCase() || '';
-        return tshirtKeywords.some(kw => title.includes(kw));
+        return !tshirtKeywords.some(kw => title.includes(kw));
       })
+      .slice(0, 6) // Show max 6 items
       .map((item: any) => {
-        // Extract image from description HTML
         const imgMatch = item.description?.match(/src="([^"]+)"/);
         const image = imgMatch ? imgMatch[1] : '';
         
-        // Extract price
         const priceMatch = item.description?.match(/(\d+\.\d+)\s*GBP/);
         const price = priceMatch ? `£${priceMatch[1]}` : '';
         
-        // Clean up title
         const name = item.title?.replace(/ by VelvetEssenceDesign$/, '') || '';
-        
-        // Short description (first 100 chars)
         const cleanDesc = item.description?.replace(/<[^>]*>/g, '').substring(0, 120) + '...' || '';
         
         return {
@@ -59,39 +56,74 @@ async function fetchVelvetEssenceProducts(): Promise<Product[]> {
   }
 }
 
-// Fallback products if RSS doesn't have t-shirts yet
-const fallbackProducts: Product[] = [
+// Curated t-shirt collection (shown first, links to Etsy search)
+const tshirts: Product[] = [
   {
-    name: "Graphic T-Shirt Collection",
-    shortDesc: "Hand-printed designs on premium cotton tees — unique wearable art",
-    price: "From £12.99",
-    image: "https://i.etsystatic.com/56112249/r/il/db3dce/7680860369/il_570xN.7680860369_g45e.jpg",
+    name: "Graphic Print T-Shirt",
+    shortDesc: "Hand-printed wearable art on premium cotton — unique designs you won't find anywhere else",
+    price: "Shop Now",
+    image: "/images/velvet-essence-logo.jpg",
     link: "https://www.etsy.com/shop/VelvetEssenceDesign?etsrc=sdt&search_query=tshirt",
   },
   {
-    name: "Custom Print Tees",
-    shortDesc: "Made to order with care — bold prints that express your personality",
-    price: "From £12.99",
-    image: "https://i.etsystatic.com/56112249/r/il/8e21b1/7943473378/il_570xN.7943473378_fzdp.jpg",
+    name: "Custom Design Tees",
+    shortDesc: "Bold, creative prints made to order — express your personality with every wear",
+    price: "Shop Now",
+    image: "/images/velvet-essence-logo.jpg",
     link: "https://www.etsy.com/shop/VelvetEssenceDesign?etsrc=sdt&search_query=tshirt",
   },
   {
-    name: "Seasonal Designs",
-    shortDesc: "Rotating collection of limited edition t-shirt prints — check back often",
-    price: "From £12.99",
-    image: "https://i.etsystatic.com/56112249/r/il/ab1c3b/7690665237/il_570xN.7690665237_r3j0.jpg",
+    name: "Limited Edition Tees",
+    shortDesc: "Rotating collection of seasonal designs — check back often for new drops",
+    price: "Shop Now",
+    image: "/images/velvet-essence-logo.jpg",
     link: "https://www.etsy.com/shop/VelvetEssenceDesign?etsrc=sdt&search_query=tshirt",
   },
 ];
 
+function ProductCard({ product }: { product: Product }) {
+  return (
+    <a
+      href={product.link}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="group bg-gray-50 rounded-lg overflow-hidden hover:shadow-lg transition-shadow"
+    >
+      <div className="relative aspect-square bg-gray-100">
+        {product.image ? (
+          <Image
+            src={product.image}
+            alt={product.name}
+            fill
+            className="object-cover group-hover:scale-105 transition-transform duration-300"
+          />
+        ) : (
+          <div className="flex items-center justify-center h-full text-gray-400">
+            No image
+          </div>
+        )}
+      </div>
+      <div className="p-4">
+        <h3 className="font-bold mb-1 group-hover:text-[#FF6B6B] transition-colors">
+          {product.name}
+        </h3>
+        <p className="text-sm text-gray-600 mb-2 line-clamp-2">{product.shortDesc}</p>
+        {product.price && (
+          <span className="text-lg font-bold text-[#FF6B6B]">{product.price}</span>
+        )}
+      </div>
+    </a>
+  );
+}
+
 export default function VelvetEssencePage() {
   const { open } = useContactModal();
-  const [products, setProducts] = useState<Product[]>([]);
+  const [rssProducts, setRssProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetchVelvetEssenceProducts().then((items) => {
-      setProducts(items.length > 0 ? items : fallbackProducts);
+      setRssProducts(items);
       setLoading(false);
     });
   }, []);
@@ -100,6 +132,7 @@ export default function VelvetEssencePage() {
     <>
       <Header locale="en" />
 
+      {/* Hero Section */}
       <section className="bg-pink-50 py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-4 mb-6">
@@ -150,19 +183,43 @@ export default function VelvetEssencePage() {
         </div>
       </section>
 
+      {/* T-Shirts Section - ALWAYS FIRST */}
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-bold mb-2">T-Shirt Collection</h2>
+          <div className="flex items-center justify-between mb-8">
+            <div>
+              <h2 className="text-2xl font-bold">T-Shirt Collection</h2>
+              <p className="text-sm text-gray-500 mt-1">Hand-printed wearable art — browse all designs on Etsy</p>
+            </div>
+            <Link
+              href="https://www.etsy.com/shop/VelvetEssenceDesign?etsrc=sdt&search_query=tshirt"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[#FF6B6B] hover:text-[#ff5252] font-medium text-sm"
+            >
+              View all on Etsy →
+            </Link>
+          </div>
+          <div className="grid md:grid-cols-3 gap-8">
+            {tshirts.map((product, i) => (
+              <ProductCard key={i} product={product} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Tote Bags & More from RSS */}
+      <section className="py-16 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-2xl font-bold mb-2">Tote Bags & Accessories</h2>
           <p className="text-sm text-gray-500 mb-8">
-            {products.length > 0 && products !== fallbackProducts
-              ? 'Auto-synced from Etsy • Updates daily'
-              : 'Browse our curated selection — new designs added regularly'}
+            Auto-synced from Etsy • Updates daily
           </p>
           
           {loading ? (
             <div className="grid md:grid-cols-3 gap-8">
               {[1, 2, 3].map((i) => (
-                <div key={i} className="bg-gray-50 rounded-lg overflow-hidden animate-pulse">
+                <div key={i} className="bg-white rounded-lg overflow-hidden animate-pulse">
                   <div className="bg-gray-200 aspect-square" />
                   <div className="p-4 space-y-3">
                     <div className="h-4 bg-gray-200 rounded w-3/4" />
@@ -171,41 +228,15 @@ export default function VelvetEssencePage() {
                 </div>
               ))}
             </div>
-          ) : (
+          ) : rssProducts.length > 0 ? (
             <div className="grid md:grid-cols-3 gap-8">
-              {products.map((product, i) => (
-                <a
-                  key={i}
-                  href={product.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group bg-gray-50 rounded-lg overflow-hidden hover:shadow-lg transition-shadow"
-                >
-                  <div className="relative aspect-square bg-gray-100">
-                    {product.image ? (
-                      <Image
-                        src={product.image}
-                        alt={product.name}
-                        fill
-                        className="object-cover group-hover:scale-105 transition-transform duration-300"
-                      />
-                    ) : (
-                      <div className="flex items-center justify-center h-full text-gray-400">
-                        No image
-                      </div>
-                    )}
-                  </div>
-                  <div className="p-4">
-                    <h3 className="font-bold mb-1 group-hover:text-[#FF6B6B] transition-colors">
-                      {product.name}
-                    </h3>
-                    <p className="text-sm text-gray-600 mb-2 line-clamp-2">{product.shortDesc}</p>
-                    {product.price && (
-                      <span className="text-lg font-bold text-[#FF6B6B]">{product.price}</span>
-                    )}
-                  </div>
-                </a>
+              {rssProducts.map((product, i) => (
+                <ProductCard key={i} product={product} />
               ))}
+            </div>
+          ) : (
+            <div className="text-center py-12 text-gray-500">
+              <p>Products loading from Etsy...</p>
             </div>
           )}
         </div>
