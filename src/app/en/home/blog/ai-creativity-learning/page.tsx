@@ -76,14 +76,14 @@ export default function AiCreativityBlogPage() {
 
             <p>
               The journey of the REME project begins with simple observation. The need for REME stemmed from recognizing the growing elderly demographic in Hong Kong and the challenges faced by seniors living alone.{' '}
-              <a href="https://datastory.hkbu.edu.hk/2023/budget2023/" target="_blank" rel="noopener noreferrer" className="text-[#FF6B6B] hover:underline">
+              <a href="https://datastory.hkbu.edu.hk/2023/budget2023" target="_blank" rel="noopener noreferrer" className="text-[#FF6B6B] hover:underline">
                 Hong Kong government projections
               </a>{' '}
               indicate the elderly demographic is set to reach 31% by 2039.
             </p>
 
             {/* Video 1: Research */}
-            <BlogVideo src="/ai-creativity-research.mp4" caption="REME Project — Research Phase" />
+            <BlogVideo src="/ai-creativity-research.mp4" caption="REME Project Story" />
 
             <p>
               Liliane and Elizabeth didn't start with a complex AI model — they broke down the problem into manageable steps:
@@ -100,7 +100,7 @@ export default function AiCreativityBlogPage() {
             </p>
 
             {/* Video 2: Technical */}
-            <BlogVideo src="/ai-creativity-technical.mp4" caption="REME Project — Technical Implementation" />
+            <BlogVideo src="/ai-creativity-technical.mp4" caption="REME Project — Research" />
 
             <h3 className="text-xl font-bold text-gray-900 mt-8">Looking Forward: The Future of Learning</h3>
 
@@ -124,7 +124,7 @@ export default function AiCreativityBlogPage() {
             </p>
 
             {/* Video 3: Learning */}
-            <BlogVideo src="/ai-creativity-learning.mp4" caption="REME Project — Learning & Impact" />
+            <BlogVideo src="/ai-creativity-learning.mp4" caption="REME Project — Learning" />
 
             {/* Let's Connect */}
             <div className="mt-12 pt-8 border-t border-gray-200">
