@@ -1,4 +1,17 @@
 import Link from 'next/link';
+import { useContactModal } from './ContactModal';
+
+function ContactButton({ text }: { text: string }) {
+  const open = useContactModal((state) => state.open);
+  return (
+    <button
+      onClick={open}
+      className="text-sm hover:text-white"
+    >
+      {text}
+    </button>
+  );
+}
 
 interface FooterProps {
   locale: 'en' | 'zh';

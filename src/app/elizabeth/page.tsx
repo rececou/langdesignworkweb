@@ -1,7 +1,10 @@
+'use client';
+
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useContactModal } from '@/components/ContactModal';
 
 export default function ElizabethPage() {
   return (
@@ -146,7 +149,7 @@ export default function ElizabethPage() {
           <h2 className="text-2xl font-bold mb-2">"I love art, and I love to bring ideas to life 🎨"</h2>
           <p className="text-gray-600 mb-8">
             Here are some of my artworks, all created since 2023. If you'd like to see more, please send me a message through the{' '}
-            <a href="#contact" className="contact-modal-trigger text-[#FF6B6B] hover:underline font-medium">Get in Touch</a> form!
+            <ContactLink /> form!
           </p>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {/* Joy */}
@@ -295,16 +298,32 @@ export default function ElizabethPage() {
           <p className="text-gray-600 mb-6">
             Interested in artworks, designs, handcrafted creations or got a cool idea? I'd love to hear from you!
           </p>
-          <a
-            href="#contact"
-            className="contact-modal-trigger inline-block bg-[#FF6B6B] text-white px-6 py-3 rounded hover:bg-[#ff5252] transition-colors font-medium"
-          >
-            Send me a message →
-          </a>
+          <ContactButton text="Send me a message →" />
         </div>
       </section>
 
       <Footer locale="en" />
     </>
+  );
+}
+
+function ContactLink() {
+  const open = useContactModal((state) => state.open);
+  return (
+    <button onClick={open} className="text-[#FF6B6B] hover:underline font-medium">
+      Get in Touch
+    </button>
+  );
+}
+
+function ContactButton({ text }: { text: string }) {
+  const open = useContactModal((state) => state.open);
+  return (
+    <button
+      onClick={open}
+      className="inline-block bg-[#FF6B6B] text-white px-6 py-3 rounded hover:bg-[#ff5252] transition-colors font-medium"
+    >
+      {text}
+    </button>
   );
 }

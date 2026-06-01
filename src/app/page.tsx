@@ -1,8 +1,11 @@
+'use client';
+
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import MatrixRain from '@/components/MatrixRain';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useContactModal } from '@/components/ContactModal';
 
 export default function Home() {
   return (
@@ -23,25 +26,12 @@ export default function Home() {
           <p className="text-lg text-gray-300 max-w-2xl mb-8">
             A portfolio community for makers and creators, a launchpad for real products everyone can enjoy.
           </p>
-          <div className="flex gap-4">
-            <Link
-              href="/liliane"
-              className="bg-[#FF6B6B] text-white px-6 py-3 rounded hover:bg-[#ff5252] transition-colors font-medium"
-            >
-              Explore the Portfolio
-            </Link>
-            <a
-              href="#contact"
-              className="contact-modal-trigger border border-white text-white px-6 py-3 rounded hover:bg-white hover:text-black transition-colors font-medium"
-            >
-              Partner with us
-            </a>
-          </div>
+          <HeroCTAs />
         </div>
       </section>
 
       {/* Portfolio Section */}
-      <section className="py-16 bg-white">
+      <section id="meet-the-creators" className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <p className="text-sm text-gray-400 uppercase tracking-widest mb-2">OUR PORTFOLIO</p>
           <h2 className="text-3xl font-bold mb-8">Meet the creators</h2>
@@ -108,7 +98,7 @@ export default function Home() {
                 href="/partner/kidslabuk"
                 className="text-[#FF6B6B] hover:text-[#ff5252] font-medium inline-flex items-center gap-1"
               >
-                Shop on Etsy →
+                Find out more →
               </Link>
             </div>
 
@@ -131,7 +121,7 @@ export default function Home() {
                 href="/partner/velvetessencedesign"
                 className="text-[#FF6B6B] hover:text-[#ff5252] font-medium inline-flex items-center gap-1"
               >
-                Shop on Etsy →
+                Find out more →
               </Link>
             </div>
           </div>
@@ -149,16 +139,43 @@ export default function Home() {
           <p className="text-gray-300 mb-8 max-w-2xl">
             Remecou bridges the gap between independent brands and the audiences through community, content, and strategic partnerships.
           </p>
-          <a
-            href="#contact"
-            className="contact-modal-trigger text-[#FF6B6B] hover:text-[#ff5252] font-medium inline-flex items-center gap-1"
-          >
-            Explore partnership opportunities →
-          </a>
+          <PartnershipCTA />
         </div>
       </section>
 
       <Footer locale="en" />
     </>
+  );
+}
+
+function HeroCTAs() {
+  const open = useContactModal((state) => state.open);
+  return (
+    <div className="flex gap-4">
+      <a
+        href="#meet-the-creators"
+        className="bg-[#FF6B6B] text-white px-6 py-3 rounded hover:bg-[#ff5252] transition-colors font-medium"
+      >
+        Explore the Portfolio
+      </a>
+      <button
+        onClick={open}
+        className="border border-white text-white px-6 py-3 rounded hover:bg-white hover:text-black transition-colors font-medium"
+      >
+        Partner with us
+      </button>
+    </div>
+  );
+}
+
+function PartnershipCTA() {
+  const open = useContactModal((state) => state.open);
+  return (
+    <button
+      onClick={open}
+      className="text-[#FF6B6B] hover:text-[#ff5252] font-medium inline-flex items-center gap-1"
+    >
+      Explore partnership opportunities →
+    </button>
   );
 }

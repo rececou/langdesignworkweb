@@ -1,8 +1,11 @@
+'use client';
+
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import MatrixRain from '@/components/MatrixRain';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useContactModal } from '@/components/ContactModal';
 
 export default function ChineseHomePage() {
   return (
@@ -30,12 +33,7 @@ export default function ChineseHomePage() {
             >
               探索作品集
             </Link>
-            <a
-              href="#contact"
-              className="contact-modal-trigger border border-white text-white px-6 py-3 rounded hover:bg-white hover:text-black transition-colors font-medium"
-            >
-              与我们合作
-            </a>
+            <ContactButton text="与我们合作" />
           </div>
         </div>
       </section>
@@ -149,16 +147,35 @@ export default function ChineseHomePage() {
           <p className="text-gray-300 mb-8 max-w-2xl">
             Remecou通过社区、内容和战略合作伙伴关系，搭建独立品牌与受众之间的桥梁。
           </p>
-          <a
-            href="#contact"
-            className="contact-modal-trigger text-[#FF6B6B] hover:text-[#ff5252] font-medium inline-flex items-center gap-1"
-          >
-            探索合作机会 →
-          </a>
+          <PartnershipCTA />
         </div>
       </section>
 
       <Footer locale="zh" />
     </>
+  );
+}
+
+function ContactButton({ text }: { text: string }) {
+  const open = useContactModal((state) => state.open);
+  return (
+    <button
+      onClick={open}
+      className="border border-white text-white px-6 py-3 rounded hover:bg-white hover:text-black transition-colors font-medium"
+    >
+      {text}
+    </button>
+  );
+}
+
+function PartnershipCTA() {
+  const open = useContactModal((state) => state.open);
+  return (
+    <button
+      onClick={open}
+      className="text-[#FF6B6B] hover:text-[#ff5252] font-medium inline-flex items-center gap-1"
+    >
+      探索合作机会 →
+    </button>
   );
 }

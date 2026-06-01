@@ -1,7 +1,10 @@
+'use client';
+
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useContactModal } from '@/components/ContactModal';
 
 export default function LilianePage() {
   return (
@@ -217,12 +220,7 @@ export default function LilianePage() {
           <h3 className="text-xl mb-6">
             If you have a question, an insight or a topic you would like to discuss, I'd love to hear it from you!
           </h3>
-          <a
-            href="#contact"
-            className="contact-modal-trigger inline-block bg-[#FF6B6B] text-white px-6 py-3 rounded hover:bg-[#ff5252] transition-colors font-medium"
-          >
-            Send me a message →
-          </a>
+          <ContactButton text="Send me a message →" />
         </div>
       </section>
 
@@ -249,5 +247,17 @@ export default function LilianePage() {
 
       <Footer locale="en" />
     </>
+  );
+}
+
+function ContactButton({ text }: { text: string }) {
+  const open = useContactModal((state) => state.open);
+  return (
+    <button
+      onClick={open}
+      className="inline-block bg-[#FF6B6B] text-white px-6 py-3 rounded hover:bg-[#ff5252] transition-colors font-medium"
+    >
+      {text}
+    </button>
   );
 }

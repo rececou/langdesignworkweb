@@ -3,6 +3,19 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useContactModal } from './ContactModal';
+
+function ContactButton({ text }: { text: string }) {
+  const open = useContactModal((state) => state.open);
+  return (
+    <button
+      onClick={open}
+      className="bg-gray-900 text-white text-sm px-5 py-2 rounded-full hover:bg-gray-800 transition-colors"
+    >
+      {text}
+    </button>
+  );
+}
 
 interface HeaderProps {
   locale: 'en' | 'zh';
@@ -129,9 +142,7 @@ export default function Header({ locale }: HeaderProps) {
               )}
             </div>
 
-            <a href="#contact" className="contact-modal-trigger bg-gray-900 text-white text-sm px-5 py-2 rounded-full hover:bg-gray-800 transition-colors">
-              {t.contact}
-            </a>
+            <ContactButton text={t.contact} />
           </div>
         </div>
       </div>

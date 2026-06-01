@@ -1,6 +1,9 @@
+'use client';
+
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Link from 'next/link';
+import { useContactModal } from '@/components/ContactModal';
 
 export default function ChineseLilianePage() {
   return (
@@ -146,26 +149,29 @@ export default function ChineseLilianePage() {
             </div>
           </div>
           <div className="max-w-xl mx-auto">
-          <h3 className="text-xl font-bold mb-6 text-center">
-            如果有问题或想讨论话题，我期待你的来信！
-          </h3>
-          <div className="text-center">
-            <a
-              href="#contact"
-              className="contact-modal-trigger inline-block bg-[#FF6B6B] text-white px-6 py-3 rounded hover:bg-[#ff5252] transition-colors font-medium"
-            >
-              给我留言 →
-            </a>
-          </div>
+            <h3 className="text-xl font-bold mb-6 text-center">
+              如果有问题或想讨论话题，我期待你的来信！
+            </h3>
+            <div className="text-center">
+              <ContactButton text="给我留言 →" />
+            </div>
           </div>
         </div>
       </section>
 
-      <p className="text-center py-8 text-gray-400 text-sm">
-        与他人一起探索更有趣
-      </p>
-
       <Footer locale="zh" />
     </>
+  );
+}
+
+function ContactButton({ text }: { text: string }) {
+  const open = useContactModal((state) => state.open);
+  return (
+    <button
+      onClick={open}
+      className="inline-block bg-[#FF6B6B] text-white px-6 py-3 rounded hover:bg-[#ff5252] transition-colors font-medium"
+    >
+      {text}
+    </button>
   );
 }
