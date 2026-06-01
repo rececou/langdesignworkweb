@@ -1,5 +1,6 @@
 'use client';
 
+import SeoMeta from '@/components/SeoMeta';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Link from 'next/link';
@@ -10,6 +11,35 @@ import { useState } from 'react';
 export default function OilPaintingBlogPage() {
   return (
     <>
+      <SeoMeta
+        title="How Did I Do My First Oil Painting: From Canvas to Creation | LangDesignWork"
+        description="Elizabeth Xiaoyue Lang shares her journey of creating her first oil painting — a portrait of a little boy inspired by classes at the Hong Kong Art School."
+        ogImage="/images/og-elizabeth.png"
+        canonical="https://www.langdesignwork.com/en/elizabeth/blog/oil-painting"
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'BlogPosting',
+            headline: 'How Did I Do My First Oil Painting: From Canvas to Creation',
+            author: {
+              '@type': 'Person',
+              name: 'Elizabeth Xiaoyue Lang',
+              url: 'https://www.langdesignwork.com/elizabeth',
+            },
+            datePublished: '2025-11-02',
+            publisher: {
+              '@type': 'Organization',
+              name: 'LangDesignWork',
+              url: 'https://www.langdesignwork.com',
+            },
+            description: 'Elizabeth Xiaoyue Lang shares her journey of creating her first oil painting at the Hong Kong Art School.',
+            mainEntityOfPage: 'https://www.langdesignwork.com/en/elizabeth/blog/oil-painting',
+          }),
+        }}
+      />
       <Header locale="en" />
 
       <article className="py-16 bg-white">

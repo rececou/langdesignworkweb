@@ -7,6 +7,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useContactModal } from '@/components/ContactModal';
 import YouTubeVideo from '@/components/YouTubeVideo';
+import { useState } from 'react';
 
 export default function LilianePage() {
   return (
@@ -35,37 +36,42 @@ export default function LilianePage() {
       <Header locale="en" />
 
       {/* Hero */}
-      <section className="bg-gray-50 py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-4xl font-bold mb-4">Liliane Lang Discover Channel</h1>
+      <section className="relative bg-gradient-to-br from-gray-950 via-gray-900 to-red-950 text-white overflow-hidden">
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-10 left-10 w-2 h-2 bg-red-400 rounded-full animate-pulse" />
+          <div className="absolute top-32 right-20 w-3 h-3 bg-pink-400 rounded-full animate-pulse" style={{ animationDelay: '1s' }} />
+          <div className="absolute bottom-20 left-1/3 w-2 h-2 bg-orange-400 rounded-full animate-pulse" style={{ animationDelay: '2s' }} />
+          <div className="absolute top-1/2 right-1/4 w-1.5 h-1.5 bg-red-300 rounded-full animate-pulse" style={{ animationDelay: '0.5s' }} />
+        </div>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
+          <p className="text-sm text-red-400 uppercase tracking-widest mb-2">OUR CREATORS</p>
+          <h1 className="text-4xl lg:text-6xl font-bold mb-4 leading-tight">Liliane Lang Discover Channel</h1>
+          <p className="text-xl text-gray-300 max-w-xl mb-8">
+            From AI prototypes to handmade crafts — a world of ideas in motion.
+          </p>
+          <HeroCTAs />
         </div>
       </section>
 
       {/* Creator intro */}
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="text-sm text-gray-400 uppercase tracking-widest mb-2">OUR CREATORS</p>
           <h2 className="text-3xl font-bold mb-4">Liliane Xiaoxu Lang</h2>
           <p className="text-gray-600 max-w-2xl mb-6">
             From AI prototypes to handmade crafts — a world of ideas in motion. Jump in, explore, and share your perspective.
           </p>
-          <HeroCTAs />
         </div>
       </section>
 
-      {/* Collaboration with Elizabeth */}
+      {/* Collaboration with Elizabeth — interactive card */}
       <section className="py-16 bg-white border-t">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="relative rounded-lg overflow-hidden aspect-video">
-              <Image
-                src="/images/lili-remake.jpg"
-                alt="Liliane Xiaoxu Lang AI prototype REME Smart Home Device"
-                fill
-                className="object-cover"
-                sizes="(max-width: 768px) 100vw, 50vw"
-              />
-            </div>
+            <InteractiveImageCard
+              src="/images/lili-remake.jpg"
+              alt="Liliane Xiaoxu Lang AI prototype REME Smart Home Device"
+              accent="from-red-500 to-orange-500"
+            />
             <div>
               <h3 className="text-xl font-bold mb-2">Collaboration with Elizabeth</h3>
               <p className="text-sm text-gray-500 mb-2">
@@ -75,56 +81,56 @@ export default function LilianePage() {
                 Developed with my sister Elizabeth Xiaoyue Lang, our REME smart home device won the 2024{' '}
               <a href="https://technovationchallenge.org/?utm_source=website&utm_medium=content&utm_campaign=technovation" target="_blank" rel="noopener noreferrer" className="text-[#FF6B6B] hover:underline">Global Technovation Girls</a>{' '}
               Competition Semi-finalist award (Junior Division).
-            </p>
-            <Link href="/en/home/blog/ai-creativity-learning?utm_source=website&utm_medium=button&utm_campaign=button-explore" className="text-[#FF6B6B] hover:text-[#ff5252] font-medium inline-flex items-center gap-1">
-              Explore more →
-            </Link>
+              </p>
+              <Link href="/en/home/blog/ai-creativity-learning?utm_source=website&utm_medium=button&utm_campaign=button-explore" className="text-[#FF6B6B] hover:text-[#ff5252] font-medium inline-flex items-center gap-1 group">
+                Explore more
+                <span className="transition-transform group-hover:translate-x-1">→</span>
+              </Link>
             </div>
           </div>
         </div>
       </section>
 
-      {/* REME section */}
+      {/* REME section — interactive card */}
       <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-bold mb-4">REME</h2>
-          <p className="text-gray-600 mb-4">
-            REME is a smart home device designed to help seniors live more independently.
-            It provides a dependable, easy-to-use solution for managing daily routines and responding to emergencies.
-            As the global senior population grows, we hope this idea can make a difference.
-          </p>
-          <p className="text-gray-600 mb-6">
-            See how it works in our YouTube video.
-          </p>
-          <div className="max-w-3xl">
-            <YouTubeVideo
-              videoId="nZ6znfTmR3g"
-              thumbnail="/images/reme-video-thumb.png"
-              title="REME Smart Home Device | Technovation Semi-Finalist | Liliane Lang"
-            />
+          <div className="bg-white rounded-2xl p-8 hover:shadow-xl transition-all hover:-translate-y-1 group">
+            <h2 className="text-2xl font-bold mb-4 group-hover:text-red-600 transition-colors">REME</h2>
+            <p className="text-gray-600 mb-4">
+              REME is a smart home device designed to help seniors live more independently.
+              It provides a dependable, easy-to-use solution for managing daily routines and responding to emergencies.
+              As the global senior population grows, we hope this idea can make a difference.
+            </p>
+            <p className="text-gray-600 mb-6">
+              See how it works in our YouTube video.
+            </p>
+            <div className="max-w-3xl">
+              <YouTubeVideo
+                videoId="nZ6znfTmR3g"
+                thumbnail="/images/reme-video-thumb.png"
+                title="REME Smart Home Device | Technovation Semi-Finalist | Liliane Lang"
+              />
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Through My Lens */}
+      {/* Through My Lens — interactive card */}
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="relative rounded-lg overflow-hidden aspect-video">
-              <Image
-                src="/images/lili-reflections.jpg"
-                alt="Liliane Reflections on AI usage"
-                fill
-                className="object-cover"
-                sizes="(max-width: 768px) 100vw, 50vw"
-              />
-            </div>
             <div>
               <h3 className="text-xl font-bold mb-2">Through My Lens: Liliane's Reflections</h3>
               <p className="text-gray-600 mb-6">
                 I am exploring how to use AI as a creative tool while staying aware of its limitations and costs - both to our society and our planet.
               </p>
             </div>
+            <InteractiveImageCard
+              src="/images/lili-reflections.jpg"
+              alt="Liliane Reflections on AI usage"
+              accent="from-orange-500 to-yellow-500"
+              flipOrder
+            />
           </div>
         </div>
       </section>
@@ -168,7 +174,7 @@ export default function LilianePage() {
         </div>
       </section>
 
-      {/* Works */}
+      {/* Works — Interactive cards */}
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <p className="text-gray-600 mb-8">
@@ -176,62 +182,43 @@ export default function LilianePage() {
           </p>
           <div className="grid md:grid-cols-3 gap-8">
             {/* Idea & Prototyping */}
-            <article className="bg-gray-50 rounded-lg overflow-hidden">
-              <div className="relative aspect-square">
-                <Image
-                  src="/images/lili-ideas.jpg"
-                  alt="Liliane Xiaoxu Lang ideas"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-              <div className="p-6">
-                <h3 className="text-lg font-bold mb-2">Idea & Prototyping</h3>
-                <p className="text-gray-600 text-sm italic">
+            <InteractiveWorkCard
+              src="/images/lili-ideas.jpg"
+              alt="Liliane Xiaoxu Lang ideas"
+              title="Idea & Prototyping"
+              poem={
+                <>
                   Brainstorming with Beth,<br />
                   Where wild ideas run,<br />
-                  Some brilliant, some so-so...<br />
+                  Some brilliant, some so so...<br />
                   The chaos is the fun.
-                </p>
-              </div>
-            </article>
+                </>
+              }
+              accent="from-red-500 to-pink-500"
+            />
 
             {/* Explore & Create */}
-            <article className="bg-gray-50 rounded-lg overflow-hidden">
-              <div className="relative aspect-square">
-                <Image
-                  src="/images/lili-artwork-home.jpg"
-                  alt="Liliane Xiaoxu Lang artwork home"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-              <div className="p-6">
-                <h3 className="text-lg font-bold mb-2">Explore & Create</h3>
-                <p className="text-gray-600 text-sm italic">
+            <InteractiveWorkCard
+              src="/images/lili-artwork-home.jpg"
+              alt="Liliane Xiaoxu Lang artwork home"
+              title="Explore & Create"
+              poem={
+                <>
                   Explore with my hands.<br />
                   Create with my heart.
-                </p>
-              </div>
-            </article>
+                </>
+              }
+              accent="from-orange-500 to-yellow-500"
+            />
 
             {/* Sports & Run */}
-            <article className="bg-gray-50 rounded-lg overflow-hidden">
-              <div className="relative aspect-square">
-                <Image
-                  src="/images/lili-rugby.jpg"
-                  alt="Liliane Xiaoxu Lang rugby"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-              <div className="p-6">
-                <h3 className="text-lg font-bold mb-2">Sports & Run</h3>
-                <p className="text-gray-600 text-sm italic">
-                  All about the squad vibe.
-                </p>
-              </div>
-            </article>
+            <InteractiveWorkCard
+              src="/images/lili-rugby.jpg"
+              alt="Liliane Xiaoxu Lang rugby"
+              title="Sports & Run"
+              poem="All about the squad vibe."
+              accent="from-yellow-500 to-green-500"
+            />
           </div>
         </div>
       </section>
@@ -252,19 +239,103 @@ export default function LilianePage() {
   );
 }
 
+/* ── Interactive Components ── */
+
+function InteractiveImageCard({
+  src,
+  alt,
+  accent,
+  flipOrder = false,
+}: {
+  src: string;
+  alt: string;
+  accent: string;
+  flipOrder?: boolean;
+}) {
+  const [hovered, setHovered] = useState(false);
+
+  const imageEl = (
+    <div
+      className={`relative rounded-xl overflow-hidden aspect-video group cursor-pointer transition-all duration-300 ${hovered ? 'shadow-lg -translate-y-1' : ''}`}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+    >
+      {/* Top accent line */}
+      <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${accent} z-10`} />
+      <Image
+        src={src}
+        alt={alt}
+        fill
+        className={`object-cover transition-transform duration-500 ${hovered ? 'scale-110' : 'scale-100'}`}
+        sizes="(max-width: 768px) 100vw, 50vw"
+      />
+      {/* Overlay on hover */}
+      <div className={`absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300`} />
+    </div>
+  );
+
+  // flipOrder puts image on right
+  return flipOrder ? (
+    <>{imageEl}</>
+  ) : (
+    <>{imageEl}</>
+  );
+}
+
+function InteractiveWorkCard({
+  src,
+  alt,
+  title,
+  poem,
+  accent,
+}: {
+  src: string;
+  alt: string;
+  title: string;
+  poem: React.ReactNode;
+  accent: string;
+}) {
+  const [hovered, setHovered] = useState(false);
+
+  return (
+    <article
+      className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2 cursor-default group"
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+    >
+      <div className={`relative aspect-square overflow-hidden`}>
+        {/* Top accent line */}
+        <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${accent} z-10`} />
+        <Image
+          src={src}
+          alt={alt}
+          fill
+          className={`object-cover transition-transform duration-500 ${hovered ? 'scale-110' : 'scale-100'}`}
+        />
+        {/* Hover overlay */}
+        <div className={`absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300`} />
+      </div>
+      <div className="p-6">
+        <h3 className={`text-lg font-bold mb-2 transition-colors duration-300 ${hovered ? 'text-[#FF6B6B]' : ''}`}>{title}</h3>
+        <p className={`text-gray-600 text-sm italic transition-colors duration-300 ${hovered ? 'text-gray-800' : ''}`}>{poem}</p>
+      </div>
+    </article>
+  );
+}
+
 function HeroCTAs() {
   const open = useContactModal((state) => state.open);
   return (
     <div className="flex gap-4">
       <Link
         href="/liliane-create"
-        className="bg-gray-900 text-white px-6 py-3 rounded hover:bg-gray-800 transition-colors font-medium"
+        className="bg-white/10 backdrop-blur-sm text-white px-6 py-3 rounded-lg hover:bg-white/20 transition-all hover:scale-105 font-medium border border-white/20"
       >
         See the work
       </Link>
       <button
         onClick={open}
-        className="border border-gray-900 text-gray-900 px-6 py-3 rounded hover:bg-gray-100 transition-colors font-medium"
+        className="bg-[#FF6B6B] text-white px-6 py-3 rounded-lg hover:bg-[#ff5252] transition-all hover:scale-105 font-medium"
       >
         Partner with us
       </button>
@@ -277,7 +348,7 @@ function ContactButton({ text }: { text: string }) {
   return (
     <button
       onClick={open}
-      className="inline-block bg-[#FF6B6B] text-white px-6 py-3 rounded hover:bg-[#ff5252] transition-colors font-medium"
+      className="inline-block bg-[#FF6B6B] text-white px-6 py-3 rounded hover:bg-[#ff5252] transition-all hover:scale-105 font-medium"
     >
       {text}
     </button>

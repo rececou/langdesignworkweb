@@ -14,12 +14,18 @@
 |------|-----------|-----------------|---------------|--------------|---------------|
 | `/` | `LangDesignWork \| Home` | `Creativity. Community. Commerce. LangDesignWork brings together independent makers, partner brands, and the audiences in one place.` | `LangDesignWorkLogo - social_300_175-2.png` | `WebSite` | `https://www.langdesignwork.com` |
 | `/liliane` | `Liliane Xiaoxu Lang \| Ideas & Prototyping \| LangDesignWork` | `Join Liliane Xiaoxu Lang on the Discover Channel! Explore debates, creative projects, and inspirational insights.` | `LangDesignWorkLogo - social_300_175-1.png` | `Person` | `https://www.langdesignwork.com/liliane` |
-| `/elizabeth` | `Elizabeth Xiaoyue Lang \| Art & Custom Design \| LangDesignWork` | `Explore the creative journey of Elizabeth Xiaoyue Lang, featuring artworks inspired by those around her and inviting you to discover more.` | `LangDesignWorkLogo - social_300_175-2.png` | `WebSite` (should be Person) | `https://www.langdesignwork.com/elizabeth` |
+| `/liliane-create` | `Liliane Xiaoxu Lang \| Ideas & Prototyping \| LangDesignWork` | `Explore the creative work and projects of Liliane Xiaoxu Lang.` | (inherits /liliane) | `Person` | `https://www.langdesignwork.com/liliane-create` |
+| `/elizabeth` | `Elizabeth Xiaoyue Lang \| Art & Custom Design \| LangDesignWork` | `Explore the creative journey of Elizabeth Xiaoyue Lang, featuring artworks inspired by those around her and inviting you to discover more.` | `LangDesignWorkLogo - social_300_175-2.png` | `Person` | `https://www.langdesignwork.com/elizabeth` |
+| `/elizabeth-custom-design` | `Elizabeth Xiaoyue Lang \| Custom Design Service \| LangDesignWork` | `Commission bespoke artwork and design from Elizabeth Xiaoyue Lang.` | (inherits /elizabeth) | `Person` | `https://www.langdesignwork.com/elizabeth-custom-design` |
 | `/remecou` | `Remecou \| Sustainable Goods Operations \| LangDesignWork` | `Hong Kong operations model for sustainable goods. AI-assisted sourcing from China, content co-creation with local partners, and in-market distribution.` | `Remecou logo_featured.jpeg` | `Organization` | `https://www.langdesignwork.com/remecou` |
 | `/partner/kidslabuk` | `Kidlab UK \| DIY STEM Kits \| LangDesignWork Partner` | `Swap screen time for hands-on discovery. KidLab UK DIY STEM kits and educational toys for curious kids — fun, practical, eco-friendly. From £9.99.` | `kidlab_logo_web_social_feature.jpeg` | `Organization` | `https://www.langdesignwork.com/partner/kidslabuk` |
 | `/partner/velvet-essence-design` | ❌ 404 (doesn't exist on HubSpot) | N/A | N/A | N/A | N/A |
 | `/blog` | `Lang Design Work Blog Home` | `Explore ideas, creative projects, and reflections from Lang Design Work authors...` | ❌ Missing | ❌ Missing | ❌ Missing |
 | `/en/home/blog/ai-creativity-learning` | `How Can AI and Creativity Revolutionize Learning?` | `Reflection on the future of education, discover how Liliane Lang and Elizabeth Lang used AI to create a smart device for seniors.` | `REME-1.png` | `BlogPosting` + 2x `VideoObject` + `AudioObject` | `https://www.langdesignwork.com/en/home/blog/ai-creativity-learning` |
+| `/en/elizabeth/blog/oil-painting` | `How Did I Do My First Oil Painting: From Canvas to Creation` | `Elizabeth shares her journey of creating her first oil painting — a portrait inspired by Hong Kong Art School classes.` | (inherits /elizabeth) | `BlogPosting` | `https://www.langdesignwork.com/en/elizabeth/blog/oil-painting` |
+| `/en/liliane/blog/tote-bag` | `Looking for Your Next Creative Idea? Discover Inspiration Through Everyday Design` | `Liliane explores how inspiration can be found in the simple designs and everyday moments around us.` | (inherits /liliane) | `BlogPosting` | `https://www.langdesignwork.com/en/liliane/blog/tote-bag` |
+
+**Total: 12 English pages** (excluding 2 Chinese versions: `/zh-cn/liliane`, `/zh-cn/discover`). The two blog pages (`oil-painting` and `tote-bag`) were initially missed and have now been added.
 
 ---
 
@@ -68,6 +74,33 @@
 
 ---
 
+### 2026-06-01 — Liliane & Elizabeth Interactive Redesign (Hema)
+**Commit**: TBD
+**Changed By**: Hema (AI Agent)
+**Files Modified**:
+| File | What Changed | Revert Action |
+|------|-------------|---------------|
+| `src/app/liliane/page.tsx` | Full redesign: gradient hero, interactive Works cards with hover lift/scale/color, interactive image cards with zoom overlay, animated background dots | Revert to pre-commit version |
+| `src/app/elizabeth/page.tsx` | Full redesign: gradient hero, interactive gallery cards (8 items) with hover lift/scale/color, interactive art section cards with gradient accent lines, animated background dots | Revert to pre-commit version |
+
+---
+
+### 2026-06-01 — Missing Blog Pages Added + SEO Fixed (Hema)
+**Commit**: TBD
+**Changed By**: Hema (AI Agent)
+**Files Created**:
+| File | Purpose | Revert Action |
+|------|---------|---------------|
+| `src/app/en/liliane/blog/tote-bag/page.tsx` | Full tote bag blog page: gradient hero, interactive tote bag showcase cards, Shantell's story card, BlogPosting JSON-LD, SeoMeta | Delete file |
+
+**Files Modified**:
+| File | What Changed | Revert Action |
+|------|-------------|---------------|
+| `src/app/en/elizabeth/blog/oil-painting/page.tsx` | Added missing `SeoMeta` component + `BlogPosting` JSON-LD schema | Remove SeoMeta import, remove SeoMeta component, remove schema script |
+| `SEO_AUDIT.md` | Added 4 missing pages to baseline table (liliane-create, elizabeth-custom-design, oil-painting, tote-bag) — total now 12 EN pages | Revert to pre-commit version |
+
+---
+
 ### 2026-06-01 — Velvet Essence Partner Page (Hema)
 **Commit**: `6613bd2`
 **Changed By**: Hema (AI Agent)
@@ -109,8 +142,9 @@ This will undo the entire SEO implementation commit.
 
 ## OPEN QUESTIONS / TODO
 - [ ] Google Search Console: Submit sitemap and verify site ownership
-- [ ] Upload this document to Google Drive (token expired)
+- [ ] Upload SEO_AUDIT.md to Google Drive (token expired)
 - [ ] Add `og:image` for blog home page (missing on HubSpot too)
-- [ ] Add JSON-LD `BlogPosting` for oil painting and tote bag blog posts
+- [ ] Add `og:image` for oil-painting and tote-bag blog pages (currently inheriting parent page images)
 - [ ] Add `hreflang` tags for ZH/EN page alternates
 - [ ] Velvet Essence page has no HubSpot equivalent — SEO values created from scratch
+- [ ] Download actual blog images for tote-bag page (placeholder paths: `/blog-tote-shoe.jpg`, `/blog-tote-flower.jpg`, `/blog-tote-book.jpg`, `/blog-shantell.jpg`)
