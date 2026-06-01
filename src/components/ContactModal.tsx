@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { create } from 'zustand';
 
 interface ModalStore {
@@ -23,6 +23,48 @@ export const useContactModal = create<ModalStore>((set) => ({
 
 export default function ContactModal() {
   const { isOpen, close } = useContactModal();
+  const [submitted, setSubmitted] = useState(false);
+  const formContainerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!isOpen || !formContainerRef.current) return;
+
+    const container = formContainerRef.current;
+
+    // Clear any previous form
+    container.innerHTML = '';
+    const formDiv = document.createElement('div');
+    formDiv.id = 'ldw-contact-form';
+    container.appendChild(formDiv);
+
+    // Create the form - script is preloaded by HubSpotTracking
+    const waitForHbspt = setInterval(() => {
+      if ((window as any).hbspt) {
+        clearInterval(waitForHbspt);
+        (window as any).hbspt.forms.create({
+          region: 'na1',
+          portalId: '244077776',
+          formId: 'a7ceb992-15d6-4c34-a5f0-c5fcdb438f0c',
+          target: '#ldw-contact-form',
+          onFormSubmitted: () => {
+            setSubmitted(true);
+            setTimeout(close, 3000);
+          },
+        });
+      }
+    }, 100);
+
+    // Timeout after 10 seconds
+    const timeout = setTimeout(() => {
+      clearInterval(waitForHbspt);
+    }, 10000);
+
+    return () => {
+      clearInterval(waitForHbspt);
+      clearTimeout(timeout);
+      setSubmitted(false);
+    };
+  }, [isOpen, close]);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -36,11 +78,11 @@ export default function ContactModal() {
 
   return (
     <div
-      className="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 backdrop-blur-sm animate-fade-in"
+      className="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 backdrop-blur-sm"
       onClick={close}
     >
       <div
-        className="bg-white rounded-lg shadow-2xl w-full max-w-lg mx-4 max-h-[90vh] overflow-y-auto animate-slide-up"
+        className="bg-white rounded-lg shadow-2xl w-full max-w-lg mx-4 max-h-[90vh] overflow-y-auto"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
@@ -60,66 +102,19 @@ export default function ContactModal() {
 
         {/* Form */}
         <div className="p-6">
-          <p className="text-gray-600 mb-6">Tell us about your brand and we&apos;ll be in touch.</p>
-          <HubSpotForm />
+          {submitted ? (
+            <div className="text-center py-8">
+              <p className="text-lg font-bold text-green-600 mb-2">Thank you!</p>
+              <p className="text-gray-600">We&apos;ll be in touch soon.</p>
+            </div>
+          ) : (
+            <>
+              <p className="text-gray-600 mb-6">Tell us about your brand and we&apos;ll be in touch.</p>
+              <div ref={formContainerRef} />
+            </>
+          )}
         </div>
       </div>
     </div>
   );
-}
-
-function HubSpotForm() {
-  const formRef = useRef<HTMLDivElement>(null);
-  const { close } = useContactModal();
-  const [submitted, setSubmitted] = useState(false);
-
-  useEffect(() => {
-    if (!formRef.current || submitted) return;
-
-    const script = document.createElement('script');
-    script.src = 'https://js.hsforms.net/forms/embed/v2.js';
-    script.type = 'text/javascript';
-    script.charset = 'utf-8';
-
-    const loadForm = () => {
-      if (typeof window !== 'undefined' && (window as any).hbspt) {
-        (window as any).hbspt.forms.create({
-          region: 'na1',
-          portalId: '244077776',
-          formId: 'a7ceb992-15d6-4c34-a5f0-c5fcdb438f0c',
-          target: '#ldw-contact-form',
-          onFormSubmitted: () => {
-            setSubmitted(true);
-            setTimeout(close, 3000);
-          },
-        });
-      }
-    };
-
-    if ((window as any).hbspt) {
-      loadForm();
-    } else {
-      script.onload = loadForm;
-      document.body.appendChild(script);
-    }
-
-    return () => {
-      // Clean up HubSpot iframe on unmount
-      const container = document.getElementById('ldw-contact-form');
-      if (container) {
-        container.innerHTML = '';
-      }
-    };
-  }, []);
-
-  if (submitted) {
-    return (
-      <div className="text-center py-8">
-        <p className="text-lg font-bold text-green-600 mb-2">Thank you!</p>
-        <p className="text-gray-600">We&apos;ll be in touch soon.</p>
-      </div>
-    );
-  }
-
-  return <div ref={formRef} id="ldw-contact-form" />;
 }
