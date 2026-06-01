@@ -165,11 +165,11 @@ function BlogVideo({ src, caption }: { src: string; caption: string }) {
 }
 
 function ContactButton() {
-  const { openModal } = useContactModal();
+  const { open } = useContactModal();
   
   return (
     <button
-      onClick={openModal}
+      onClick={open}
       className="bg-[#FF6B6B] text-white px-6 py-3 rounded hover:bg-[#ff5252] transition-colors font-medium"
     >
       Send a message →
