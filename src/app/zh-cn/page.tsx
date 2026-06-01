@@ -2,6 +2,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import MatrixRain from '@/components/MatrixRain';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function ChineseHomePage() {
   return (
@@ -49,9 +50,13 @@ export default function ChineseHomePage() {
             {/* Liliane */}
             <Link href="/zh-cn/liliane" className="group relative overflow-hidden rounded-lg bg-gray-100 aspect-[4/3] block">
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10" />
-              <div className="absolute inset-0 bg-gray-200 flex items-center justify-center">
-                <span className="text-gray-400 text-sm">莉莉安 晓旭 Lang</span>
-              </div>
+              <Image
+                src="/images/liliane-discover.jpg"
+                alt="莉莉安 晓旭 Lang"
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 50vw"
+              />
               <div className="absolute bottom-0 left-0 right-0 p-6 z-20">
                 <p className="text-xs text-white/80 uppercase tracking-widest mb-1">创意与原型设计</p>
                 <h3 className="text-xl font-bold text-white">莉莉安 晓旭 Lang</h3>
@@ -61,9 +66,13 @@ export default function ChineseHomePage() {
             {/* Elizabeth */}
             <Link href="/zh-cn/elizabeth" className="group relative overflow-hidden rounded-lg bg-gray-100 aspect-[4/3] block">
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10" />
-              <div className="absolute inset-0 bg-gray-200 flex items-center justify-center">
-                <span className="text-gray-400 text-sm">伊丽莎白 晓月 Lang</span>
-              </div>
+              <Image
+                src="/images/elizabeth-mingrige.jpg"
+                alt="伊丽莎白 晓月 Lang"
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 50vw"
+              />
               <div className="absolute bottom-0 left-0 right-0 p-6 z-20">
                 <p className="text-xs text-white/80 uppercase tracking-widest mb-1">艺术与定制设计</p>
                 <h3 className="text-xl font-bold text-white">伊丽莎白 晓月 Lang</h3>
@@ -82,8 +91,13 @@ export default function ChineseHomePage() {
           <div className="grid md:grid-cols-2 gap-8">
             {/* Kidlab UK */}
             <div className="bg-white rounded-lg p-8 shadow-sm">
-              <div className="w-16 h-16 bg-yellow-100 rounded-full mb-4 flex items-center justify-center">
-                <span className="text-2xl">💡</span>
+              <div className="w-16 h-16 rounded-full mb-4 overflow-hidden relative">
+                <Image
+                  src="/images/kidlab-logo.jpg"
+                  alt="Kidlab UK"
+                  fill
+                  className="object-cover"
+                />
               </div>
               <p className="text-sm text-gray-400 uppercase tracking-widest mb-1">教育玩具</p>
               <h3 className="text-xl font-bold mb-2">Kidlab UK</h3>
@@ -100,8 +114,13 @@ export default function ChineseHomePage() {
 
             {/* Velvet Essence */}
             <div className="bg-white rounded-lg p-8 shadow-sm">
-              <div className="w-16 h-16 bg-pink-100 rounded-full mb-4 flex items-center justify-center">
-                <span className="text-2xl">🎨</span>
+              <div className="w-16 h-16 rounded-full mb-4 overflow-hidden relative">
+                <Image
+                  src="/images/velvet-essence-logo.jpg"
+                  alt="Velvet Essence Design"
+                  fill
+                  className="object-cover"
+                />
               </div>
               <p className="text-sm text-gray-400 uppercase tracking-widest mb-1">时尚与印花</p>
               <h3 className="text-xl font-bold mb-2">Velvet Essence Design</h3>

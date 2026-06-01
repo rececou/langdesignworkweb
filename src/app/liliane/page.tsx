@@ -1,6 +1,7 @@
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function LilianePage() {
   return (
@@ -37,8 +38,14 @@ export default function LilianePage() {
       <section className="py-16 bg-white border-t">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="bg-gray-100 aspect-video rounded-lg flex items-center justify-center">
-              <span className="text-gray-400">Liliane Xiaoxu Lang AI prototype REME</span>
+            <div className="relative rounded-lg overflow-hidden aspect-video">
+              <Image
+                src="/images/lili-remake.jpg"
+                alt="Liliane Xiaoxu Lang AI prototype REME Smart Home Device"
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 50vw"
+              />
             </div>
             <div>
               <h3 className="text-xl font-bold mb-2">Collaboration with Elizabeth</h3>
@@ -80,8 +87,14 @@ export default function LilianePage() {
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="bg-gray-100 aspect-video rounded-lg flex items-center justify-center">
-              <span className="text-gray-400">Liliane Reflections on AI usage</span>
+            <div className="relative rounded-lg overflow-hidden aspect-video">
+              <Image
+                src="/images/lili-reflections.jpg"
+                alt="Liliane Reflections on AI usage"
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 50vw"
+              />
             </div>
             <div>
               <h3 className="text-xl font-bold mb-2">Through My Lens: Liliane's Reflections</h3>
@@ -138,8 +151,13 @@ export default function LilianePage() {
           <div className="grid md:grid-cols-3 gap-8">
             {/* Idea & Prototyping */}
             <article className="bg-gray-50 rounded-lg overflow-hidden">
-              <div className="bg-gray-200 aspect-square flex items-center justify-center">
-                <span className="text-gray-400">Creative Notes</span>
+              <div className="relative aspect-square">
+                <Image
+                  src="/images/lili-ideas.jpg"
+                  alt="Liliane Xiaoxu Lang ideas"
+                  fill
+                  className="object-cover"
+                />
               </div>
               <div className="p-6">
                 <h3 className="text-lg font-bold mb-2">Idea & Prototyping</h3>
@@ -154,8 +172,13 @@ export default function LilianePage() {
 
             {/* Explore & Create */}
             <article className="bg-gray-50 rounded-lg overflow-hidden">
-              <div className="bg-gray-200 aspect-square flex items-center justify-center">
-                <span className="text-gray-400">Creation</span>
+              <div className="relative aspect-square">
+                <Image
+                  src="/images/lili-artwork-home.jpg"
+                  alt="Liliane Xiaoxu Lang artwork home"
+                  fill
+                  className="object-cover"
+                />
               </div>
               <div className="p-6">
                 <h3 className="text-lg font-bold mb-2">Explore & Create</h3>
@@ -168,8 +191,13 @@ export default function LilianePage() {
 
             {/* Sports & Run */}
             <article className="bg-gray-50 rounded-lg overflow-hidden">
-              <div className="bg-gray-200 aspect-square flex items-center justify-center">
-                <span className="text-gray-400">Rugby</span>
+              <div className="relative aspect-square">
+                <Image
+                  src="/images/lili-rugby.jpg"
+                  alt="Liliane Xiaoxu Lang rugby"
+                  fill
+                  className="object-cover"
+                />
               </div>
               <div className="p-6">
                 <h3 className="text-lg font-bold mb-2">Sports & Run</h3>

@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 interface HeaderProps {
   locale: 'en' | 'zh';
@@ -32,10 +33,14 @@ export default function Header({ locale }: HeaderProps) {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link href={locale === 'en' ? '/' : '/zh-cn/'} className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-black text-white flex items-center justify-center font-bold text-sm rounded">
-              LDW
+            <div className="w-8 h-8 relative">
+              <Image
+                src="/images/logo.svg"
+                alt="LangDesignWork"
+                fill
+                className="object-contain"
+              />
             </div>
-            <span className="text-sm text-gray-600">{t.homepage}</span>
           </Link>
 
           {/* Navigation */}
