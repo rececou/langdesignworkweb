@@ -82,8 +82,8 @@ export default function AiCreativityBlogPage() {
               indicate the elderly demographic is set to reach 31% by 2039.
             </p>
 
-            {/* Video 1: Research */}
-            <BlogVideo src="/ai-creativity-research.mp4" caption="REME Project Story" />
+            {/* Video 1: Learning */}
+            <BlogVideo src="/ai-creativity-learning.mp4" caption="REME Project — Learning" />
 
             <p>
               Liliane and Elizabeth didn't start with a complex AI model — they broke down the problem into manageable steps:
@@ -99,8 +99,8 @@ export default function AiCreativityBlogPage() {
               This learn-while-doing approach ensured that every technical hurdle, from implementing Natural Language Processing (NLP) for voice commands to designing a simple interface, was overcome out of necessity, not abstract assignment. The REME project forced the girls to use both creative and critical thinking during their creation journey.
             </p>
 
-            {/* Video 2: Technical */}
-            <BlogVideo src="/ai-creativity-technical.mp4" caption="REME Project — Research" />
+            {/* Video 2: Research */}
+            <BlogVideo src="/ai-creativity-research.mp4" caption="REME Project Story" />
 
             <h3 className="text-xl font-bold text-gray-900 mt-8">Looking Forward: The Future of Learning</h3>
 
@@ -123,8 +123,8 @@ export default function AiCreativityBlogPage() {
               <a href="https://forbes.com/councils/forbestechcouncil/2024/01/30/ai-to-benefit-humanity-innovations-in-senior-care/" target="_blank" rel="noopener noreferrer" className="text-[#FF6B6B] hover:underline">Forbes: AI in Senior Care</a>.
             </p>
 
-            {/* Video 3: Learning */}
-            <BlogVideo src="/ai-creativity-learning.mp4" caption="REME Project — Learning" />
+            {/* Video 3: Technical */}
+            <BlogVideo src="/ai-creativity-technical.mp4" caption="REME Project — Research" />
 
             {/* Let's Connect */}
             <div className="mt-12 pt-8 border-t border-gray-200">
