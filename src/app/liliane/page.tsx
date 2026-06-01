@@ -26,14 +26,7 @@ export default function LilianePage() {
           <p className="text-gray-600 max-w-2xl mb-6">
             From AI prototypes to handmade crafts — a world of ideas in motion. Jump in, explore, and share your perspective.
           </p>
-          <div className="flex gap-4">
-            <Link href="/liliane" className="bg-gray-900 text-white px-6 py-3 rounded hover:bg-gray-800 transition-colors font-medium">
-              See the work
-            </Link>
-            <Link href="#" className="border border-gray-900 text-gray-900 px-6 py-3 rounded hover:bg-gray-100 transition-colors font-medium">
-              Partner with us
-            </Link>
-          </div>
+          <HeroCTAs />
         </div>
       </section>
 
@@ -57,12 +50,12 @@ export default function LilianePage() {
               </p>
               <p className="text-gray-600 mb-6">
                 Developed with my sister Elizabeth Xiaoyue Lang, our REME smart home device won the 2024{' '}
-                <Link href="/remecou" className="text-[#FF6B6B] hover:underline">Global Technovation Girls</Link>{' '}
-                Competition Semi-finalist award (Junior Division).
-              </p>
-              <Link href="/liliane-create" className="text-[#FF6B6B] hover:text-[#ff5252] font-medium inline-flex items-center gap-1">
-                Explore more →
-              </Link>
+              <a href="https://technovationchallenge.org/?utm_source=website&utm_medium=content&utm_campaign=technovation" target="_blank" rel="noopener noreferrer" className="text-[#FF6B6B] hover:underline">Global Technovation Girls</a>{' '}
+              Competition Semi-finalist award (Junior Division).
+            </p>
+            <Link href="/en/home/blog/ai-creativity-learning?utm_source=website&utm_medium=button&utm_campaign=button-explore" className="text-[#FF6B6B] hover:text-[#ff5252] font-medium inline-flex items-center gap-1">
+              Explore more →
+            </Link>
             </div>
           </div>
         </div>
@@ -80,8 +73,8 @@ export default function LilianePage() {
           <p className="text-gray-600 mb-6">
             See how it works in our YouTube video.
           </p>
-          <div className="bg-black rounded-lg aspect-video max-w-3xl flex items-center justify-center">
-            <span className="text-white text-sm">Video player - REME Smart Home Device</span>
+          <div className="rounded-lg overflow-hidden aspect-video max-w-3xl">
+            <YouTubeVideo videoId="REPLACE_WITH_YOUTUBE_ID" />
           </div>
         </div>
       </section>
@@ -146,7 +139,7 @@ export default function LilianePage() {
       </section>
 
       {/* Works */}
-      <section className="py-16 bg-white">
+      <section id="liliane-works" className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <p className="text-gray-600 mb-8">
             Here are a few of my works. My blog & gallery is still in progress, so stay tuned for more!
@@ -224,29 +217,41 @@ export default function LilianePage() {
         </div>
       </section>
 
-      {/* Follow */}
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-xl font-bold mb-8">Follow & Connect</h2>
-          <div className="flex justify-center gap-8">
-            <div className="text-center">
-              <div className="w-24 h-24 bg-gray-100 rounded-lg mx-auto mb-2 flex items-center justify-center">
-                <span className="text-gray-400 text-xs">WeChat QR</span>
-              </div>
-              <p className="text-sm text-gray-600">WeChat</p>
-            </div>
-            <div className="text-center">
-              <div className="w-24 h-24 bg-gray-100 rounded-lg mx-auto mb-2 flex items-center justify-center">
-                <span className="text-gray-400 text-xs">Douyin QR</span>
-              </div>
-              <p className="text-sm text-gray-600">Douyin</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
       <Footer locale="en" />
     </>
+  );
+}
+
+function HeroCTAs() {
+  const open = useContactModal((state) => state.open);
+  return (
+    <div className="flex gap-4">
+      <a
+        href="#liliane-works"
+        className="bg-gray-900 text-white px-6 py-3 rounded hover:bg-gray-800 transition-colors font-medium"
+      >
+        See the work
+      </a>
+      <button
+        onClick={open}
+        className="border border-gray-900 text-gray-900 px-6 py-3 rounded hover:bg-gray-100 transition-colors font-medium"
+      >
+        Partner with us
+      </button>
+    </div>
+  );
+}
+
+function YouTubeVideo({ videoId }: { videoId: string }) {
+  return (
+    <iframe
+      className="w-full h-full"
+      src={`https://www.youtube.com/embed/${videoId}`}
+      title="REME Smart Home Device"
+      frameBorder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowFullScreen
+    />
   );
 }
 
