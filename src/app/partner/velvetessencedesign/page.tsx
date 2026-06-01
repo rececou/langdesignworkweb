@@ -116,6 +116,24 @@ function ProductCard({ product }: { product: Product }) {
   );
 }
 
+// Pinned tote bags (always shown first)
+const pinnedTotes: Product[] = [
+  {
+    name: "Surreal Art Tote Bag — Statement Canvas",
+    shortDesc: "Bold surreal artwork printed on durable canvas — make a statement wherever you go",
+    price: "Shop Now",
+    image: "https://i.etsystatic.com/56112249/r/il/db3dce/7680860369/il_570xN.7680860369_g45e.jpg",
+    link: "https://www.etsy.com/uk/listing/4426475502/surreal-art-tote-bag-statement-canvas",
+  },
+  {
+    name: "Surreal Art Tote Bag — Limited Edition",
+    shortDesc: "Unique artistic design printed by hand — wearable art for creative minds",
+    price: "Shop Now",
+    image: "https://i.etsystatic.com/56112249/r/il/8e21b1/7943473378/il_570xN.7949253075_jwcl.jpg",
+    link: "https://www.etsy.com/uk/listing/4426397775/surreal-art-tote-bag-statement-canvas",
+  },
+];
+
 export default function VelvetEssencePage() {
   const { open } = useContactModal();
   const [rssProducts, setRssProducts] = useState<Product[]>([]);
@@ -123,7 +141,10 @@ export default function VelvetEssencePage() {
 
   useEffect(() => {
     fetchVelvetEssenceProducts().then((items) => {
-      setRssProducts(items);
+      // Filter out items that match pinned totes to avoid duplicates
+      const pinnedLinks = pinnedTotes.map(p => p.link);
+      const filtered = items.filter(item => !pinnedLinks.includes(item.link));
+      setRssProducts(filtered);
       setLoading(false);
     });
   }, []);
@@ -208,12 +229,12 @@ export default function VelvetEssencePage() {
         </div>
       </section>
 
-      {/* Tote Bags & More from RSS */}
+      {/* Tote Bags & More — pinned first, then RSS */}
       <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl font-bold mb-2">Tote Bags & Accessories</h2>
           <p className="text-sm text-gray-500 mb-8">
-            Auto-synced from Etsy • Updates daily
+            Featured picks + auto-synced from Etsy • Updates daily
           </p>
           
           {loading ? (
@@ -228,16 +249,23 @@ export default function VelvetEssencePage() {
                 </div>
               ))}
             </div>
-          ) : rssProducts.length > 0 ? (
-            <div className="grid md:grid-cols-3 gap-8">
-              {rssProducts.map((product, i) => (
-                <ProductCard key={i} product={product} />
-              ))}
-            </div>
           ) : (
-            <div className="text-center py-12 text-gray-500">
-              <p>Products loading from Etsy...</p>
-            </div>
+            <>
+              {/* Pinned items first */}
+              <div className="grid md:grid-cols-3 gap-8 mb-8">
+                {pinnedTotes.map((product, i) => (
+                  <ProductCard key={`pinned-${i}`} product={product} />
+                ))}
+              </div>
+              {/* RSS items below */}
+              {rssProducts.length > 0 && (
+                <div className="grid md:grid-cols-3 gap-8">
+                  {rssProducts.map((product, i) => (
+                    <ProductCard key={`rss-${i}`} product={product} />
+                  ))}
+                </div>
+              )}
+            </>
           )}
         </div>
       </section>
