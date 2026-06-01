@@ -47,34 +47,34 @@ export default function Home() {
           
           <div className="grid md:grid-cols-2 gap-8">
             {/* Liliane */}
-            <Link href="/liliane" className="group relative overflow-hidden rounded-lg bg-gray-100 aspect-[4/3] block">
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10" />
+            <Link href="/liliane" className="group relative overflow-hidden rounded-xl bg-gray-100 aspect-[4/3] block hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10 group-hover:from-black/40 transition-all duration-300" />
               <Image
                 src="/images/liliane-discover.jpg"
                 alt="Liliane Xiaoxu Lang"
                 fill
-                className="object-cover"
+                className="object-cover group-hover:scale-110 transition-transform duration-500"
                 sizes="(max-width: 768px) 100vw, 50vw"
               />
               <div className="absolute bottom-0 left-0 right-0 p-6 z-20">
                 <p className="text-xs text-white/80 uppercase tracking-widest mb-1">IDEAS & PROTOTYPING</p>
-                <h3 className="text-xl font-bold text-white">Liliane Xiaoxu Lang</h3>
+                <h3 className="text-xl font-bold text-white group-hover:text-emerald-300 transition-colors duration-300">Liliane Xiaoxu Lang</h3>
               </div>
             </Link>
 
             {/* Elizabeth */}
-            <Link href="/elizabeth" className="group relative overflow-hidden rounded-lg bg-gray-100 aspect-[4/3] block">
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10" />
+            <Link href="/elizabeth" className="group relative overflow-hidden rounded-xl bg-gray-100 aspect-[4/3] block hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10 group-hover:from-black/40 transition-all duration-300" />
               <Image
                 src="/images/elizabeth-mingrige.jpg"
                 alt="Elizabeth Xiaoyue Lang"
                 fill
-                className="object-cover"
+                className="object-cover group-hover:scale-110 transition-transform duration-500"
                 sizes="(max-width: 768px) 100vw, 50vw"
               />
               <div className="absolute bottom-0 left-0 right-0 p-6 z-20">
                 <p className="text-xs text-white/80 uppercase tracking-widest mb-1">ART & CUSTOM DESIGN</p>
-                <h3 className="text-xl font-bold text-white">Elizabeth Xiaoyue Lang</h3>
+                <h3 className="text-xl font-bold text-white group-hover:text-emerald-300 transition-colors duration-300">Elizabeth Xiaoyue Lang</h3>
               </div>
             </Link>
           </div>
@@ -89,8 +89,8 @@ export default function Home() {
           
           <div className="grid md:grid-cols-2 gap-8">
             {/* Kidlab UK */}
-            <div className="bg-white rounded-lg p-8 shadow-sm">
-              <div className="w-16 h-16 rounded-full mb-4 overflow-hidden relative">
+            <Link href="/partner/kidslabuk" className="group bg-white rounded-xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2 block border-t-4 border-transparent hover:border-yellow-400">
+              <div className="w-16 h-16 rounded-full mb-4 overflow-hidden relative group-hover:scale-110 transition-transform duration-300">
                 <Image
                   src="/images/kidlab-logo.jpg"
                   alt="Kidlab UK"
@@ -99,21 +99,18 @@ export default function Home() {
                 />
               </div>
               <p className="text-sm text-gray-400 uppercase tracking-widest mb-1">EDUCATIONAL TOYS</p>
-              <h3 className="text-xl font-bold mb-2">Kidlab UK</h3>
+              <h3 className="text-xl font-bold mb-2 group-hover:text-yellow-600 transition-colors">Kidlab UK</h3>
               <p className="text-gray-600 mb-4">
                 DIY wooden STEM kits that get children building, thinking, and exploring through hands-on play.
               </p>
-              <Link
-                href="/partner/kidslabuk"
-                className="text-[#FF6B6B] hover:text-[#ff5252] font-medium inline-flex items-center gap-1"
-              >
+              <span className="text-[#FF6B6B] group-hover:text-yellow-600 font-medium inline-flex items-center gap-1 group-hover:gap-2 transition-all">
                 Find out more →
-              </Link>
-            </div>
+              </span>
+            </Link>
 
             {/* Velvet Essence */}
-            <div className="bg-white rounded-lg p-8 shadow-sm">
-              <div className="w-16 h-16 rounded-full mb-4 overflow-hidden relative">
+            <Link href="/partner/velvetessencedesign" className="group bg-white rounded-xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2 block border-t-4 border-transparent hover:border-pink-400">
+              <div className="w-16 h-16 rounded-full mb-4 overflow-hidden relative group-hover:scale-110 transition-transform duration-300">
                 <Image
                   src="/images/velvet-essence-logo.jpg"
                   alt="Velvet Essence Design"
@@ -122,17 +119,14 @@ export default function Home() {
                 />
               </div>
               <p className="text-sm text-gray-400 uppercase tracking-widest mb-1">FASHION & PRINT</p>
-              <h3 className="text-xl font-bold mb-2">Velvet Essence Design</h3>
+              <h3 className="text-xl font-bold mb-2 group-hover:text-pink-600 transition-colors">Velvet Essence Design</h3>
               <p className="text-gray-600 mb-4">
                 Hand-printed t-shirts and tote bags, wearable art made with care and creativity.
               </p>
-              <Link
-                href="/partner/velvetessencedesign"
-                className="text-[#FF6B6B] hover:text-[#ff5252] font-medium inline-flex items-center gap-1"
-              >
+              <span className="text-[#FF6B6B] group-hover:text-pink-600 font-medium inline-flex items-center gap-1 group-hover:gap-2 transition-all">
                 Find out more →
-              </Link>
-            </div>
+              </span>
+            </Link>
           </div>
         </div>
       </section>
