@@ -6,8 +6,43 @@ import { useContactModal } from '@/components/ContactModal';
 
 const products = [
   {
-    name: "Pick & Mix STEM Kit",
-    description: "DIY wooden science experiment set — build, learn, and have fun!",
+    name: "Pick & Mix DIY Kit",
+    description: "4-in-1 STEM DIY wooden Montessori toy — build, learn, and have fun!",
+    image: "/kidlab-pick-and-mix.jpg",
+  },
+  {
+    name: "DIY STEM Drone",
+    description: "Wooden educational drone quadcopter aircraft with remote control.",
+    image: "/kidlab-pick-and-mix.jpg",
+  },
+  {
+    name: "DIY STEM Music Box",
+    description: "Build-your-own musical piano — wooden science experiment kit.",
+    image: "/kidlab-pick-and-mix.jpg",
+  },
+  {
+    name: "DIY STEM RC Car",
+    description: "Wooden remote control car racer — engineering meets fun.",
+    image: "/kidlab-pick-and-mix.jpg",
+  },
+  {
+    name: "DIY STEM Tensile Structure",
+    description: "Defy gravity with a floating wooden sculpture — hands-on physics.",
+    image: "/kidlab-pick-and-mix.jpg",
+  },
+  {
+    name: "DIY STEM Newton's Pendulum",
+    description: "Discover the laws of motion with a wooden pendulum kit.",
+    image: "/kidlab-pick-and-mix.jpg",
+  },
+  {
+    name: "DIY STEM Electric Tank",
+    description: "Wooden tracked tank with motor — engineering adventure.",
+    image: "/kidlab-pick-and-mix.jpg",
+  },
+  {
+    name: "DIY STEM Solar Rover",
+    description: "Wooden solar-powered rover — learn about renewable energy.",
     image: "/kidlab-pick-and-mix.jpg",
   },
 ];
@@ -51,7 +86,7 @@ export default function KidlabPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl font-bold mb-2">Memories are built, not scrolled</h2>
           <p className="text-gray-600 mb-8">Wooden DIY Stem Kits — hands-on fun for curious minds.</p>
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {products.map((product) => (
               <div key={product.name} className="bg-gray-50 rounded-lg overflow-hidden hover:shadow-md transition-shadow">
                 <div className="relative aspect-square">
