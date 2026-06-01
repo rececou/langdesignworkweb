@@ -121,6 +121,9 @@ export default function KidlabPage() {
             <Link href="https://www.tiktok.com/@kidlab.uk" target="_blank" rel="noopener noreferrer" className="bg-white px-6 py-3 rounded shadow-sm hover:shadow-md transition-shadow font-medium text-gray-800">
               TikTok Shop UK
             </Link>
+            <Link href="https://www.ebay.co.uk/sch/i.html?item=147257686081&rt=nc&_trksid=p4429486.m3561.l161211&_ssn=phonedoctor_uk" target="_blank" rel="noopener noreferrer" className="bg-white px-6 py-3 rounded shadow-sm hover:shadow-md transition-shadow font-medium text-gray-800">
+              eBay UK
+            </Link>
           </div>
         </div>
       </section>
