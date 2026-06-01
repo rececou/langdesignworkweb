@@ -242,7 +242,29 @@ export default function VelvetEssencePage() {
         </div>
       </section>
 
+      {/* Become our partner CTA */}
+      <section className="py-16 bg-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-2xl font-bold mb-4">Become our partner or have questions?</h2>
+          <p className="text-gray-600 mb-8">Get in touch now!</p>
+          <ContactButton />
+        </div>
+      </section>
+
       <Footer locale="en" />
     </>
+  );
+}
+
+function ContactButton() {
+  const { open } = useContactModal();
+
+  return (
+    <button
+      onClick={open}
+      className="bg-[#FF6B6B] text-white px-6 py-3 rounded hover:bg-[#ff5252] transition-colors font-medium"
+    >
+      Send a message →
+    </button>
   );
 }
