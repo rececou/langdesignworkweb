@@ -1,10 +1,10 @@
 'use client';
 
-import { useState } from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useContactModal } from '@/components/ContactModalProvider';
 
 export default function AiCreativityBlogPage() {
   return (
@@ -76,7 +76,7 @@ export default function AiCreativityBlogPage() {
 
             <p>
               The journey of the REME project begins with simple observation. The need for REME stemmed from recognizing the growing elderly demographic in Hong Kong and the challenges faced by seniors living alone.{' '}
-              <a href="https://www.gov.hk/en/theme/psi/dp/elderly/" target="_blank" rel="noopener noreferrer" className="text-[#FF6B6B] hover:underline">
+              <a href="https://datastory.hkbu.edu.hk/2023/budget2023/" target="_blank" rel="noopener noreferrer" className="text-[#FF6B6B] hover:underline">
                 Hong Kong government projections
               </a>{' '}
               indicate the elderly demographic is set to reach 31% by 2039.
@@ -118,9 +118,9 @@ export default function AiCreativityBlogPage() {
 
             <p className="text-sm text-gray-500">
               Relevant discussions and resources:{' '}
-              <a href="#" className="text-[#FF6B6B] hover:underline">Aging Well with AI</a>{' '}
+              <a href="https://westhealthmosaic.com/articles/aging-well-with-ai-empowering-care-through-innovation" target="_blank" rel="noopener noreferrer" className="text-[#FF6B6B] hover:underline">Aging Well with AI</a>{' '}
               |{' '}
-              <a href="https://www.forbes.com/sites/katiejennings/2024/05/01/ai-could-help-seniors-age-in-place/" target="_blank" rel="noopener noreferrer" className="text-[#FF6B6B] hover:underline">Forbes: AI in Senior Care</a>.
+              <a href="https://forbes.com/councils/forbestechcouncil/2024/01/30/ai-to-benefit-humanity-innovations-in-senior-care/" target="_blank" rel="noopener noreferrer" className="text-[#FF6B6B] hover:underline">Forbes: AI in Senior Care</a>.
             </p>
 
             {/* Video 3: Learning */}
@@ -165,22 +165,11 @@ function BlogVideo({ src, caption }: { src: string; caption: string }) {
 }
 
 function ContactButton() {
-  const [isOpen, setIsOpen] = useState(false);
-
-  if (isOpen) {
-    return (
-      <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/60" onClick={() => setIsOpen(false)}>
-        <div className="bg-white rounded-lg p-8 max-w-lg mx-4" onClick={(e) => e.stopPropagation()}>
-          <p className="text-center text-gray-600">Contact form — HubSpot embed goes here.</p>
-          <button onClick={() => setIsOpen(false)} className="mt-4 text-sm text-gray-500">Close</button>
-        </div>
-      </div>
-    );
-  }
-
+  const { openModal } = useContactModal();
+  
   return (
     <button
-      onClick={() => setIsOpen(true)}
+      onClick={openModal}
       className="bg-[#FF6B6B] text-white px-6 py-3 rounded hover:bg-[#ff5252] transition-colors font-medium"
     >
       Send a message →
