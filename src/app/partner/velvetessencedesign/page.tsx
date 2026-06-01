@@ -15,7 +15,7 @@ interface Product {
   link: string;
 }
 
-// Parse Etsy RSS feed for tote bags and other products
+// Parse Etsy RSS feed — STRICTLY tote bags only (no toys, cushions, coasters)
 async function fetchVelvetEssenceProducts(): Promise<Product[]> {
   try {
     const res = await fetch('https://api.rss2json.com/v1/api.json?rss_url=https://www.etsy.com/shop/VelvetEssenceDesign/rss');
@@ -23,20 +23,17 @@ async function fetchVelvetEssenceProducts(): Promise<Product[]> {
     
     if (!data.items) return [];
     
-    // Filter OUT t-shirts (we show those separately)
-    const tshirtKeywords = ['t shirt', 't-shirt', 'tshirt', 'graphic tee', 'tee shirt'];
-    
     return data.items
       .filter((item: any) => {
         const title = item.title?.toLowerCase() || '';
-        return !tshirtKeywords.some(kw => title.includes(kw));
+        // Only keep tote bags
+        return title.includes('tote');
       })
-      .slice(0, 6) // Show max 6 items
       .map((item: any) => {
         const imgMatch = item.description?.match(/src="([^"]+)"/);
         const image = imgMatch ? imgMatch[1] : '';
         
-        const priceMatch = item.description?.match(/(\d+\.\d+)\s*GBP/);
+        const priceMatch = item.description?.match(/(\\d+\\.\\d+)\\s*GBP/);
         const price = priceMatch ? `£${priceMatch[1]}` : '';
         
         const name = item.title?.replace(/ by VelvetEssenceDesign$/, '') || '';
@@ -54,66 +51,6 @@ async function fetchVelvetEssenceProducts(): Promise<Product[]> {
     console.error('Failed to fetch Velvet Essence products:', error);
     return [];
   }
-}
-
-// Curated t-shirt collection (shown first, links to Etsy search)
-const tshirts: Product[] = [
-  {
-    name: "Graphic Print T-Shirt",
-    shortDesc: "Hand-printed wearable art on premium cotton — unique designs you won't find anywhere else",
-    price: "Shop Now",
-    image: "https://i.etsystatic.com/56112249/r/il/db3dce/7680860369/il_570xN.7680860369_g45e.jpg",
-    link: "https://www.etsy.com/shop/VelvetEssenceDesign?etsrc=sdt&search_query=tshirt",
-  },
-  {
-    name: "Custom Design Tees",
-    shortDesc: "Bold, creative prints made to order — express your personality with every wear",
-    price: "Shop Now",
-    image: "https://i.etsystatic.com/56112249/r/il/8e21b1/7943473378/il_570xN.7943473378_fzdp.jpg",
-    link: "https://www.etsy.com/shop/VelvetEssenceDesign?etsrc=sdt&search_query=tshirt",
-  },
-  {
-    name: "Limited Edition Tees",
-    shortDesc: "Rotating collection of seasonal designs — check back often for new drops",
-    price: "Shop Now",
-    image: "https://i.etsystatic.com/56112249/r/il/ab1c3b/7690665237/il_570xN.7690665237_r3j0.jpg",
-    link: "https://www.etsy.com/shop/VelvetEssenceDesign?etsrc=sdt&search_query=tshirt",
-  },
-];
-
-function ProductCard({ product }: { product: Product }) {
-  return (
-    <a
-      href={product.link}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="group bg-gray-50 rounded-lg overflow-hidden hover:shadow-lg transition-shadow"
-    >
-      <div className="relative aspect-square bg-gray-100">
-        {product.image ? (
-          <Image
-            src={product.image}
-            alt={product.name}
-            fill
-            className="object-cover group-hover:scale-105 transition-transform duration-300"
-          />
-        ) : (
-          <div className="flex items-center justify-center h-full text-gray-400">
-            No image
-          </div>
-        )}
-      </div>
-      <div className="p-4">
-        <h3 className="font-bold mb-1 group-hover:text-[#FF6B6B] transition-colors">
-          {product.name}
-        </h3>
-        <p className="text-sm text-gray-600 mb-2 line-clamp-2">{product.shortDesc}</p>
-        {product.price && (
-          <span className="text-lg font-bold text-[#FF6B6B]">{product.price}</span>
-        )}
-      </div>
-    </a>
-  );
 }
 
 // Pinned tote bags (always shown first)
@@ -134,6 +71,41 @@ const pinnedTotes: Product[] = [
   },
 ];
 
+function ProductCard({ product }: { product: Product }) {
+  return (
+    <a
+      href={product.link}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="group bg-white rounded-lg overflow-hidden hover:shadow-lg transition-shadow"
+    >
+      <div className="relative aspect-square bg-gray-100">
+        {product.image ? (
+          <Image
+            src={product.image}
+            alt={product.name}
+            fill
+            className="object-cover group-hover:scale-105 transition-transform duration-300"
+          />
+        ) : (
+          <div className="flex items-center justify-center h-full text-gray-400">
+            No image
+          </div>
+        )}
+      </div>
+      <div className="p-4">
+        <h3 className="font-bold mb-1 text-sm leading-tight group-hover:text-[#FF6B6B] transition-colors">
+          {product.name}
+        </h3>
+        <p className="text-xs text-gray-500 mb-2 line-clamp-2">{product.shortDesc}</p>
+        {product.price && (
+          <span className="text-sm font-semibold text-[#FF6B6B]">{product.price}</span>
+        )}
+      </div>
+    </a>
+  );
+}
+
 export default function VelvetEssencePage() {
   const { open } = useContactModal();
   const [rssProducts, setRssProducts] = useState<Product[]>([]);
@@ -141,7 +113,7 @@ export default function VelvetEssencePage() {
 
   useEffect(() => {
     fetchVelvetEssenceProducts().then((items) => {
-      // Filter out items that match pinned totes to avoid duplicates
+      // Filter out pinned items from RSS to avoid duplicates
       const pinnedLinks = pinnedTotes.map(p => p.link);
       const filtered = items.filter(item => !pinnedLinks.includes(item.link));
       setRssProducts(filtered);
@@ -153,7 +125,7 @@ export default function VelvetEssencePage() {
     <>
       <Header locale="en" />
 
-      {/* Hero Section */}
+      {/* Hero */}
       <section className="bg-pink-50 py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-4 mb-6">
@@ -204,47 +176,40 @@ export default function VelvetEssencePage() {
         </div>
       </section>
 
-      {/* T-Shirts Section - ALWAYS FIRST */}
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between mb-8">
-            <div>
-              <h2 className="text-2xl font-bold">T-Shirt Collection</h2>
-              <p className="text-sm text-gray-500 mt-1">Hand-printed wearable art — browse all designs on Etsy</p>
-            </div>
-            <Link
-              href="https://www.etsy.com/shop/VelvetEssenceDesign?etsrc=sdt&search_query=tshirt"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-[#FF6B6B] hover:text-[#ff5252] font-medium text-sm"
-            >
-              View all on Etsy →
-            </Link>
-          </div>
-          <div className="grid md:grid-cols-3 gap-8">
-            {tshirts.map((product, i) => (
-              <ProductCard key={i} product={product} />
-            ))}
-          </div>
+      {/* T-Shirts Banner */}
+      <section className="py-12 bg-gradient-to-r from-pink-50 to-purple-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-2xl font-bold mb-2">T-Shirt Collection</h2>
+          <p className="text-gray-600 mb-6 max-w-xl mx-auto">
+            Hand-printed wearable art on premium cotton — browse all unique t-shirt designs on Etsy
+          </p>
+          <Link
+            href="https://www.etsy.com/shop/VelvetEssenceDesign?etsrc=sdt&search_query=tshirt"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block bg-[#FF6B6B] text-white px-8 py-3 rounded hover:bg-[#ff5252] transition-colors font-medium"
+          >
+            Shop T-Shirts on Etsy →
+          </Link>
         </div>
       </section>
 
-      {/* Tote Bags & More — pinned first, then RSS */}
+      {/* Tote Bags — pinned first, then RSS */}
       <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-bold mb-2">Tote Bags & Accessories</h2>
+          <h2 className="text-2xl font-bold mb-2">Tote Bags</h2>
           <p className="text-sm text-gray-500 mb-8">
             Featured picks + auto-synced from Etsy • Updates daily
           </p>
           
           {loading ? (
-            <div className="grid md:grid-cols-3 gap-8">
-              {[1, 2, 3].map((i) => (
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+              {[1, 2, 3, 4].map((i) => (
                 <div key={i} className="bg-white rounded-lg overflow-hidden animate-pulse">
                   <div className="bg-gray-200 aspect-square" />
-                  <div className="p-4 space-y-3">
-                    <div className="h-4 bg-gray-200 rounded w-3/4" />
-                    <div className="h-3 bg-gray-200 rounded w-1/2" />
+                  <div className="p-3 space-y-2">
+                    <div className="h-3 bg-gray-200 rounded w-3/4" />
+                    <div className="h-2 bg-gray-200 rounded w-1/2" />
                   </div>
                 </div>
               ))}
@@ -252,14 +217,14 @@ export default function VelvetEssencePage() {
           ) : (
             <>
               {/* Pinned items first */}
-              <div className="grid md:grid-cols-3 gap-8 mb-8">
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-8">
                 {pinnedTotes.map((product, i) => (
                   <ProductCard key={`pinned-${i}`} product={product} />
                 ))}
               </div>
               {/* RSS items below */}
               {rssProducts.length > 0 && (
-                <div className="grid md:grid-cols-3 gap-8">
+                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                   {rssProducts.map((product, i) => (
                     <ProductCard key={`rss-${i}`} product={product} />
                   ))}
