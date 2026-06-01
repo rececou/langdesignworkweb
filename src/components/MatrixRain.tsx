@@ -52,7 +52,10 @@ export default function MatrixRain() {
       }
       ctx.globalAlpha = 1;
 
-      animationId = requestAnimationFrame(draw);
+      // Throttle to ~15fps for a slower, calmer effect
+      setTimeout(() => {
+        animationId = requestAnimationFrame(draw);
+      }, 67);
     };
 
     draw();

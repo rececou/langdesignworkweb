@@ -14,13 +14,14 @@ export default function Header({ locale }: HeaderProps) {
 
   const t = {
     homepage: locale === 'en' ? 'Homepage' : '主页',
-    create: locale === 'en' ? 'Create' : '莉莉安探索',
-    discover: locale === 'en' ? 'Discover' : '博客',
-    brands: locale === 'en' ? 'Brands' : '画廊',
+    create: locale === 'en' ? 'Create' : '创作',
+    discover: locale === 'en' ? 'Discover' : '发现',
+    brands: locale === 'en' ? 'Brands' : '品牌',
     contact: locale === 'en' ? 'Get in touch' : '联系我们',
     lang: locale === 'en' ? 'English' : '简体中文',
-    createDropdown: locale === 'en' ? 'Create' : '莉莉安探索',
-    brandsDropdown: locale === 'en' ? 'Brands' : '画廊',
+    lilianeCreate: locale === 'en' ? 'Liliane Xiaoxu Lang' : '莉莉安·郎',
+    elizabethCreate: locale === 'en' ? 'Elizabeth Xiaoyue Lang' : '伊丽莎白·郎',
+    partnerWithUs: locale === 'en' ? 'Partner with us' : '与我们合作',
     selectLang: locale === 'en' ? 'Select a language' : '选择语言',
     closeLang: locale === 'en' ? 'Close language selector' : '关闭语言选择器',
   };
@@ -51,12 +52,12 @@ export default function Header({ locale }: HeaderProps) {
                 </svg>
               </button>
               {createOpen && (
-                <div className="absolute top-full left-0 mt-1 bg-white border border-gray-200 rounded shadow-lg py-2 min-w-[180px]">
+                <div className="absolute top-full left-0 mt-1 bg-white border border-gray-200 rounded shadow-lg py-2 min-w-[200px]">
                   <Link href={locale === 'en' ? '/liliane' : '/zh-cn/liliane'} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-                    {locale === 'en' ? 'Liliane Discover' : '莉莉安探索'}
+                    {t.lilianeCreate}
                   </Link>
-                  <Link href="/liliane-create" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-                    {locale === 'en' ? 'Liliane Creation' : '莉莉安创作'}
+                  <Link href={locale === 'en' ? '/elizabeth' : '/zh-cn/elizabeth'} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                    {t.elizabethCreate}
                   </Link>
                 </div>
               )}
@@ -85,8 +86,8 @@ export default function Header({ locale }: HeaderProps) {
                   <Link href="/partner/velvetessencedesign" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
                     Velvet Essence Design
                   </Link>
-                  <Link href={locale === 'en' ? '/elizabeth' : '/zh-cn/elizabeth'} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-                    {locale === 'en' ? 'Elizabeth Portfolio' : '伊丽莎白设计'}
+                  <Link href={locale === 'en' ? '/remecou' : '/zh-cn/remecou'} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                    {t.partnerWithUs}
                   </Link>
                 </div>
               )}
