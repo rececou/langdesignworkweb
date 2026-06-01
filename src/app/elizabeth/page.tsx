@@ -30,9 +30,7 @@ export default function ElizabethPage() {
             <Link href="/elizabeth-custom-design" className="bg-gray-900 text-white px-6 py-3 rounded hover:bg-gray-800 transition-colors font-medium">
               Explore Custom Design
             </Link>
-            <Link href="/remecou" className="border border-gray-900 text-gray-900 px-6 py-3 rounded hover:bg-gray-100 transition-colors font-medium">
-              Partner with us
-            </Link>
+            <ContactButton text="Partner with us" />
           </div>
         </div>
       </section>
@@ -54,7 +52,7 @@ export default function ElizabethPage() {
               <h3 className="text-xl font-bold mb-2">Elizabeth Xiaoyue Railway</h3>
               <p className="text-gray-600 mb-4">
                 Designed during my time at{' '}
-                <Link href="#" className="text-[#FF6B6B] hover:underline">Central Saint Martins College of Art</Link>{' '}
+                <a href="https://www.arts.ac.uk/study-at-ual/short-courses" target="_blank" rel="noopener noreferrer" className="text-[#FF6B6B] hover:underline">Central Saint Martins College of Art</a>{' '}
                 in London in the summer of 2025.
               </p>
               <p className="text-gray-600">
@@ -86,9 +84,9 @@ export default function ElizabethPage() {
               <p className="text-gray-600 mb-6">
                 It features a combination of water colour and paper crafts, creating a captivating 3D effect. I am very proud of this piece, as it reflects my ongoing experimentation with artistic exploration and emotion through design.
               </p>
-              <Link href="#" className="text-[#FF6B6B] hover:text-[#ff5252] font-medium inline-flex items-center gap-1">
+              <a href="https://deo.hkust.edu.hk/events/colors-inclusion-artwork-exhibition?utm_source=website&utm_medium=button&utm_campaign=button-hkust" target="_blank" rel="noopener noreferrer" className="text-[#FF6B6B] hover:text-[#ff5252] font-medium inline-flex items-center gap-1">
                 HKUST DEI event →
-              </Link>
+              </a>
             </div>
           </div>
         </div>
