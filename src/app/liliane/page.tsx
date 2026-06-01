@@ -5,6 +5,7 @@ import Footer from '@/components/Footer';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useContactModal } from '@/components/ContactModal';
+import YouTubeVideo from '@/components/YouTubeVideo';
 
 export default function LilianePage() {
   return (
@@ -73,8 +74,12 @@ export default function LilianePage() {
           <p className="text-gray-600 mb-6">
             See how it works in our YouTube video.
           </p>
-          <div className="rounded-lg overflow-hidden aspect-video max-w-3xl">
-            <YouTubeVideo videoId="REPLACE_WITH_YOUTUBE_ID" />
+          <div className="max-w-3xl">
+            <YouTubeVideo
+              videoId="nZ6znfTmR3g"
+              thumbnail="/images/reme-video-thumb.png"
+              title="REME Smart Home Device | Technovation Semi-Finalist | Liliane Lang"
+            />
           </div>
         </div>
       </section>
@@ -139,7 +144,7 @@ export default function LilianePage() {
       </section>
 
       {/* Works */}
-      <section id="liliane-works" className="py-16 bg-white">
+      <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <p className="text-gray-600 mb-8">
             Here are a few of my works. My blog & gallery is still in progress, so stay tuned for more!
@@ -226,12 +231,12 @@ function HeroCTAs() {
   const open = useContactModal((state) => state.open);
   return (
     <div className="flex gap-4">
-      <a
-        href="#liliane-works"
+      <Link
+        href="/liliane-create"
         className="bg-gray-900 text-white px-6 py-3 rounded hover:bg-gray-800 transition-colors font-medium"
       >
         See the work
-      </a>
+      </Link>
       <button
         onClick={open}
         className="border border-gray-900 text-gray-900 px-6 py-3 rounded hover:bg-gray-100 transition-colors font-medium"
@@ -239,19 +244,6 @@ function HeroCTAs() {
         Partner with us
       </button>
     </div>
-  );
-}
-
-function YouTubeVideo({ videoId }: { videoId: string }) {
-  return (
-    <iframe
-      className="w-full h-full"
-      src={`https://www.youtube.com/embed/${videoId}`}
-      title="REME Smart Home Device"
-      frameBorder="0"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-      allowFullScreen
-    />
   );
 }
 
