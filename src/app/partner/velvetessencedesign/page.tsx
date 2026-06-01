@@ -5,7 +5,6 @@ import Footer from '@/components/Footer';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useContactModal } from '@/components/ContactModal';
-import { useEffect, useState } from 'react';
 
 interface Product {
   name: string;
@@ -15,45 +14,7 @@ interface Product {
   link: string;
 }
 
-// Parse Etsy RSS feed — STRICTLY tote bags only (no toys, cushions, coasters)
-async function fetchVelvetEssenceProducts(): Promise<Product[]> {
-  try {
-    const res = await fetch('https://api.rss2json.com/v1/api.json?rss_url=https://www.etsy.com/shop/VelvetEssenceDesign/rss');
-    const data = await res.json();
-    
-    if (!data.items) return [];
-    
-    return data.items
-      .filter((item: any) => {
-        const title = item.title?.toLowerCase() || '';
-        // Only keep tote bags
-        return title.includes('tote');
-      })
-      .map((item: any) => {
-        const imgMatch = item.description?.match(/src="([^"]+)"/);
-        const image = imgMatch ? imgMatch[1] : '';
-        
-        const priceMatch = item.description?.match(/(\\d+\\.\\d+)\\s*GBP/);
-        const price = priceMatch ? `£${priceMatch[1]}` : '';
-        
-        const name = item.title?.replace(/ by VelvetEssenceDesign$/, '') || '';
-        const cleanDesc = item.description?.replace(/<[^>]*>/g, '').substring(0, 120) + '...' || '';
-        
-        return {
-          name,
-          shortDesc: cleanDesc,
-          price,
-          image,
-          link: item.link || '',
-        };
-      });
-  } catch (error) {
-    console.error('Failed to fetch Velvet Essence products:', error);
-    return [];
-  }
-}
-
-// Pinned tote bags (always shown first)
+// Pinned Surreal Art Tote Bags (always first)
 const pinnedTotes: Product[] = [
   {
     name: "Surreal Art Tote Bag — Statement Canvas",
@@ -68,6 +29,59 @@ const pinnedTotes: Product[] = [
     price: "Shop Now",
     image: "https://i.etsystatic.com/56112249/r/il/8e21b1/7943473378/il_570xN.7949253075_jwcl.jpg",
     link: "https://www.etsy.com/uk/listing/4426397775/surreal-art-tote-bag-statement-canvas",
+  },
+];
+
+// Real tote bags from Etsy shop
+const toteBags: Product[] = [
+  {
+    name: "Pink Guitar Tote Bag",
+    shortDesc: "Rock girl aesthetic shopper — perfect for music lovers",
+    price: "£11.99",
+    image: "https://i.etsystatic.com/56112249/r/il/db3dce/7680860369/il_570xN.7680860369_g45e.jpg",
+    link: "https://www.etsy.com/listing/4445932040/pink-guitar-acoustic-tote-bag-rock-girl",
+  },
+  {
+    name: "Dog Lover Tote Bag",
+    shortDesc: "Easily distracted by dogs and books — gift for bookworms",
+    price: "£11.99",
+    image: "https://i.etsystatic.com/56112249/r/il/8e21b1/7943473378/il_570xN.7943473378_fzdp.jpg",
+    link: "https://www.etsy.com/listing/4355938777/easily-distracted-by-dogs-and-books-tote",
+  },
+  {
+    name: "Galaxy Tote Bag",
+    shortDesc: "Colourful planet canvas shopper — space aesthetic art",
+    price: "£11.99",
+    image: "https://i.etsystatic.com/56112249/r/il/ab1c3b/7690665237/il_570xN.7690665237_r3j0.jpg",
+    link: "https://www.etsy.com/listing/4447431926/galaxy-tote-bag-colourful-planet-canvas",
+  },
+  {
+    name: "Space Quote Tote Bag",
+    shortDesc: "All I Need Is Space — astronaut quote canvas shopper",
+    price: "£11.99",
+    image: "https://i.etsystatic.com/56112249/r/il/85215a/7642674506/il_570xN.7642674506_94y6.jpg",
+    link: "https://www.etsy.com/listing/4447424395/space-tote-bag-o-astronaut-quote-shopper",
+  },
+  {
+    name: "Dark Romance Tote Bag",
+    shortDesc: "Gothic rose aesthetic shopper — dramatic art canvas",
+    price: "£11.99",
+    image: "https://i.etsystatic.com/56112249/r/il/2c216a/7991432097/il_570xN.7991432097_k4io.jpg",
+    link: "https://www.etsy.com/listing/4446004575/dark-romance-tote-bag-gothic-rose",
+  },
+  {
+    name: "Bird Tote Bag",
+    shortDesc: "Cute Kingfisher canvas tote — nature lover gift",
+    price: "£11.99",
+    image: "https://i.etsystatic.com/56112249/r/il/0afbae/7635859759/il_570xN.7635859759_qoj0.jpg",
+    link: "https://www.etsy.com/listing/4438927415/bird-tote-bag-cute-kingfisher-canvas",
+  },
+  {
+    name: "Witchy Tote Bag",
+    shortDesc: "Dark feminine gothic autumn art canvas — gifts for witchy friends",
+    price: "£11.99",
+    image: "https://i.etsystatic.com/56112249/r/il/baa891/7681888563/il_570xN.7681888563_ka97.jpg",
+    link: "https://www.etsy.com/listing/4446085627/gifts-for-witchy-friends-witchy-tote-bag",
   },
 ];
 
@@ -108,18 +122,6 @@ function ProductCard({ product }: { product: Product }) {
 
 export default function VelvetEssencePage() {
   const { open } = useContactModal();
-  const [rssProducts, setRssProducts] = useState<Product[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    fetchVelvetEssenceProducts().then((items) => {
-      // Filter out pinned items from RSS to avoid duplicates
-      const pinnedLinks = pinnedTotes.map(p => p.link);
-      const filtered = items.filter(item => !pinnedLinks.includes(item.link));
-      setRssProducts(filtered);
-      setLoading(false);
-    });
-  }, []);
 
   return (
     <>
@@ -176,7 +178,7 @@ export default function VelvetEssencePage() {
         </div>
       </section>
 
-      {/* T-Shirts Banner */}
+      {/* T-Shirts Section */}
       <section className="py-12 bg-gradient-to-r from-pink-50 to-purple-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-2xl font-bold mb-2">T-Shirt Collection</h2>
@@ -194,44 +196,27 @@ export default function VelvetEssencePage() {
         </div>
       </section>
 
-      {/* Tote Bags — pinned first, then RSS */}
+      {/* Tote Bags — pinned first, then rest */}
       <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl font-bold mb-2">Tote Bags</h2>
           <p className="text-sm text-gray-500 mb-8">
-            Featured picks + auto-synced from Etsy • Updates daily
+            Featured picks + handpicked selection from Etsy
           </p>
           
-          {loading ? (
-            <div className="grid md:grid-cols-3 gap-8">
-              {[1, 2, 3].map((i) => (
-                <div key={i} className="bg-gray-50 rounded-lg overflow-hidden animate-pulse">
-                  <div className="bg-gray-200 aspect-square" />
-                  <div className="p-4 space-y-3">
-                    <div className="h-4 bg-gray-200 rounded w-3/4" />
-                    <div className="h-3 bg-gray-200 rounded w-1/2" />
-                  </div>
-                </div>
-              ))}
-            </div>
-          ) : (
-            <>
-              {/* Pinned items first */}
-              <div className="grid md:grid-cols-3 gap-8 mb-8">
-                {pinnedTotes.map((product, i) => (
-                  <ProductCard key={`pinned-${i}`} product={product} />
-                ))}
-              </div>
-              {/* RSS items below */}
-              {rssProducts.length > 0 && (
-                <div className="grid md:grid-cols-3 gap-8">
-                  {rssProducts.map((product, i) => (
-                    <ProductCard key={`rss-${i}`} product={product} />
-                  ))}
-                </div>
-              )}
-            </>
-          )}
+          {/* Pinned items first */}
+          <div className="grid md:grid-cols-3 gap-8 mb-8">
+            {pinnedTotes.map((product, i) => (
+              <ProductCard key={`pinned-${i}`} product={product} />
+            ))}
+          </div>
+          
+          {/* Rest of tote bags */}
+          <div className="grid md:grid-cols-3 gap-8">
+            {toteBags.map((product, i) => (
+              <ProductCard key={`tote-${i}`} product={product} />
+            ))}
+          </div>
         </div>
       </section>
 
