@@ -83,7 +83,7 @@ export default function AiCreativityBlogPage() {
             </p>
 
             {/* Video 1: Learning */}
-            <BlogVideo src="/ai-creativity-learning.mp4" caption="REME Project — Learning" />
+            <BlogVideo src="/ai-creativity-learning.mp4" caption="REME Story" />
 
             <p>
               Liliane and Elizabeth didn't start with a complex AI model — they broke down the problem into manageable steps:
@@ -100,7 +100,7 @@ export default function AiCreativityBlogPage() {
             </p>
 
             {/* Video 2: Research */}
-            <BlogVideo src="/ai-creativity-research.mp4" caption="REME Project Story" />
+            <BlogVideo src="/ai-creativity-research.mp4" caption="REME Research" />
 
             <h3 className="text-xl font-bold text-gray-900 mt-8">Looking Forward: The Future of Learning</h3>
 
@@ -124,7 +124,7 @@ export default function AiCreativityBlogPage() {
             </p>
 
             {/* Video 3: Technical */}
-            <BlogVideo src="/ai-creativity-technical.mp4" caption="REME Project — Research" />
+            <BlogVideo src="/ai-creativity-technical.mp4" caption="REME Learning" />
 
             {/* Let's Connect */}
             <div className="mt-12 pt-8 border-t border-gray-200">
