@@ -3,7 +3,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import SeoMeta from '@/components/SeoMeta';
 import VideoPlayer from '@/components/VideoPlayer';
-import ButterflyRain from '@/components/ButterflyRain';
+import SingleButterfly from '@/components/SingleButterfly';
 
 const TITLE = "Liliane Xiaoxu Lang — Creation | LangDesignWork";
 const DESC = "Liliane Xiaoxu Lang's video gallery showcasing her ideas, creative process, and the path from ideation to creation.";
@@ -107,7 +107,7 @@ export default function LilianeCreatePage() {
 
       {/* Hero */}
       <section className="relative bg-gradient-to-br from-gray-950 via-gray-900 to-red-950 text-white overflow-hidden">
-        <ButterflyRain count={5} />
+        <SingleButterfly />
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-10 left-10 w-2 h-2 bg-red-400 rounded-full animate-pulse" />
           <div className="absolute top-32 right-20 w-3 h-3 bg-pink-400 rounded-full animate-pulse" style={{ animationDelay: '1s' }} />
