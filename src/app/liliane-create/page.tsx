@@ -1,6 +1,32 @@
+import type { Metadata } from 'next';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import SeoMeta from '@/components/SeoMeta';
+
+const TITLE = "Liliane Xiaoxu Lang — Creation | LangDesignWork";
+const DESC = "Liliane Xiaoxu Lang's video gallery showcasing her ideas, creative process, and the path from ideation to creation.";
+
+export const metadata: Metadata = {
+  title: TITLE,
+  description: DESC,
+  openGraph: {
+    title: TITLE,
+    description: DESC,
+    type: 'website',
+    url: 'https://www.langdesignwork.com/liliane-create',
+    images: [{ url: '/images/og-liliane.png', alt: 'Hand-crafted clay raccoon by Liliane Xiaoxu Lang' }],
+    siteName: 'LangDesignWork',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: TITLE,
+    description: DESC,
+    images: ['/images/og-liliane.png'],
+  },
+  alternates: {
+    canonical: 'https://www.langdesignwork.com/liliane-create',
+  },
+};
 
 export default function LilianeCreatePage() {
   return (

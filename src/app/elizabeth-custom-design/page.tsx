@@ -1,7 +1,33 @@
+import type { Metadata } from 'next';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Link from 'next/link';
 import SeoMeta from '@/components/SeoMeta';
+
+const TITLE = "Custom Design by Elizabeth Xiaoyue Lang | LangDesignWork";
+const DESC = "Explore the custom illustration & design portfolio of Elizabeth Xiaoyue Lang. Discover unique, playful, and colourful work.";
+
+export const metadata: Metadata = {
+  title: TITLE,
+  description: DESC,
+  openGraph: {
+    title: TITLE,
+    description: DESC,
+    type: 'website',
+    url: 'https://www.langdesignwork.com/elizabeth-custom-design',
+    images: [{ url: '/images/og-elizabeth.png', alt: 'Elizabeth Xiaoyue Lang Custom Design' }],
+    siteName: 'LangDesignWork',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: TITLE,
+    description: DESC,
+    images: ['/images/og-elizabeth.png'],
+  },
+  alternates: {
+    canonical: 'https://www.langdesignwork.com/elizabeth-custom-design',
+  },
+};
 
 export default function ElizabethCustomDesignPage() {
   return (
