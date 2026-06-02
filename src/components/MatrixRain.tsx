@@ -2,7 +2,17 @@
 
 import { useEffect, useRef } from 'react';
 
-export default function MatrixRain() {
+interface MatrixRainProps {
+  color?: string;
+  density?: number;
+  speed?: number;
+}
+
+export default function MatrixRain({ 
+  color = '#FF6B6B', 
+  density = 15, 
+  speed = 30 
+}: MatrixRainProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
@@ -12,65 +22,52 @@ export default function MatrixRain() {
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
-    let animationId: number;
-
     const resize = () => {
-      canvas.width = canvas.offsetWidth * window.devicePixelRatio;
-      canvas.height = canvas.offsetHeight * window.devicePixelRatio;
-      ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+      canvas.width = canvas.parentElement?.offsetWidth || window.innerWidth;
+      canvas.height = canvas.parentElement?.offsetHeight || window.innerHeight;
     };
-
+    
     resize();
     window.addEventListener('resize', resize);
 
-    // Characters: binary + some Chinese chars for variety
-    const chars = '01アイウエオカキクケコサシスセソタチツテトナニヌネノ';
-    const fontSize = 14;
-    const columns = Math.floor(canvas.offsetWidth / fontSize);
-    const drops: number[] = new Array(columns).fill(1);
+    const columns = Math.floor(canvas.width / density);
+    const drops = Array(columns).fill(1);
+    const chars = '01'.split('');
 
     const draw = () => {
-      const w = canvas.offsetWidth;
-      const h = canvas.offsetHeight;
-      
-      // Semi-transparent black for fade effect
+      // Semi-transparent black to create trail effect
       ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
-      ctx.fillRect(0, 0, w, h);
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-      ctx.fillStyle = '#FF6B6B'; // Coral accent instead of green
-      ctx.font = `${fontSize}px monospace`;
+      ctx.fillStyle = color;
+      ctx.font = `${density * 0.8}px monospace`;
 
       for (let i = 0; i < drops.length; i++) {
-        const char = chars[Math.floor(Math.random() * chars.length)];
-        ctx.globalAlpha = Math.random() * 0.8 + 0.2;
-        ctx.fillText(char, i * fontSize, drops[i] * fontSize);
+        const text = chars[Math.floor(Math.random() * chars.length)];
+        const x = i * density;
+        const y = drops[i] * density;
 
-        if (drops[i] * fontSize > h && Math.random() > 0.975) {
+        ctx.fillText(text, x, y);
+
+        if (y > canvas.height && Math.random() > 0.975) {
           drops[i] = 0;
         }
         drops[i]++;
       }
-      ctx.globalAlpha = 1;
-
-      // Throttle to ~15fps for a slower, calmer effect
-      setTimeout(() => {
-        animationId = requestAnimationFrame(draw);
-      }, 67);
     };
 
-    draw();
+    const interval = setInterval(draw, speed);
 
     return () => {
-      cancelAnimationFrame(animationId);
+      clearInterval(interval);
       window.removeEventListener('resize', resize);
     };
-  }, []);
+  }, [color, density, speed]);
 
   return (
     <canvas
       ref={canvasRef}
-      className="absolute inset-0 w-full h-full"
-      style={{ opacity: 0.3 }}
+      className="absolute inset-0 w-full h-full opacity-20 pointer-events-none"
     />
   );
 }

@@ -135,8 +135,11 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section id="work-with-us" className="py-16 bg-black text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section id="work-with-us" className="py-16 bg-black text-white relative overflow-hidden">
+        {/* Matrix rain animation - subtle dark version */}
+        <MatrixRain color="#333333" speed={50} />
+        
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <p className="text-sm text-gray-400 uppercase tracking-widest mb-2">WORK WITH US</p>
           <h2 className="text-3xl font-bold mb-4">
             Great brands deserve{' '}
