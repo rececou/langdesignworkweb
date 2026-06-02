@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import SeoMeta from '@/components/SeoMeta';
-import ButterflyRain from '@/components/ButterflyRain';
+import PlayfulCat from '@/components/PlayfulCat';
 
 const TITLE = "Custom Design by Elizabeth Xiaoyue Lang | LangDesignWork";
 const DESC = "Explore the custom illustration & design portfolio of Elizabeth Xiaoyue Lang. Discover unique, playful, and colourful work.";
@@ -134,13 +134,13 @@ export default function ElizabethCustomDesignPage() {
       <Header locale="en" />
 
       {/* Hero */}
-      <section className="relative bg-gradient-to-br from-gray-950 via-gray-900 to-red-950 text-white overflow-hidden">
-        <ButterflyRain count={5} />
+      <section className="relative bg-gradient-to-br from-gray-950 via-gray-900 to-purple-950 text-white overflow-hidden">
+        <PlayfulCat />
         <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-10 left-10 w-2 h-2 bg-red-400 rounded-full animate-pulse" />
+          <div className="absolute top-10 left-10 w-2 h-2 bg-purple-400 rounded-full animate-pulse" />
           <div className="absolute top-32 right-20 w-3 h-3 bg-pink-400 rounded-full animate-pulse" style={{ animationDelay: '1s' }} />
-          <div className="absolute bottom-20 left-1/3 w-2 h-2 bg-orange-400 rounded-full animate-pulse" style={{ animationDelay: '2s' }} />
-          <div className="absolute top-1/2 right-1/4 w-1.5 h-1.5 bg-red-300 rounded-full animate-pulse" style={{ animationDelay: '0.5s' }} />
+          <div className="absolute bottom-20 left-1/3 w-2 h-2 bg-indigo-400 rounded-full animate-pulse" style={{ animationDelay: '2s' }} />
+          <div className="absolute top-1/2 right-1/4 w-1.5 h-1.5 bg-purple-300 rounded-full animate-pulse" style={{ animationDelay: '0.5s' }} />
         </div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
           <span className="inline-block font-inter text-xs font-medium tracking-[1.5px] uppercase text-[#FF6B6B] mb-3">
