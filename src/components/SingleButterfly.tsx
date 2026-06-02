@@ -2,8 +2,8 @@
 
 import { useEffect, useRef, useState, useCallback } from 'react';
 
-// Magical Glowing Butterfly Component
-// Based on user reference: Translucent, neon pink/purple, glowing veins, ethereal sparkles
+// Soft Pink Bouncing Ball Component
+// Based on user request: soft pink ball bouncing randomly right to left, with sparkling pink tail
 
 export default function SingleButterfly() {
   const [pos, setPos] = useState({ x: 30, y: 40 });
@@ -13,28 +13,28 @@ export default function SingleButterfly() {
   const sparkleId = useRef(0);
   const timeRef = useRef(0);
 
-  // Gentle wandering logic
+  // Gentle bouncing logic
   const wander = useCallback(() => {
     const state = posRef.current;
 
-    // Random gentle nudges
-    state.vx += (Math.random() - 0.5) * 0.015;
-    state.vy += (Math.random() - 0.5) * 0.015;
+    // Random gentle nudges (prefer horizontal movement)
+    state.vx += (Math.random() - 0.5) * 0.02;
+    state.vy += (Math.random() - 0.5) * 0.01; // Less vertical movement
 
-    // Sine wave hover effect (cinematic float)
-    timeRef.current += 0.015;
-    state.vy += Math.sin(timeRef.current) * 0.008;
+    // Sine wave bounce effect
+    timeRef.current += 0.02;
+    state.vy += Math.sin(timeRef.current) * 0.01;
 
     // Keep within bounds with soft bounce
     const margin = 15;
-    if (state.x < margin) state.vx += 0.02;
-    if (state.x > 85) state.vx -= 0.02;
-    if (state.y < margin) state.vy += 0.02;
-    if (state.y > 75) state.vy -= 0.02;
+    if (state.x < margin) state.vx += 0.03;
+    if (state.x > 85) state.vx -= 0.03;
+    if (state.y < margin) state.vy += 0.03;
+    if (state.y > 75) state.vy -= 0.03;
 
-    // Damping (high damping for slow, floaty feel)
-    state.vx *= 0.97;
-    state.vy *= 0.97;
+    // Damping for floaty feel
+    state.vx *= 0.98;
+    state.vy *= 0.98;
 
     // Max speed limit
     const maxSpeed = 0.12;
@@ -85,25 +85,17 @@ export default function SingleButterfly() {
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
       <style jsx>{`
-        @keyframes wingsGlow {
-          0%, 100% { opacity: 0.8; filter: drop-shadow(0 0 10px #FF69B4) drop-shadow(0 0 20px #DA70D6); }
-          50% { opacity: 1; filter: drop-shadow(0 0 15px #FF69B4) drop-shadow(0 0 30px #DA70D6) drop-shadow(0 0 40px #FF1493); }
-        }
-        @keyframes wingFlapL {
-          0%, 100% { transform: rotateY(0deg) scaleX(1); }
-          50% { transform: rotateY(40deg) scaleX(0.6); }
-        }
-        @keyframes wingFlapR {
-          0%, 100% { transform: rotateY(0deg) scaleX(1); }
-          50% { transform: rotateY(-40deg) scaleX(0.6); }
+        @keyframes ballPulse {
+          0%, 100% { transform: scale(1); filter: drop-shadow(0 0 15px #FF69B4) drop-shadow(0 0 25px #DA70D6); }
+          50% { transform: scale(1.05); filter: drop-shadow(0 0 20px #FF69B4) drop-shadow(0 0 35px #DA70D6) drop-shadow(0 0 45px #FF1493); }
         }
         @keyframes sparklePulse {
           0%, 100% { opacity: 0.2; transform: scale(0.5); }
           50% { opacity: 1; transform: scale(1.2); }
         }
-        @keyframes coreGlow {
-          0%, 100% { opacity: 0.7; transform: scale(1); }
-          50% { opacity: 1; transform: scale(1.1); }
+        @keyframes ballBounce {
+          0%, 100% { transform: translateY(0) scale(1); }
+          50% { transform: translateY(-5px) scale(1.02); }
         }
       `}</style>
 
@@ -128,97 +120,26 @@ export default function SingleButterfly() {
         />
       ))}
 
-      {/* Magical Butterfly */}
+      {/* Soft Pink Ball */}
       <div
         style={{
           position: 'absolute',
           left: `${pos.x}%`,
           top: `${pos.y}%`,
           transform: 'translate(-50%, -50%)',
-          width: 80,
-          height: 80,
+          animation: 'ballBounce 1.5s ease-in-out infinite',
         }}
       >
-        <svg viewBox="0 0 100 100" className="overflow-visible" style={{ width: '100%', height: '100%' }}>
-          {/* Wings Container */}
-          <g style={{ animation: 'wingsGlow 3s ease-in-out infinite' }}>
-            {/* Left Wing */}
-            <g style={{ transformOrigin: '50px 50px', animation: 'wingFlapL 2.5s ease-in-out infinite' }}>
-              <path
-                d="M 50 50 Q 30 20, 10 30 Q 0 40, 20 55 Q 30 65, 50 50 Z"
-                fill="url(#wingGradientL)"
-                stroke="#FF69B4"
-                strokeWidth="1.5"
-                opacity="0.85"
-              />
-              {/* Veins */}
-              <path d="M 50 50 Q 35 35, 20 40" fill="none" stroke="#FFF" strokeWidth="0.8" opacity="0.6" />
-              <path d="M 50 50 Q 25 50, 15 55" fill="none" stroke="#FFF" strokeWidth="0.8" opacity="0.6" />
-            </g>
-            {/* Right Wing */}
-            <g style={{ transformOrigin: '50px 50px', animation: 'wingFlapR 2.5s ease-in-out infinite' }}>
-              <path
-                d="M 50 50 Q 70 20, 90 30 Q 100 40, 80 55 Q 70 65, 50 50 Z"
-                fill="url(#wingGradientR)"
-                stroke="#FF69B4"
-                strokeWidth="1.5"
-                opacity="0.85"
-              />
-              {/* Veins */}
-              <path d="M 50 50 Q 65 35, 80 40" fill="none" stroke="#FFF" strokeWidth="0.8" opacity="0.6" />
-              <path d="M 50 50 Q 75 50, 85 55" fill="none" stroke="#FFF" strokeWidth="0.8" opacity="0.6" />
-            </g>
-          </g>
-
-          {/* Lower Wings */}
-          <g style={{ animation: 'wingsGlow 3s ease-in-out infinite' }}>
-            {/* Left Lower Wing */}
-            <g style={{ transformOrigin: '50px 50px', animation: 'wingFlapL 2.5s ease-in-out infinite 0.1s' }}>
-              <path
-                d="M 50 50 Q 30 60, 25 75 Q 30 85, 50 70 Z"
-                fill="url(#wingGradientL)"
-                stroke="#FF69B4"
-                strokeWidth="1"
-                opacity="0.75"
-              />
-            </g>
-            {/* Right Lower Wing */}
-            <g style={{ transformOrigin: '50px 50px', animation: 'wingFlapR 2.5s ease-in-out infinite 0.1s' }}>
-              <path
-                d="M 50 50 Q 70 60, 75 75 Q 70 85, 50 70 Z"
-                fill="url(#wingGradientR)"
-                stroke="#FF69B4"
-                strokeWidth="1"
-                opacity="0.75"
-              />
-            </g>
-          </g>
-
-          {/* Body */}
-          <g style={{ animation: 'coreGlow 2s ease-in-out infinite' }}>
-            <ellipse cx="50" cy="50" rx="3" ry="15" fill="#FFF" opacity="0.9" />
-            <ellipse cx="50" cy="50" rx="5" ry="18" fill="url(#bodyGradient)" opacity="0.6" />
-          </g>
-
-          <defs>
-            <radialGradient id="wingGradientL" cx="30%" cy="30%" r="70%">
-              <stop offset="0%" stopColor="#FFF" stopOpacity="0.9" />
-              <stop offset="40%" stopColor="#FFB6C1" stopOpacity="0.7" />
-              <stop offset="80%" stopColor="#FF69B4" stopOpacity="0.5" />
-              <stop offset="100%" stopColor="#DA70D6" stopOpacity="0.3" />
-            </radialGradient>
-            <radialGradient id="wingGradientR" cx="70%" cy="30%" r="70%">
-              <stop offset="0%" stopColor="#FFF" stopOpacity="0.9" />
-              <stop offset="40%" stopColor="#FFB6C1" stopOpacity="0.7" />
-              <stop offset="80%" stopColor="#FF69B4" stopOpacity="0.5" />
-              <stop offset="100%" stopColor="#DA70D6" stopOpacity="0.3" />
-            </radialGradient>
-            <linearGradient id="bodyGradient" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#FF69B4" />
-              <stop offset="100%" stopColor="#DA70D6" />
-            </linearGradient>
-          </defs>
-        </svg>
+        <div
+          style={{
+            width: 40,
+            height: 40,
+            borderRadius: '50%',
+            background: 'radial-gradient(circle at 35% 35%, #FFF 0%, #FFB6C1 40%, #FF69B4 80%, #DA70D6 100%)',
+            boxShadow: '0 0 15px #FF69B4, 0 0 25px #DA70D6, inset 0 0 10px rgba(255,255,255,0.5)',
+            animation: 'ballPulse 2s ease-in-out infinite',
+          }}
+        />
       </div>
     </div>
   );
