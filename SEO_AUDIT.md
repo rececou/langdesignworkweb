@@ -263,9 +263,9 @@ All `<Image>`, `<img>`, and `<video>` tags across the site. Dynamic images (prod
 
 | Integration | HubSpot (Live) | Vercel (Current) | Gap | Action Required |
 |------------|---------------|------------------|-----|-----------------|
-| **GA4** (`G-8S28SC7LSQ`) | ✅ All 12 pages (gtag.js) | ❌ **NOT INTEGRATED** | 🔴 Missing entirely | Add gtag.js to layout.tsx |
-| **Facebook Pixel** (`1727019827969098`) | ✅ All 12 pages (fbq init + track PageView) | ❌ **NOT INTEGRATED** | 🔴 Missing entirely | Add fbq script to layout.tsx |
-| **LinkedIn Insight Tag** (`8304644`) | ✅ All 12 pages (insight.min.js) | ❌ **NOT INTEGRATED** | 🔴 Missing entirely | Add LinkedIn tag to layout.tsx |
+| **GA4** (`G-8S28SC7LSQ`) | ✅ All 12 pages (gtag.js) | ✅ **Active** (gtag.js in layout.tsx, commit d99a877) | ✅ **Fixed** Jun 2 | Done |
+| **Facebook Pixel** (`1727019827969098`) | ✅ All 12 pages (fbq init + track PageView) | ✅ **Active** (fbq in layout.tsx + noscript, commit d99a877) | ✅ **Fixed** Jun 2 | Done |
+| **LinkedIn Insight Tag** (`8304644`) | ✅ All 12 pages (insight.min.js) | ✅ **Active** (insight.min.js in layout.tsx + noscript, commit d99a877) | ✅ **Fixed** Jun 2 | Done |
 | **TikTok Pixel** | ✅ `/partner/kidslabuk` only | ❌ Link only, NO pixel | 🔴 Missing | Add TikTok pixel to Kidlab page if needed |
 | **HubSpot Tracking** (`244077776`) | ✅ js.hs-scripts.com loader | ✅ Present (HubSpotTracking.tsx) | ✅ OK | No action needed |
 | **HubSpot Forms** | ✅ js.hsforms.net/embed/v2.js | ✅ Present (HubSpotTracking.tsx) | ✅ OK | No action needed |
@@ -284,9 +284,9 @@ All `<Image>`, `<img>`, and `<video>` tags across the site. Dynamic images (prod
 | 1 | OG Title | LangDesignWork \| Home | LangDesignWork \| Home | ✅ Match | — | — | |
 | 2 | OG Description | Creativity. Community. Commerce... | Creativity. Community. Commerce... | ✅ Match | — | — | |
 | 3 | OG Image | LangDesignWorkLogo - social_300_175-2.png | /images/og-home.png | ✅ Local copy | — | — | |
-| 4 | og:image:alt | Lang Design Work Social Media | ❌ MISSING | 🔴 Missing | Accessibility + social sharing quality | Adds minor overhead | |
+| 4 | og:image:alt | Lang Design Work Social Media | ✅ Added (commit d99a877) | ✅ **Fixed** Jun 2 | — | — | |
 | 5 | Twitter Card | summary_large_image | summary_large_image (SeoMeta default) | ✅ Match | — | — | |
-| 6 | Organization Schema | Yes (5 sameAs: LinkedIn, Facebook, YouTube, Instagram, X) | Yes (3 sameAs: LinkedIn, YouTube, Instagram) | ⚠️ Missing Facebook & X | Completes social graph | Facebook page may be inactive | |
+| 6 | Organization Schema | Yes (5 sameAs: LinkedIn, Facebook, YouTube, Instagram, X) | ✅ Yes (5 sameAs: LinkedIn, Facebook, YouTube, Instagram, X) — restored Jun 2 | ✅ **Fixed** Jun 2 | — | — | |
 | 7 | WebSite Schema | Yes | Yes | ✅ Match | — | — | |
 | | **Liliane Page (`/liliane`)** | | | | | | |
 | 8 | OG Title | Liliane Xiaoxu Lang \| Ideas & Prototyping \| LangDesignWork | Meet Liliane \| LangDesignWork | ⚠️ Different — Vercel simplified | HubSpot title is more descriptive for SEO | Shorter title may be cleaner for sharing | |
