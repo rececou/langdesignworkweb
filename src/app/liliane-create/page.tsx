@@ -37,6 +37,7 @@ const videos = [
     src: "/videos/liliane-create/sew-video.mp4",
     poster: "/videos/liliane-create/sew-cover.jpeg",
     duration: "PT2M46S",
+    date: "December 2025",
   },
   {
     title: "Make an Adorable Clay Raccoon from Scratch",
@@ -44,12 +45,11 @@ const videos = [
     src: "/videos/liliane-create/raccoon-video.mp4",
     poster: "/videos/liliane-create/raccoon-cover.jpg",
     duration: "PT1M26S",
+    date: "December 2025",
   },
 ];
 
 export default function LilianeCreatePage() {
-  const [playingIndex, setPlayingIndex] = useState<number | null>(null);
-
   return (
     <>
       <SeoMeta
@@ -133,6 +133,7 @@ export default function LilianeCreatePage() {
                 <div className="p-5">
                   <h3 className="text-lg font-bold mb-1 font-space">{video.title}</h3>
                   <p className="text-gray-500 text-sm">{video.desc}</p>
+                  <p className="text-gray-400 text-xs mt-2 italic">Created: {video.date}</p>
                 </div>
               </article>
             ))}
