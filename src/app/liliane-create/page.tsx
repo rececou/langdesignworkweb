@@ -1,11 +1,8 @@
-'use client';
-
 import type { Metadata } from 'next';
-import { useState } from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import SeoMeta from '@/components/SeoMeta';
-import Image from 'next/image';
+import VideoPlayer from '@/components/VideoPlayer';
 
 const TITLE = "Liliane Xiaoxu Lang — Creation | LangDesignWork";
 const DESC = "Liliane Xiaoxu Lang's video gallery showcasing her ideas, creative process, and the path from ideation to creation.";
@@ -126,32 +123,12 @@ export default function LilianeCreatePage() {
           <div className="grid md:grid-cols-2 gap-8">
             {videos.map((video, i) => (
               <article key={i} className="bg-gray-50 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
-                <div className="relative aspect-video bg-black cursor-pointer group" onClick={() => setPlayingIndex(playingIndex === i ? null : i)}>
-                  {playingIndex === i ? (
-                    <video
-                      className="w-full h-full object-cover"
-                      controls
-                      autoPlay
-                      playsInline
-                    >
-                      <source src={video.src} type="video/mp4" />
-                    </video>
-                  ) : (
-                    <>
-                      <img
-                        src={video.poster}
-                        alt={video.title}
-                        className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity"
-                      />
-                      <div className="absolute inset-0 flex items-center justify-center bg-black/30 group-hover:bg-black/20 transition-colors">
-                        <div className="w-16 h-16 bg-white/90 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
-                          <svg className="w-6 h-6 text-[#FF6B6B] ml-1" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M8 5v14l11-7z"/>
-                          </svg>
-                        </div>
-                      </div>
-                    </>
-                  )}
+                <div className="relative aspect-video bg-black">
+                  <VideoPlayer
+                    src={video.src}
+                    poster={video.poster}
+                    title={video.title}
+                  />
                 </div>
                 <div className="p-5">
                   <h3 className="text-lg font-bold mb-1 font-space">{video.title}</h3>

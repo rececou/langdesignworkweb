@@ -1,9 +1,7 @@
 import type { Metadata } from 'next';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import Link from 'next/link';
 import SeoMeta from '@/components/SeoMeta';
-import Image from 'next/image';
 
 const TITLE = "Custom Design by Elizabeth Xiaoyue Lang | LangDesignWork";
 const DESC = "Explore the custom illustration & design portfolio of Elizabeth Xiaoyue Lang. Discover unique, playful, and colourful work.";
@@ -46,23 +44,6 @@ const galleryItems = [
     src: `${HS}/girl%20listens%20to%20the%20music%20moment.jpeg`,
     name: "Daydreams in Stereo",
     desc: "Custom character illustration",
-  },
-];
-
-const products = [
-  {
-    name: "Whimsical Butterfly Tote Bag",
-    desc: "This reusable cotton tote features an imaginative illustration, designed for those who love bold, expressive style, blends fashion and art into everyday accessory.",
-    image: `${HS}/butterfly%20legs_tote_sku001.jpeg`,
-    price: "13.99",
-    etsy: "https://www.etsy.com/listing/4426365006",
-  },
-  {
-    name: "Daydreams in Stereo Tote Bag",
-    desc: "Hand-printed tote bag with Daydreams in Stereo design by Elizabeth Xiaoyue Lang.",
-    image: `${HS}/girl%20listens%20to%20the%20music%20moment_tote.jpeg`,
-    price: "13.99",
-    etsy: "https://www.etsy.com/listing/4426475502",
   },
 ];
 
@@ -117,19 +98,6 @@ export default function ElizabethCustomDesignPage() {
                   description: item.desc,
                 })),
               },
-              ...products.map((p) => ({
-                '@type': 'Product',
-                name: p.name,
-                description: p.desc,
-                image: p.image,
-                offers: {
-                  '@type': 'Offer',
-                  price: p.price,
-                  priceCurrency: 'GBP',
-                  availability: 'https://schema.org/InStock',
-                  url: p.etsy,
-                },
-              })),
             ],
           }),
         }}
