@@ -34,15 +34,15 @@ const videos = [
   {
     title: "Sew and Style Your Top with Colorful Button Straps",
     desc: "Easy Sewing Tutorial for Making Colorful Strap Top",
-    src: `${HS}/Sew%20and%20Style%20Your%20Top%20with%20Colorful%20Button%20Straps.mp4`,
-    poster: `${HS}/sew%20and%20style%20straps%20top.jpeg`,
+    src: "/videos/liliane-create/sew-video.mp4",
+    poster: "/videos/liliane-create/sew-cover.jpeg",
     duration: "PT2M46S",
   },
   {
     title: "Make an Adorable Clay Raccoon from Scratch",
     desc: "Video of making hand crafted clay raccoon",
-    src: `${HS}/gift%20idea%20hand%20crafted%20clay%20raccoon.mp4`,
-    poster: `${HS}/raccoon_social.jpeg`,
+    src: "/videos/liliane-create/raccoon-video.mp4",
+    poster: "/videos/liliane-create/raccoon-cover.jpg",
     duration: "PT1M26S",
   },
 ];
