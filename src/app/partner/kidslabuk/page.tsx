@@ -67,20 +67,6 @@ const products = [
     image: "https://i.etsystatic.com/65159532/r/il/5908d0/7949262891/il_570xN.7949262891_fie7.jpg",
     link: "https://www.etsy.com/listing/4486940015",
   },
-  {
-    name: "DIY STEM Music Box",
-    shortDesc: "Build-your-own mechanical piano music box",
-    price: "£6.00",
-    image: "https://i.etsystatic.com/65159532/r/il/48a414/7901292124/il_570xN.7901292124_jawr.jpg",
-    link: "https://www.etsy.com/listing/4486943920",
-  },
-  {
-    name: "DIY STEM Newton's Pendulum",
-    shortDesc: "Classic Newton's Cradle with polished steel spheres",
-    price: "£6.00",
-    image: "https://i.etsystatic.com/65159532/r/il/251fbe/7949224381/il_570xN.7949224381_9lbi.jpg",
-    link: "https://www.etsy.com/listing/4486934303",
-  },
 ];
 
 export default function KidlabPage() {
@@ -167,7 +153,7 @@ export default function KidlabPage() {
           <h2 className="text-2xl font-bold mb-2">Memories are built, not scrolled</h2>
           <p className="text-gray-600 mb-8">Wooden DIY STEM Kits — hands-on fun for curious minds. All items stocked in the UK for fast delivery.</p>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            {products.slice(0, 8).map((product) => (
+            {products.map((product) => (
               <a
                 key={product.name}
                 href={product.link}
