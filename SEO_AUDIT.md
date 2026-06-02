@@ -486,4 +486,13 @@ All `<Image>`, `<img>`, and `<video>` tags across the site. Dynamic images (prod
 |------|-------------|---------------|
 | `src/app/remecou/page.tsx` | Converted Organization schema to `@graph` with 2 items: Organization (unchanged) + WebPage (url, name, description, inLanguage: en-GB, mainEntity → Organization) | Revert to single Organization schema |
 
+### 2026-06-02 — Elizabeth Custom Design Full Schema (Hema)
+**Commit**: `1392381`
+**Changed By**: Hema
+
+**Files Modified**:
+| File | What Changed | Revert Action |
+|------|-------------|---------------|
+| `src/app/elizabeth-custom-design/page.tsx` | Added `@graph` with 6 items: Person (jobTitle "Creator & Designer"), WebPage (mainEntity → Person), ImageGallery, 2× Product (Whimsical Butterfly Tote Bag + Daydreams in Stereo Tote Bag with £13.99 GBP offers), ItemList (2 products) | Remove script block |
+
 ---
