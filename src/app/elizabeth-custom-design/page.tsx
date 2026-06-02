@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import SeoMeta from '@/components/SeoMeta';
-import WalkingCatLine from '@/components/WalkingCatLine';
+import FluffyCat from '@/components/FluffyCat';
 
 const TITLE = "Custom Design by Elizabeth Xiaoyue Lang | LangDesignWork";
 const DESC = "Explore the custom illustration & design portfolio of Elizabeth Xiaoyue Lang. Discover unique, playful, and colourful work.";
@@ -135,7 +135,7 @@ export default function ElizabethCustomDesignPage() {
 
       {/* Hero */}
       <section className="relative bg-gradient-to-br from-gray-950 via-gray-900 to-purple-950 text-white overflow-hidden">
-        <WalkingCatLine />
+        <FluffyCat />
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-10 left-10 w-2 h-2 bg-purple-400 rounded-full animate-pulse" />
           <div className="absolute top-32 right-20 w-3 h-3 bg-pink-400 rounded-full animate-pulse" style={{ animationDelay: '1s' }} />
