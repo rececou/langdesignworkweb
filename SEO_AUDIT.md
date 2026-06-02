@@ -412,3 +412,42 @@ All `<Image>`, `<img>`, and `<video>` tags across the site. Dynamic images (prod
 | 15 | Restore missing sameAs links (Facebook, X) | Homepage | P3 | Low |
 
 ---
+
+## CHANGE LOG — Phase 1+2 (Tracking + SEO Foundation)
+
+### 2026-06-02 — Phase 1: Critical Tracking Fixes (Hema)
+**Commit**: `d99a877`
+**Changed By**: Hema
+
+**Files Created/Modified**:
+| File | What Changed | Revert Action |
+|------|-------------|---------------|
+| `src/components/ContactModal.tsx` | Fixed HubSpot form region: `na1` → `na2` | Change region back to `na1` |
+| `src/app/layout.tsx` | Added GA4 (G-8S28SC7LSQ), Facebook Pixel (1727019827969098), LinkedIn Insight Tag (8304644) with noscript fallbacks | Remove all Script blocks and noscript tags |
+| `src/app/layout.tsx` | Added `<link rel="llm-txt">` reference to `llms.txt` | Remove link tag |
+| `src/app/layout.tsx` | Restored Organization sameAs links: added YouTube (`@langdesignwork`) and X (`@langdesignwork`) — now 5 total | Remove from sameAs array |
+| `src/components/SeoMeta.tsx` | Added `ogImageAlt`, `twitterTitle`, `twitterDescription`, `twitterImage` props + `og:image:alt` meta injection | Revert to previous version |
+
+### 2026-06-02 — Phase 2: SEO Metadata Enhancements (Hema)
+**Commit**: `d99a877`
+**Changed By**: Hema
+
+**Pages Updated** (all 12 pages now have explicit `ogTitle`, `ogDescription`, `ogImageAlt`):
+| Page | Changes |
+|------|---------|
+| `/` (Homepage) | Added `ogImageAlt: "Lang Design Work Social Media"`, explicit `ogTitle`/`ogDescription` |
+| `/liliane` | Added `ogImageAlt: "Liliane Xiaoxu Lang Discover Channel – creativity, debates, and insights"`, explicit `ogTitle`/`ogDescription` |
+| `/liliane-create` | **Added SeoMeta** (was missing). Set title, description, OG, alt text |
+| `/elizabeth` | **Added SeoMeta** (was missing). Set title, description, OG, alt text |
+| `/elizabeth-custom-design` | **Added SeoMeta** (was missing). Set title, description, OG, alt text |
+| `/remecou` | Added explicit `ogTitle`/`ogDescription` |
+| `/partner/kidslabuk` | Added `ogImageAlt: "kidlab logo"`, explicit `ogTitle`/`ogDescription` |
+| `/partner/velvetessencedesign` | Added `ogImageAlt: "Velvet Essence Design hand-printed tote bags"`, explicit `ogTitle`/`ogDescription` |
+| `/en/home/blog` | Added OG image alt text, explicit Twitter images |
+| `/en/home/blog/ai-creativity-learning` | Added `ogImageAlt: "Liliane Lang and Elizabeth Lang and their REME smart device prototype."`, explicit `ogTitle`/`ogDescription` |
+| `/en/elizabeth/blog/oil-painting` | Added `ogImageAlt: "elizabeth lang oil painting"`, explicit `ogTitle`/`ogDescription` |
+| `/en/liliane/blog/tote-bag` | Fixed description to match HubSpot, added `ogImageAlt: "Shantell Morrison book tote bag"`, explicit `ogTitle`/`ogDescription` |
+
+**Impact**: 15 files changed, 144 insertions, 9 deletions
+
+---
