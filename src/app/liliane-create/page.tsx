@@ -14,6 +14,27 @@ export default function LilianeCreatePage() {
         ogImageAlt="Hand-crafted clay raccoon by Liliane Xiaoxu Lang"
         canonical="https://www.langdesignwork.com/liliane-create"
       />
+
+      {/* JSON-LD Person Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'Person',
+            name: 'Liliane Xiaoxu Lang',
+            jobTitle: 'Creator & Student',
+            description: "Liliane Xiaoxu Lang's video gallery showcasing her ideas, creative process, and the path from ideation to creation.",
+            image: 'https://www.langdesignwork.com/images/og-liliane.png',
+            url: 'https://www.langdesignwork.com/liliane-create',
+            affiliation: {
+              '@type': 'Organization',
+              name: 'LangDesignWork',
+            },
+          }),
+        }}
+      />
+
       <Header locale="en" />
 
       <section className="bg-gray-50 py-16">
