@@ -495,4 +495,13 @@ All `<Image>`, `<img>`, and `<video>` tags across the site. Dynamic images (prod
 |------|-------------|---------------|
 | `src/app/elizabeth-custom-design/page.tsx` | Added `@graph` with 6 items: Person (jobTitle "Creator & Designer"), WebPage (mainEntity → Person), ImageGallery, 2× Product (Whimsical Butterfly Tote Bag + Daydreams in Stereo Tote Bag with £13.99 GBP offers), ItemList (2 products) | Remove script block |
 
+### 2026-06-02 — Kidlab UK WebPage + Service Schema (Hema)
+**Commit**: `73c963f`
+**Changed By**: Hema
+
+**Files Modified**:
+| File | What Changed | Revert Action |
+|------|-------------|---------------|
+| `src/app/partner/kidslabuk/page.tsx` | Converted Organization schema to `@graph` with 2 items: Organization (unchanged) + WebPage (name, description, mainEntity → Service "Kidlab UK STEM Discovery Community") | Revert to single Organization schema |
+
 ---
