@@ -477,4 +477,13 @@ All `<Image>`, `<img>`, and `<video>` tags across the site. Dynamic images (prod
 |------|-------------|---------------|
 | `src/app/elizabeth/page.tsx` | Updated Person schema: jobTitle "Artist & Student" (from HubSpot), enhanced description, added image URL + affiliation to LangDesignWork | Revert script block |
 
+### 2026-06-02 — Remecou Page WebPage Schema Enhancement (Hema)
+**Commit**: `51c191a`
+**Changed By**: Hema
+
+**Files Modified**:
+| File | What Changed | Revert Action |
+|------|-------------|---------------|
+| `src/app/remecou/page.tsx` | Converted Organization schema to `@graph` with 2 items: Organization (unchanged) + WebPage (url, name, description, inLanguage: en-GB, mainEntity → Organization) | Revert to single Organization schema |
+
 ---
