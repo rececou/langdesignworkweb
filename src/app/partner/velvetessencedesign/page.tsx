@@ -118,6 +118,55 @@ export default function VelvetEssencePage() {
       />
       <Header locale="en" />
 
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@graph": [
+              {
+                "@type": "Organization",
+                name: "Velvet Essence Design",
+                url: "https://www.etsy.com/shop/VelvetEssenceDesign",
+                logo: "https://www.langdesignwork.com/images/velvet-essence-logo.jpg",
+                sameAs: [
+                  "https://www.etsy.com/shop/VelvetEssenceDesign",
+                  "https://www.tiktok.com/@velvetessencetotebags",
+                ],
+                address: {
+                  "@type": "PostalAddress",
+                  addressLocality: "London",
+                  addressCountry: "GB",
+                },
+              },
+              {
+                "@type": "WebPage",
+                "@id": "https://www.langdesignwork.com/partner/velvetessencedesign",
+                url: "https://www.langdesignwork.com/partner/velvetessencedesign",
+                name: "Velvet Essence Design | Hand-Printed T-Shirts & Tote Bags | LangDesignWork Partner",
+                description: "Hand-printed t-shirts and tote bags, wearable art made with care and creativity by Velvet Essence Design in London.",
+                mainEntity: { "@type": "Organization", name: "Velvet Essence Design" },
+              },
+              {
+                "@type": "ItemList",
+                name: "Velvet Essence Design Collection",
+                description: "Handpicked tote bags, accessories, and home decor from Velvet Essence Design on Etsy UK.",
+                itemListElement: [
+                  { "@type": "ListItem", position: 1, name: "Pink Guitar Tote Bag" },
+                  { "@type": "ListItem", position: 2, name: "Dog Lover Tote Bag" },
+                  { "@type": "ListItem", position: 3, name: "Galaxy Tote Bag" },
+                  { "@type": "ListItem", position: 4, name: "Space Quote Tote Bag" },
+                  { "@type": "ListItem", position: 5, name: "Dark Romance Tote Bag" },
+                  { "@type": "ListItem", position: 6, name: "Bird Tote Bag" },
+                  { "@type": "ListItem", position: 7, name: "Witchy Tote Bag" },
+                  { "@type": "ListItem", position: 8, name: "Champagne Coaster Set" },
+                ],
+              },
+            ],
+          }),
+        }}
+      />
+
       {/* Hero */}
       <section className="bg-pink-50 py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
