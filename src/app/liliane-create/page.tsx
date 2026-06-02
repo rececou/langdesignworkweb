@@ -82,6 +82,17 @@ export default function LilianeCreatePage() {
                   name: 'LangDesignWork',
                 },
               },
+              {
+                '@type': 'WebPage',
+                url: 'https://www.langdesignwork.com/liliane-create',
+                name: TITLE,
+                description: DESC,
+                inLanguage: 'en-GB',
+                primaryImageOfPage: {
+                  '@type': 'ImageObject',
+                  url: `${HS}/raccoon_social.jpeg`,
+                },
+              },
               ...videos.map((v) => ({
                 '@type': 'VideoObject' as const,
                 name: v.title,

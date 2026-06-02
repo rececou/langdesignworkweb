@@ -9,7 +9,7 @@
 |------|-------------|--------|------|--------|
 | `/ (homepage)` | Organization, WebSite | `d99a877` | `src/app/layout.tsx` | ✅ Complete |
 | `/liliane` | Person, VideoObject, ImageObject (×5), WebPage | `18a60d3` | `src/app/liliane/page.tsx` | ⚠️ Partial transcript |
-| `/liliane-create` | Person | `bc47069` | `src/app/liliane-create/page.tsx` | ⚠️ VideoObjects deferred |
+| `/liliane-create` | Person, WebPage, VideoObject (×2) | `bc47069` | `src/app/liliane-create/page.tsx` | ✅ Complete |
 | `/elizabeth` | Person | `1daa9c1` | `src/app/elizabeth/page.tsx` | ✅ Complete |
 | `/elizabeth-custom-design` | Person, WebPage, ImageGallery, Product (×2), ItemList | `1392381` | `src/app/elizabeth-custom-design/page.tsx` | ✅ Complete |
 | `/remecou` | Organization, WebPage | `51c191a` | `src/app/remecou/page.tsx` | ✅ Complete |
@@ -33,8 +33,6 @@
 | **3** | `/en/home/blog/ai-creativity-learning` | VideoObject (×3) | `transcript` / `hasPart` | Missing | **Video transcripts** — no transcript text for any of the 3 videos | Low |
 | **4** | `/en/elizabeth/blog/oil-painting` | VideoObject | `duration` | `PT1M30S` | **Real YouTube video duration** — "Behind the Scenes: From Canvas to Creation" (YouTube ID: `1JkgOeQgKdM`) | Medium |
 | **5** | `/en/elizabeth/blog/oil-painting` | VideoObject | `transcript` / `hasPart` | Missing | **Video transcript or description** — no transcript text for the YouTube video | Low |
-| **6** | `/liliane-create` | — | VideoObject schemas | None (deferred) | **Add VideoObject schemas** once real YouTube embeds replace the 4 placeholder `<div>` boxes on the page | Low (blocked by content) |
-
 ### Quick Fixes (I can do these if you provide the values)
 
 - **Video durations**: Just tell me the real length of each video (e.g., "REME Story is 2:15, REME Research is 1:45") and I'll update the schema.
@@ -64,9 +62,8 @@
 
 - **File:** `src/app/liliane-create/page.tsx`
 - **Commit:** `bc47069`
-- **Schema Types:** Person
-- **Details:** Person: jobTitle 'Creator & Student', description, affiliation LangDesignWork.
-- **⚠️ Needs attention:** VideoObjects deferred — page has 4 placeholder `<div>` boxes, no real YouTube embeds yet. Once videos are added, need VideoObject schemas.
+- **Schema Types:** Person, WebPage, VideoObject (×2)
+- **Details:** @graph with 4 items. Person: jobTitle 'Creator & Student', description, affiliation LangDesignWork. WebPage: name, description, inLanguage en-GB, primaryImageOfPage. 2× VideoObject: name, description, contentUrl, thumbnailUrl, duration, publisher, mainEntityOfPage.
 
 ### `/elizabeth`
 
