@@ -6,12 +6,14 @@ interface MatrixRainProps {
   color?: string;
   density?: number;
   speed?: number;
+  opacity?: string; // Tailwind opacity class, e.g. 'opacity-20'
 }
 
 export default function MatrixRain({ 
   color = '#FF6B6B', 
   density = 15, 
-  speed = 30 
+  speed = 30,
+  opacity = 'opacity-20'
 }: MatrixRainProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -67,7 +69,7 @@ export default function MatrixRain({
   return (
     <canvas
       ref={canvasRef}
-      className="absolute inset-0 w-full h-full opacity-20 pointer-events-none"
+      className={`absolute inset-0 w-full h-full ${opacity} pointer-events-none`}
     />
   );
 }
