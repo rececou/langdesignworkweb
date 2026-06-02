@@ -190,7 +190,7 @@ export default function ElizabethPage() {
           <div className="absolute bottom-20 left-1/3 w-2 h-2 bg-indigo-400 rounded-full animate-pulse" style={{ animationDelay: '2s' }} />
           <div className="absolute top-1/2 right-1/4 w-1.5 h-1.5 bg-purple-300 rounded-full animate-pulse" style={{ animationDelay: '0.5s' }} />
         </div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32" style={{ zIndex: 25 }}>
           <p className="text-sm text-purple-400 uppercase tracking-widest mb-2">OUR CREATORS</p>
           <h1 className="text-4xl lg:text-6xl font-bold mb-4 leading-tight">Designing Journey of Elizabeth Lang</h1>
           <p className="text-xl text-gray-300 max-w-xl mb-8">

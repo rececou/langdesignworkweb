@@ -25,6 +25,7 @@ export default function Header({ locale }: HeaderProps) {
   const [createOpen, setCreateOpen] = useState(false);
   const [brandsOpen, setBrandsOpen] = useState(false);
   const [langOpen, setLangOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const t = {
     homepage: locale === 'en' ? 'Homepage' : '主页',
@@ -38,6 +39,15 @@ export default function Header({ locale }: HeaderProps) {
     partnerWithUs: locale === 'en' ? 'Partner with us' : '与我们合作',
     selectLang: locale === 'en' ? 'Select a language' : '选择语言',
     closeLang: locale === 'en' ? 'Close language selector' : '关闭语言选择器',
+    menu: locale === 'en' ? 'Menu' : '菜单',
+    close: locale === 'en' ? 'Close' : '关闭',
+  };
+
+  // Close mobile menu when navigating
+  const handleNavClick = () => {
+    setMobileMenuOpen(false);
+    setCreateOpen(false);
+    setBrandsOpen(false);
   };
 
   return (
@@ -56,7 +66,7 @@ export default function Header({ locale }: HeaderProps) {
             </div>
           </Link>
 
-          {/* Navigation */}
+          {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-6">
             {/* Create dropdown */}
             <div className="relative">
@@ -118,8 +128,8 @@ export default function Header({ locale }: HeaderProps) {
 
           {/* Right side */}
           <div className="flex items-center gap-4">
-            {/* Language selector */}
-            <div className="relative">
+            {/* Language selector (desktop) */}
+            <div className="relative hidden md:block">
               <button
                 onClick={() => setLangOpen(!langOpen)}
                 className="flex items-center gap-2 text-sm text-gray-700 hover:text-black"
@@ -143,9 +153,103 @@ export default function Header({ locale }: HeaderProps) {
             </div>
 
             <ContactButton text={t.contact} />
+
+            {/* Mobile hamburger button */}
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="md:hidden p-2 text-gray-700 hover:text-black"
+              aria-label={mobileMenuOpen ? t.close : t.menu}
+            >
+              {mobileMenuOpen ? (
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              ) : (
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+              )}
+            </button>
           </div>
         </div>
       </div>
+
+      {/* Mobile Menu Overlay */}
+      {mobileMenuOpen && (
+        <div className="md:hidden bg-white border-t border-gray-200">
+          <div className="px-4 py-4 space-y-3">
+            {/* Create section */}
+            <div>
+              <button
+                onClick={() => setCreateOpen(!createOpen)}
+                className="flex items-center justify-between w-full text-left text-base font-medium text-gray-700 hover:text-black py-2"
+              >
+                {t.create}
+                <svg className={`w-4 h-4 transition-transform ${createOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              {createOpen && (
+                <div className="ml-4 space-y-2">
+                  <Link href={locale === 'en' ? '/liliane' : '/zh-cn/liliane'} onClick={handleNavClick} className="block py-2 text-sm text-gray-600 hover:text-black">
+                    {t.lilianeCreate}
+                  </Link>
+                  <Link href={locale === 'en' ? '/elizabeth' : '/zh-cn/elizabeth'} onClick={handleNavClick} className="block py-2 text-sm text-gray-600 hover:text-black">
+                    {t.elizabethCreate}
+                  </Link>
+                </div>
+              )}
+            </div>
+
+            <Link href={locale === 'en' ? '/en/home/blog' : '#'} onClick={handleNavClick} className="block text-base font-medium text-gray-700 hover:text-black py-2">
+              {t.discover}
+            </Link>
+
+            {/* Brands section */}
+            <div>
+              <button
+                onClick={() => setBrandsOpen(!brandsOpen)}
+                className="flex items-center justify-between w-full text-left text-base font-medium text-gray-700 hover:text-black py-2"
+              >
+                {t.brands}
+                <svg className={`w-4 h-4 transition-transform ${brandsOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              {brandsOpen && (
+                <div className="ml-4 space-y-2">
+                  <Link href="/partner/kidslabuk" onClick={handleNavClick} className="block py-2 text-sm text-gray-600 hover:text-black">
+                    Kidlab UK
+                  </Link>
+                  <Link href="/partner/velvetessencedesign" onClick={handleNavClick} className="block py-2 text-sm text-gray-600 hover:text-black">
+                    Velvet Essence Design
+                  </Link>
+                  <Link href={locale === 'en' ? '/remecou' : '/zh-cn/remecou'} onClick={handleNavClick} className="block py-2 text-sm text-gray-600 hover:text-black">
+                    {t.partnerWithUs}
+                  </Link>
+                </div>
+              )}
+            </div>
+
+            <Link href={locale === 'en' ? '/' : '/zh-cn/'} onClick={handleNavClick} className="block text-base font-medium text-gray-700 hover:text-black py-2">
+              {t.homepage}
+            </Link>
+
+            {/* Language switcher for mobile */}
+            <div className="pt-3 border-t border-gray-200">
+              <div className="text-xs text-gray-400 uppercase mb-2">{t.selectLang}</div>
+              <div className="flex gap-4">
+                <Link href="/" onClick={handleNavClick} className="text-sm text-gray-600 hover:text-black py-1">
+                  English
+                </Link>
+                <Link href="/zh-cn/" onClick={handleNavClick} className="text-sm text-gray-600 hover:text-black py-1">
+                  简体中文
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </header>
   );
 }

@@ -25,21 +25,45 @@ export default function Home() {
       <Header locale="en" />
 
       {/* Hero Section */}
-      <section className="bg-black text-white py-20 relative overflow-hidden">
+      <section className="bg-gradient-to-br from-gray-950 via-gray-900 to-gray-800 text-white py-20 md:py-28 relative overflow-hidden">
         {/* Matrix rain animation */}
-        <MatrixRain speed={50} opacity="opacity-30" />
+        <MatrixRain speed={40} opacity="opacity-20" />
+        
+        {/* Floating particles */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute top-[15%] left-[10%] w-1 h-1 bg-[#FF6B6B] rounded-full animate-pulse" style={{ animationDuration: '3s' }} />
+          <div className="absolute top-[25%] right-[15%] w-2 h-2 bg-[#FF6B6B] rounded-full animate-pulse" style={{ animationDuration: '2s', animationDelay: '0.5s' }} />
+          <div className="absolute top-[60%] left-[25%] w-1.5 h-1.5 bg-white rounded-full animate-pulse" style={{ animationDuration: '4s', animationDelay: '1s' }} />
+          <div className="absolute bottom-[25%] right-[30%] w-1 h-1 bg-[#FF6B6B] rounded-full animate-pulse" style={{ animationDuration: '2.5s', animationDelay: '1.5s' }} />
+          <div className="absolute top-[40%] left-[60%] w-2 h-2 bg-white/50 rounded-full animate-pulse" style={{ animationDuration: '3.5s', animationDelay: '0.3s' }} />
+          <div className="absolute bottom-[40%] left-[15%] w-1 h-1 bg-white/70 rounded-full animate-pulse" style={{ animationDuration: '2s', animationDelay: '2s' }} />
+          {/* Glow orbs */}
+          <div className="absolute top-[20%] right-[20%] w-32 h-32 bg-[#FF6B6B]/10 rounded-full blur-3xl" />
+          <div className="absolute bottom-[20%] left-[20%] w-24 h-24 bg-white/5 rounded-full blur-2xl" />
+        </div>
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <h1 className="text-5xl md:text-7xl font-bold mb-6">
-            <span className="text-white">Create.</span>{' '}
-            <span className="text-white">Experiment.</span>{' '}
-            <span className="text-[#FF6B6B]">Fun.</span>
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 animate-fade-in">
+            <span className="text-white">Create.</span>{' '}\n            <span className="text-white">Experiment.</span>{' '}\n            <span className="text-[#FF6B6B]">Fun.</span>
           </h1>
-          <p className="text-lg text-gray-300 max-w-2xl mb-8">
+          <p className="text-lg md:text-xl text-gray-300 max-w-2xl mb-10 animate-fade-in" style={{ animationDelay: '0.3s' }}>
             A portfolio community for makers and creators, a launchpad for real products everyone can enjoy.
           </p>
-          <HeroCTAs />
+          <div className="animate-fade-in" style={{ animationDelay: '0.6s' }}>
+            <HeroCTAs />
+          </div>
         </div>
+
+        <style jsx>{`
+          @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+          }
+          .animate-fade-in {
+            animation: fadeIn 1s ease-out forwards;
+            opacity: 0;
+          }
+        `}</style>
       </section>
 
       {/* Portfolio Section */}
