@@ -403,8 +403,8 @@ All `<Image>`, `<img>`, and `<video>` tags across the site. Dynamic images (prod
 | 6 | Add VideoObject schema with duration, transcript, publisher | /liliane, /liliane-create, AI creativity blog | P2 | Medium |
 | 7 | Add ImageObject schema with captions | /liliane (5 images) | P3 | Medium |
 | 8 | Add WebPage schema to all pages | All 12 pages | P3 | Medium |
-| 9 | Add Organization schema for partners | /remecou, /partner/kidslabuk, /partner/velvetessencedesign | P3 | Low |
-| 10 | Add ImageGallery + Product schemas | /elizabeth-custom-design, /partner/velvetessencedesign | P3 | Medium |
+| 9 | Add Organization schema for partners | /remecou, /partner/kidslabuk, /partner/velvetessencedesign | P3 | Low | ✅ Done |
+| 10 | Add ItemList schema (Product schemas skipped — static build risk) | /elizabeth-custom-design (done), /partner/velvetessencedesign (done — ItemList only) | P3 | Medium | ✅ Done |
 | 11 | Add dedicated OG images where missing | /elizabeth-custom-design, /partner/velvetessencedesign, /blog | P2 | Low |
 | 12 | Apply BlogPosting schema to ALL blog posts | All current and future blog posts | P2 | Low |
 | 13 | Fix OG titles/descriptions to match HubSpot where Vercel differs | /liliane, /en/liliane/blog/tote-bag | P2 | Low |
@@ -503,5 +503,16 @@ All `<Image>`, `<img>`, and `<video>` tags across the site. Dynamic images (prod
 | File | What Changed | Revert Action |
 |------|-------------|---------------|
 | `src/app/partner/kidslabuk/page.tsx` | Converted Organization schema to `@graph` with 2 items: Organization (unchanged) + WebPage (name, description, mainEntity → Service "Kidlab UK STEM Discovery Community") | Revert to single Organization schema |
+
+### 2026-06-02 — Velvet Essence Design Schema (Hema)
+**Commit**: `a6c1473`
+**Changed By**: Hema
+
+**Files Modified**:
+| File | What Changed | Revert Action |
+|------|-------------|---------------|
+| `src/app/partner/velvetessencedesign/page.tsx` | Added `@graph` with 3 items: Organization (name, Etsy/TikTok sameAs, London address), WebPage (name, description, mainEntity → Organization), ItemList (8 collection items by name only — no prices, to avoid stale price mismatch) | Remove script block |
+
+**Note**: Skipped individual Product schemas — static build means prices would drift from live Etsy listings. ItemList provides collection structure without price penalty risk.
 
 ---
