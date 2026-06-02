@@ -140,6 +140,109 @@ This will undo the entire SEO implementation commit.
 
 ---
 
+## IMAGE & VIDEO ALT TEXT INVENTORY
+
+All `<Image>`, `<img>`, and `<video>` tags across the site. Dynamic images (product cards, gallery items) use variable-based alt text from content data.
+
+### Homepage (`/`)
+
+| File Path | Image/Video | Alt Text |
+|-----------|-------------|----------|
+| `/images/liliane-discover.jpg` | Creator card image | Liliane Xiaoxu Lang |
+| `/images/elizabeth-mingrige.jpg` | Creator card image | Elizabeth Xiaoyue Lang |
+| `/images/kidlab-logo.jpg` | Partner logo | Kidlab UK |
+| `/images/velvet-essence-logo.jpg` | Partner logo | Velvet Essence Design |
+
+### Liliane Page (`/liliane`)
+
+| File Path | Image | Alt Text |
+|-----------|-------|----------|
+| `/images/lili-remake.jpg` | Work showcase | Liliane Xiaoxu Lang AI prototype REME Smart Home Device |
+| `/images/lili-reflections.jpg` | Work showcase | Liliane Reflections on AI usage |
+| `/images/lili-ideas.jpg` | Work showcase | Liliane Xiaoxu Lang ideas |
+| `/images/lili-artwork-home.jpg` | Work showcase | Liliane Xiaoxu Lang artwork home |
+| `/images/lili-rugby.jpg` | Work showcase | Liliane Xiaoxu Lang rugby |
+| Dynamic (Works cards) | Work images | `alt={alt}` — passed per card |
+| Dynamic (WorkShowcase) | Gallery images | `alt={alt}` — passed per card |
+
+### Elizabeth Page (`/elizabeth`)
+
+| File Path | Image | Alt Text |
+|-----------|-------|----------|
+| `/images/elizabeth-railway.jpg` | Gallery artwork | recycled materials railway UAL |
+| `/images/elizabeth-silent-eyes.jpg` | Gallery artwork | water colour painting silent eyes |
+| `/images/elizabeth-oil-painting.jpg` | Gallery artwork | fleeting moment boy oil painting |
+| `/images/elizabeth-land-of-ma.jpg` | Gallery artwork | elizabeth lang land of ma colour pens |
+| `/images/elizabeth-joy.jpg` | Artwork | Happy Portrait Pastels |
+| `/images/elizabeth-yeye.jpg` | Artwork | yeye still life pencil |
+| `/images/elizabeth-girl.jpg` | Artwork | girl portrait pastels |
+| `/images/elizabeth-cherished.jpg` | Artwork | Cherished marker art |
+| `/images/elizabeth-moon-cheese.svg` | Artwork | Moon Cheese water color |
+| `/images/elizabeth-penguin.jpg` | Artwork | penguin sketch |
+| `/images/elizabeth-butterfly.svg` | Artwork | butterfly acrylic colour |
+| `/images/elizabeth-heart.jpg` | Artwork | Heart Pen |
+| Dynamic (GalleryCard) | Gallery images | `alt={alt}` — passed per card |
+| Dynamic (WorkShowcase) | Showcase images | `alt={alt}` — passed per card |
+
+### Remecou Page (`/remecou`)
+
+| File Path | Image | Alt Text |
+|-----------|-------|----------|
+| `/images/remecou-logo.jpeg` | Logo | Remecou Trading Limited |
+
+### Kidlab UK (`/partner/kidslabuk`)
+
+| File Path | Image | Alt Text |
+|-----------|-------|----------|
+| `/kidlab-logo.jpg` | Partner logo | Kidlab UK |
+| Dynamic (product cards) | Product images | `alt={product.name}` — from product data |
+
+### Velvet Essence (`/partner/velvetessencedesign`)
+
+| File Path | Image | Alt Text |
+|-----------|-------|----------|
+| `/images/velvet-essence-logo.jpg` | Partner logo | Velvet Essence Design |
+| Dynamic (product cards) | Product images | `alt={product.name}` — from product data |
+
+### Tote Bag Blog (`/en/liliane/blog/tote-bag`)
+
+| File Path | Image | Alt Text |
+|-----------|-------|----------|
+| `/images/author-liliane.jpg` | Author photo | Liliane Xiaoxu Lang |
+| `/blog-shantell.jpg` | Contributor photo | Shantell Morrison |
+| Dynamic (tote showcase) | Tote bag images | `alt={label}` — passed per card |
+
+### Oil Painting Blog (`/en/elizabeth/blog/oil-painting`)
+
+| File Path | Image | Alt Text |
+|-----------|-------|----------|
+| `/images/author-elizabeth.jpg` | Author photo | Elizabeth Xiaoyue Lang |
+| `/boy-oil-painting.jpg` | Featured artwork | Elizabeth's first oil painting - portrait of a little boy |
+| YouTube thumbnail (dynamic) | Video thumbnail | `alt={title}` — YouTube video title |
+
+### AI Creativity Blog (`/en/home/blog/ai-creativity-learning`)
+
+| File Path | Media | Alt Text |
+|-----------|-------|----------|
+| `/images/author-qian-liu.jpg` | Author photo | Qian Liu |
+| `/ai-creativity-learning.mp4` | Video (REME Story) | `alt={caption}` → "REME Story" |
+| `/ai-creativity-learning-thumb.jpg` | Video poster | `alt={caption}` → "REME Story" |
+| `/ai-creativity-research.mp4` | Video (REME Research) | `alt={caption}` → "REME Research" |
+| `/ai-creativity-research-thumb.jpg` | Video poster | `alt={caption}` → "REME Research" |
+| `/ai-creativity-technical.mp4` | Video (REME Technical) | `alt={caption}` → "REME Technical" |
+| `/ai-creativity-technical-thumb.jpg` | Video poster | `alt={caption}` → "REME Technical" |
+
+### Chinese Homepage (`/zh-cn`)
+
+| File Path | Image | Alt Text |
+|-----------|-------|----------|
+| `/images/liliane-discover.jpg` | Creator card image | 莉莉安 晓旭 Lang |
+| `/images/elizabeth-mingrige.jpg` | Creator card image | 伊丽莎白 晓月 Lang |
+| `/images/kidlab-logo.jpg` | Partner logo | Kidlab UK |
+| `/images/velvet-essence-logo.jpg` | Partner logo | Velvet Essence Design |
+
+---
+
 ## OPEN QUESTIONS / TODO
 - [ ] Google Search Console: Submit sitemap and verify site ownership
 - [ ] Upload SEO_AUDIT.md to Google Drive (token expired)
