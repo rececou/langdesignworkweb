@@ -553,4 +553,14 @@ All `<Image>`, `<img>`, and `<video>` tags across the site. Dynamic images (prod
 |------|-------------|---------------|
 | `src/app/en/liliane/blog/tote-bag/page.tsx` | Converted single BlogPosting to `@graph` (BlogPosting + 3×ImageObject). Added image field, dateModified. 3 ImageObjects: Shoe Tote, Flower Tote, Book Tote with captions and descriptions | Revert to single BlogPosting schema |
 
+### 2026-06-02 — Favicon Fix & Matrix Rain Consistency (Hema)
+**Commit**: `23c0fe6`
+**Changed By**: Hema
+
+**Files Modified**:
+| File | What Changed | Revert Action |
+|------|-------------|---------------|
+| `src/app/layout.tsx` | Added `icons: { icon: "/images/logo.svg" }` to restore LangDesignWork favicon in browser tabs | Remove icons property from metadata |
+| `src/app/page.tsx` | Updated bottom banner (Remecou CTA) `MatrixRain`: changed color `#333333` → `#FF6B6B`, opacity `opacity-40` → `opacity-30` to match hero section visibility | Revert MatrixRain props to previous values |
+
 ---
