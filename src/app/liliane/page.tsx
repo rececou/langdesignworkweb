@@ -8,6 +8,7 @@ import Image from 'next/image';
 import { useContactModal } from '@/components/ContactModal';
 import YouTubeVideo from '@/components/YouTubeVideo';
 import { useState } from 'react';
+import SingleButterfly from '@/components/SingleButterfly';
 
 export default function LilianePage() {
   return (
@@ -123,6 +124,7 @@ export default function LilianePage() {
 
       {/* Hero */}
       <section className="relative bg-gradient-to-br from-gray-950 via-gray-900 to-red-950 text-white overflow-hidden">
+        <SingleButterfly />
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-10 left-10 w-2 h-2 bg-red-400 rounded-full animate-pulse" />
           <div className="absolute top-32 right-20 w-3 h-3 bg-pink-400 rounded-full animate-pulse" style={{ animationDelay: '1s' }} />
