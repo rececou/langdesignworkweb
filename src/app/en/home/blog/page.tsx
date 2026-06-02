@@ -5,16 +5,16 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 export const metadata: Metadata = {
-  title: "Lang Design Work Blog Home",
+  title: "LangDesignWork Blog",
   description: "Explore ideas, creative projects, and reflections from Lang Design Work authors. Follow their journeys of art, craft, and discovery as they share inspiration, insights, and creations drawn from everyday life.",
   openGraph: {
-    title: "Lang Design Work Blog Home",
+    title: "LangDesignWork Blog",
     description: "Explore ideas, creative projects, and reflections from Lang Design Work authors. Follow their journeys of art, craft, and discovery as they share inspiration, insights, and creations drawn from everyday life.",
-    images: [{ url: "/images/og-home.png", alt: "Lang Design Work Blog" }],
+    images: [{ url: "/images/og-home.png", alt: "LangDesignWork Blog — creative projects and design inspiration" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Lang Design Work Blog Home",
+    title: "LangDesignWork Blog",
     description: "Explore ideas, creative projects, and reflections from Lang Design Work authors. Follow their journeys of art, craft, and discovery as they share inspiration, insights, and creations drawn from everyday life.",
     images: ["/images/og-home.png"],
   },
@@ -57,6 +57,36 @@ export default function BlogIndexPage() {
   return (
     <>
       <Header locale="en" />
+
+      {/* Blog schema: CollectionPage + ItemList */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@graph": [
+              {
+                "@type": "CollectionPage",
+                "@id": "https://www.langdesignwork.com/en/home/blog",
+                url: "https://www.langdesignwork.com/en/home/blog",
+                name: "LangDesignWork Blog",
+                description: "Explore ideas, creative projects, and reflections from LangDesignWork authors.",
+                inLanguage: "en-GB",
+              },
+              {
+                "@type": "ItemList",
+                name: "Blog Posts",
+                description: "Latest blog posts from LangDesignWork.",
+                itemListElement: [
+                  { "@type": "ListItem", position: 1, url: "https://www.langdesignwork.com/en/elizabeth/blog/oil-painting", name: "How Did I Do My First Oil Painting: From Canvas to Creation" },
+                  { "@type": "ListItem", position: 2, url: "https://www.langdesignwork.com/en/liliane/blog/tote-bag", name: "Looking for Your Next Creative Idea? Discover Inspiration Through Everyday Design" },
+                  { "@type": "ListItem", position: 3, url: "https://www.langdesignwork.com/en/home/blog/ai-creativity-learning", name: "How Can AI and Creativity Revolutionize Learning?" },
+                ],
+              },
+            ],
+          }),
+        }}
+      />
 
       <section className="bg-gray-50 py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
