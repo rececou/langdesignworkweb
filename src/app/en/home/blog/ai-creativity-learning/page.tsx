@@ -11,22 +11,56 @@ import { useState, useRef, useEffect } from 'react';
 export default function AiCreativityBlogPage() {
   const blogSchema = {
     "@context": "https://schema.org",
-    "@type": "BlogPosting",
-    headline: "How Can AI and Creativity Revolutionize Learning?",
-    description: "Reflection on the future of education, discover how Liliane Lang and Elizabeth Lang used AI to create a smart device for seniors.",
-    image: "https://www.langdesignwork.com/hubfs/REME-1.png",
-    author: {
-      "@type": "Person",
-      name: "Liliane Xiaoxu Lang",
-    },
-    publisher: {
-      "@type": "Organization",
-      name: "LangDesignWork",
-      logo: { "@type": "ImageObject", url: "https://www.langdesignwork.com/hubfs/LangDesignWorkLogo.svg" },
-    },
-    datePublished: "2024-12-01",
-    dateModified: "2024-12-01",
-    mainEntityOfPage: "https://www.langdesignwork.com/en/home/blog/ai-creativity-learning",
+    "@graph": [
+      {
+        "@type": "BlogPosting",
+        headline: "How Can AI and Creativity Revolutionize Learning?",
+        description: "Reflection on the future of education, discover how Liliane Lang and Elizabeth Lang used AI to create a smart device for seniors.",
+        image: "https://www.langdesignwork.com/images/og-blog-ai-learning.png",
+        author: {
+          "@type": "Person",
+          name: "Qian Liu",
+        },
+        publisher: {
+          "@type": "Organization",
+          name: "LangDesignWork",
+          logo: { "@type": "ImageObject", url: "https://www.langdesignwork.com/images/LangDesignWorkLogo.svg" },
+        },
+        datePublished: "2025-11-14",
+        dateModified: "2025-11-14",
+        mainEntityOfPage: "https://www.langdesignwork.com/en/home/blog/ai-creativity-learning",
+      },
+      {
+        "@type": "VideoObject",
+        name: "REME Story",
+        description: "How Liliane and Elizabeth identified the need for a smart companion device for Hong Kong's elderly.",
+        thumbnailUrl: "https://www.langdesignwork.com/ai-creativity-learning-thumb.jpg",
+        contentUrl: "https://www.langdesignwork.com/ai-creativity-learning.mp4",
+        uploadDate: "2025-11-14",
+        duration: "PT1M30S",
+        publisher: { "@type": "Organization", name: "LangDesignWork" },
+      },
+      {
+        "@type": "VideoObject",
+        name: "REME Research",
+        description: "Research and design process behind the REME smart home device.",
+        thumbnailUrl: "https://www.langdesignwork.com/ai-creativity-research-thumb.jpg",
+        contentUrl: "https://www.langdesignwork.com/ai-creativity-research.mp4",
+        uploadDate: "2025-11-14",
+        duration: "PT1M30S",
+        publisher: { "@type": "Organization", name: "LangDesignWork" },
+      },
+      {
+        "@type": "VideoObject",
+        name: "REME Learning",
+        description: "Technical implementation — coding, NLP, and hardware integration for REME.",
+        thumbnailUrl: "https://www.langdesignwork.com/ai-creativity-technical-thumb.jpg",
+        contentUrl: "https://www.langdesignwork.com/ai-creativity-technical.mp4",
+        uploadDate: "2025-11-14",
+        duration: "PT1M30S",
+        publisher: { "@type": "Organization", name: "LangDesignWork" },
+      },
+    ],
   };
 
   return (
