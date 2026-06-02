@@ -31,9 +31,14 @@ export default function ElizabethPage() {
             "@context": "https://schema.org",
             "@type": "Person",
             name: "Elizabeth Xiaoyue Lang",
+            jobTitle: "Artist & Student",
+            description: "Elizabeth Xiaoyue Lang is a creative artist exploring artwork, mixed media, and design inspired by the people and places around her. Through oil painting, illustration, and handmade creations, she invites you to discover her artistic journey.",
+            image: "https://www.langdesignwork.com/images/og-elizabeth.png",
             url: `${SITE_URL}${PAGE_PATH}`,
-            jobTitle: "Artist & Designer",
-            description: "Explore the creative journey of Elizabeth Xiaoyue Lang, featuring artworks inspired by those around her and inviting you to discover more.",
+            affiliation: {
+              "@type": "Organization",
+              name: "LangDesignWork",
+            },
           }),
         }}
       />
