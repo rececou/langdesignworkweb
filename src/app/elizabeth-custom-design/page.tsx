@@ -157,58 +157,17 @@ export default function ElizabethCustomDesignPage() {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {galleryItems.map((item, i) => (
               <article key={i} className="group bg-gray-50 rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300">
-                <div className="relative aspect-square overflow-hidden">
-                  <Image
+                <div className="relative aspect-square overflow-hidden bg-gray-200">
+                  <img
                     src={item.src}
                     alt={item.name}
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-300"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    loading="lazy"
                   />
                 </div>
                 <div className="p-5">
                   <h3 className="text-lg font-bold mb-1 font-space">{item.name}</h3>
                   <p className="text-gray-500 text-sm">{item.desc}</p>
-                </div>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Products */}
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-bold mb-4 font-space">Available on Etsy</h2>
-          <p className="text-gray-600 mb-8 max-w-2xl">
-            Personal, expressive, handmade. Elizabeth creates custom artwork available through our partner Velvet Essence Design on Etsy.
-          </p>
-          <div className="grid md:grid-cols-2 gap-8">
-            {products.map((p, i) => (
-              <article key={i} className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
-                <div className="relative aspect-[4/3] overflow-hidden">
-                  <Image
-                    src={p.image}
-                    alt={p.name}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                  />
-                </div>
-                <div className="p-5">
-                  <h3 className="text-lg font-bold mb-2 font-space">{p.name}</h3>
-                  <p className="text-gray-600 text-sm mb-4">{p.desc}</p>
-                  <div className="flex items-center justify-between">
-                    <span className="text-xl font-bold text-[#FF6B6B]">£{p.price}</span>
-                    <Link
-                      href={p.etsy}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-block bg-black text-white px-5 py-2 rounded text-sm font-medium hover:bg-gray-800 transition-colors"
-                    >
-                      View on Etsy →
-                    </Link>
-                  </div>
                 </div>
               </article>
             ))}
