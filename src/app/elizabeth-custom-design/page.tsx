@@ -15,6 +15,73 @@ export default function ElizabethCustomDesignPage() {
         ogImageAlt="Elizabeth Xiaoyue Lang Custom Design"
         canonical="https://www.langdesignwork.com/elizabeth-custom-design"
       />
+
+      {/* JSON-LD Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@graph': [
+              {
+                '@type': 'Person',
+                name: 'Elizabeth Xiaoyue Lang',
+                jobTitle: 'Creator & Designer',
+                description: 'Explore the custom illustration & design portfolio of Elizabeth Xiaoyue Lang. Discover unique, playful, and colourful work.',
+                image: 'https://www.langdesignwork.com/images/og-elizabeth.png',
+                url: 'https://www.langdesignwork.com/elizabeth-custom-design',
+              },
+              {
+                '@type': 'WebPage',
+                '@id': 'https://www.langdesignwork.com/elizabeth-custom-design',
+                url: 'https://www.langdesignwork.com/elizabeth-custom-design',
+                name: 'Custom Design by Elizabeth Xiaoyue Lang | LangDesignWork',
+                description: 'Explore the custom illustration & design portfolio of Elizabeth Xiaoyue Lang. Discover unique, playful, and colourful work.',
+                mainEntity: { '@type': 'Person', name: 'Elizabeth Xiaoyue Lang' },
+              },
+              {
+                '@type': 'ImageGallery',
+                name: 'Elizabeth Xiaoyue Lang Custom Design Portfolio',
+                description: 'Custom illustration and design portfolio featuring unique, playful, and colourful artwork.',
+                url: 'https://www.langdesignwork.com/elizabeth-custom-design',
+              },
+              {
+                '@type': 'Product',
+                name: 'Whimsical Butterfly Tote Bag',
+                description: 'Hand-printed tote bag with whimsical butterfly design by Elizabeth Xiaoyue Lang, sold at Velvet Essence Design Etsy shop.',
+                offers: {
+                  '@type': 'Offer',
+                  price: '13.99',
+                  priceCurrency: 'GBP',
+                  availability: 'https://schema.org/InStock',
+                  url: 'https://www.etsy.com/listing/4426365006',
+                },
+              },
+              {
+                '@type': 'Product',
+                name: 'Daydreams in Stereo Tote Bag',
+                description: 'Hand-printed tote bag with Daydreams in Stereo design by Elizabeth Xiaoyue Lang, sold at Velvet Essence Design Etsy shop.',
+                offers: {
+                  '@type': 'Offer',
+                  price: '13.99',
+                  priceCurrency: 'GBP',
+                  availability: 'https://schema.org/InStock',
+                  url: 'https://www.etsy.com/listing/4426475502',
+                },
+              },
+              {
+                '@type': 'ItemList',
+                name: 'Velvet Essence Design Products',
+                itemListElement: [
+                  { '@type': 'ListItem', position: 1, item: { '@type': 'Product', name: 'Whimsical Butterfly Tote Bag', url: 'https://www.etsy.com/listing/4426365006' } },
+                  { '@type': 'ListItem', position: 2, item: { '@type': 'Product', name: 'Daydreams in Stereo Tote Bag', url: 'https://www.etsy.com/listing/4426475502' } },
+                ],
+              },
+            ],
+          }),
+        }}
+      />
+
       <Header locale="en" />
 
       <section className="bg-gray-50 py-16">
