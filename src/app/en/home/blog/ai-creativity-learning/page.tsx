@@ -34,7 +34,10 @@ export default function AiCreativityBlogPage() {
       <SeoMeta
         title="How Can AI and Creativity Revolutionize Learning?"
         description="Reflection on the future of education, discover how Liliane Lang and Elizabeth Lang used AI to create a smart device for seniors."
+        ogTitle="How Can AI and Creativity Revolutionize Learning?"
+        ogDescription="Reflection on the future of education, discover how Liliane Lang and Elizabeth Lang used AI to create a smart device for seniors."
         ogImage="/images/og-blog-ai-learning.png"
+        ogImageAlt="Liliane Lang and Elizabeth Lang and their REME smart device prototype."
         canonical="https://www.langdesignwork.com/en/home/blog/ai-creativity-learning"
         twitterCard="summary"
       />

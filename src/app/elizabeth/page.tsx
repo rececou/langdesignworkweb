@@ -6,6 +6,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useContactModal } from '@/components/ContactModal';
 import { useState } from 'react';
+import SeoMeta from '@/components/SeoMeta';
 
 const SITE_URL = "https://www.langdesignwork.com";
 const PAGE_PATH = "/elizabeth";
@@ -13,6 +14,15 @@ const PAGE_PATH = "/elizabeth";
 export default function ElizabethPage() {
   return (
     <>
+      <SeoMeta
+        title="Elizabeth Xiaoyue Lang | Art & Custom Design | LangDesignWork"
+        description="Explore the creative journey of Elizabeth Xiaoyue Lang, featuring artworks inspired by those around her and inviting you to discover more."
+        ogTitle="Elizabeth Xiaoyue Lang | Art & Custom Design | LangDesignWork"
+        ogDescription="Explore the creative journey of Elizabeth Xiaoyue Lang, featuring artworks inspired by those around her and inviting you to discover more."
+        ogImage="/images/og-elizabeth.png"
+        ogImageAlt="Lang Design Work Social Media"
+        canonical={`${SITE_URL}${PAGE_PATH}`}
+      />
       {/* JSON-LD Person Schema */}
       <script
         type="application/ld+json"

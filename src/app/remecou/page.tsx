@@ -45,6 +45,8 @@ export default function RemecouPage() {
       <SeoMeta
         title="Remecou | Sustainable Goods Operations | LangDesignWork"
         description="Hong Kong operations model for sustainable goods. AI-assisted sourcing from China, content co-creation with local partners, and in-market distribution."
+        ogTitle="Remecou | Sustainable Goods Operations | LangDesignWork"
+        ogDescription="Hong Kong operations model for sustainable goods. AI-assisted sourcing from China, content co-creation with local partners, and in-market distribution."
         ogImage="/images/og-remecou.jpeg"
         canonical="https://www.langdesignwork.com/remecou"
       />

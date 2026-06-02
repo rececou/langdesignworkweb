@@ -42,7 +42,7 @@ export default function ContactModal() {
       if ((window as any).hbspt) {
         clearInterval(waitForHbspt);
         (window as any).hbspt.forms.create({
-          region: 'na1',
+          region: 'na2',
           portalId: '244077776',
           formId: 'a7ceb992-15d6-4c34-a5f0-c5fcdb438f0c',
           target: '#ldw-contact-form',

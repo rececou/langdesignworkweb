@@ -110,7 +110,10 @@ export default function VelvetEssencePage() {
       <SeoMeta
         title="Velvet Essence Design | Hand-Printed T-Shirts & Tote Bags | LangDesignWork Partner"
         description="Hand-printed t-shirts and tote bags, wearable art made with care and creativity by Velvet Essence Design in London. Available on Etsy UK."
+        ogTitle="Velvet Essence Design | Hand-Printed T-Shirts & Tote Bags | LangDesignWork Partner"
+        ogDescription="Hand-printed t-shirts and tote bags, wearable art made with care and creativity by Velvet Essence Design in London. Available on Etsy UK."
         ogImage="/images/velvet-essence-logo.jpg"
+        ogImageAlt="Velvet Essence Design hand-printed tote bags"
         canonical="https://www.langdesignwork.com/partner/velvetessencedesign"
       />
       <Header locale="en" />

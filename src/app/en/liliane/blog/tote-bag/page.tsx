@@ -13,8 +13,11 @@ export default function ToteBagBlogPage() {
     <>
       <SeoMeta
         title="Looking for Your Next Creative Idea? Discover Inspiration Through Everyday Design | LangDesignWork"
-        description="Liliane Xiaoxu Lang explores how inspiration can be found in the simple designs and everyday moments around us. From tote bags to personal expression."
+        description="Liliane Xiaoxu Lang explores how everyday design inspires creativity, turning simple ideas into stylish personalized tote bags."
+        ogTitle="Looking for Your Next Creative Idea? Discover Inspiration Through Everyday Design"
+        ogDescription="Liliane Xiaoxu Lang explores how everyday design inspires creativity, turning simple ideas into stylish personalized tote bags."
         ogImage="/images/og-liliane.png"
+        ogImageAlt="Shantell Morrison book tote bag"
         canonical="https://www.langdesignwork.com/en/liliane/blog/tote-bag"
       />
       <script

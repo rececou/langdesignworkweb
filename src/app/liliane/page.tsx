@@ -15,7 +15,10 @@ export default function LilianePage() {
       <SeoMeta
         title="Liliane Xiaoxu Lang | Ideas & Prototyping | LangDesignWork"
         description="Join Liliane Xiaoxu Lang on the Discover Channel! Explore debates, creative projects, and inspirational insights."
+        ogTitle="Liliane Xiaoxu Lang | Ideas & Prototyping | LangDesignWork"
+        ogDescription="Join Liliane Xiaoxu Lang on the Discover Channel! Explore debates, creative projects, and inspirational insights."
         ogImage="/images/og-liliane.png"
+        ogImageAlt="Liliane Xiaoxu Lang Discover Channel – creativity, debates, and insights"
         canonical="https://www.langdesignwork.com/liliane"
       />
       <script

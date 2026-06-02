@@ -14,7 +14,10 @@ export default function OilPaintingBlogPage() {
       <SeoMeta
         title="How Did I Do My First Oil Painting: From Canvas to Creation | LangDesignWork"
         description="Elizabeth Xiaoyue Lang shares her journey of creating her first oil painting — a portrait of a little boy inspired by classes at the Hong Kong Art School."
+        ogTitle="How Did I Do My First Oil Painting: From Canvas to Creation | LangDesignWork"
+        ogDescription="Elizabeth Xiaoyue Lang shares her journey of creating her first oil painting — a portrait of a little boy inspired by classes at the Hong Kong Art School."
         ogImage="/images/og-elizabeth.png"
+        ogImageAlt="elizabeth lang oil painting"
         canonical="https://www.langdesignwork.com/en/elizabeth/blog/oil-painting"
       />
       <script

@@ -8,9 +8,13 @@ interface SeoMetaProps {
   ogTitle?: string;
   ogDescription?: string;
   ogImage?: string;
+  ogImageAlt?: string;
   ogType?: string;
   canonical?: string;
   twitterCard?: 'summary' | 'summary_large_image';
+  twitterTitle?: string;
+  twitterDescription?: string;
+  twitterImage?: string;
 }
 
 export default function SeoMeta({
@@ -19,9 +23,13 @@ export default function SeoMeta({
   ogTitle,
   ogDescription,
   ogImage = '/images/og-home.png',
+  ogImageAlt,
   ogType = 'website',
   canonical,
   twitterCard = 'summary_large_image',
+  twitterTitle,
+  twitterDescription,
+  twitterImage,
 }: SeoMetaProps) {
   useEffect(() => {
     document.title = title;
@@ -45,10 +53,15 @@ export default function SeoMeta({
     setProp('og:type', ogType);
     setProp('og:image', ogImage);
     setProp('og:site_name', 'LangDesignWork');
+    if (ogImageAlt) {
+      setProp('og:image:alt', ogImageAlt);
+    }
+
+    // Twitter Card
     setMeta('twitter:card', twitterCard);
-    setMeta('twitter:title', ogTitle || title);
-    setMeta('twitter:description', ogDescription || description);
-    setMeta('twitter:image', ogImage);
+    setMeta('twitter:title', twitterTitle || ogTitle || title);
+    setMeta('twitter:description', twitterDescription || ogDescription || description);
+    setMeta('twitter:image', twitterImage || ogImage);
 
     if (canonical) {
       let link = document.querySelector('link[rel="canonical"]');
@@ -59,7 +72,7 @@ export default function SeoMeta({
       }
       link.setAttribute('href', canonical);
     }
-  }, [title, description, ogTitle, ogDescription, ogImage, ogType, canonical, twitterCard]);
+  }, [title, description, ogTitle, ogDescription, ogImage, ogImageAlt, ogType, canonical, twitterCard, twitterTitle, twitterDescription, twitterImage]);
 
   return null;
 }

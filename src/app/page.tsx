@@ -16,7 +16,10 @@ export default function Home() {
       <SeoMeta
         title="LangDesignWork | Home"
         description="Creativity. Community. Commerce. LangDesignWork brings together independent makers, partner brands, and the audiences in one place."
+        ogTitle="LangDesignWork | Home"
+        ogDescription="Creativity. Community. Commerce. LangDesignWork brings together independent makers, partner brands, and the audiences in one place."
         ogImage="/images/og-home.png"
+        ogImageAlt="Lang Design Work Social Media"
         canonical="https://www.langdesignwork.com"
       />
       <Header locale="en" />

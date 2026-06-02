@@ -1,10 +1,20 @@
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Link from 'next/link';
+import SeoMeta from '@/components/SeoMeta';
 
 export default function ElizabethCustomDesignPage() {
   return (
     <>
+      <SeoMeta
+        title="Custom Design by Elizabeth Xiaoyue Lang | LangDesignWork"
+        description="Explore the custom illustration & design portfolio of Elizabeth Xiaoyue Lang. Discover unique, playful, and colourful work."
+        ogTitle="Custom Design by Elizabeth Xiaoyue Lang | LangDesignWork"
+        ogDescription="Explore the custom illustration & design portfolio of Elizabeth Xiaoyue Lang. Discover unique, playful, and colourful work."
+        ogImage="/images/velvet-essence-logo.jpg"
+        ogImageAlt="Elizabeth Xiaoyue Lang Custom Design"
+        canonical="https://www.langdesignwork.com/elizabeth-custom-design"
+      />
       <Header locale="en" />
 
       <section className="bg-gray-50 py-16">

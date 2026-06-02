@@ -1,9 +1,19 @@
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import SeoMeta from '@/components/SeoMeta';
 
 export default function LilianeCreatePage() {
   return (
     <>
+      <SeoMeta
+        title="Liliane Xiaoxu Lang — Creation | LangDesignWork"
+        description="Liliane Xiaoxu Lang's video gallery showcasing her ideas, creative process, and the path from ideation to creation."
+        ogTitle="Liliane Xiaoxu Lang — Creation | LangDesignWork"
+        ogDescription="Liliane Xiaoxu Lang's video gallery showcasing her ideas, creative process, and the path from ideation to creation."
+        ogImage="/images/og-liliane.png"
+        ogImageAlt="Hand-crafted clay raccoon by Liliane Xiaoxu Lang"
+        canonical="https://www.langdesignwork.com/liliane-create"
+      />
       <Header locale="en" />
 
       <section className="bg-gray-50 py-16">

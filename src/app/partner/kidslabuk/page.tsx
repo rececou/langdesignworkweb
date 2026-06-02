@@ -89,7 +89,10 @@ export default function KidlabPage() {
       <SeoMeta
         title="Kidlab UK | DIY STEM Kits | LangDesignWork Partner"
         description="Swap screen time for hands-on discovery. KidLab UK DIY STEM kits and educational toys for curious kids — fun, practical, eco-friendly. From £9.99."
+        ogTitle="Kidlab UK | DIY STEM Kits | LangDesignWork Partner"
+        ogDescription="Swap screen time for hands-on discovery. KidLab UK DIY STEM kits and educational toys for curious kids — fun, practical, eco-friendly. From £9.99."
         ogImage="/images/og-kidlab.jpeg"
+        ogImageAlt="kidlab logo"
         canonical="https://www.langdesignwork.com/partner/kidslabuk"
         twitterCard="summary"
       />
