@@ -27,7 +27,7 @@ export default function Home() {
       {/* Hero Section */}
       <section className="bg-black text-white py-20 relative overflow-hidden">
         {/* Matrix rain animation */}
-        <MatrixRain speed={50} opacity="opacity-15" />
+        <MatrixRain speed={50} opacity="opacity-30" />
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <h1 className="text-5xl md:text-7xl font-bold mb-6">
@@ -137,7 +137,7 @@ export default function Home() {
       {/* CTA Section */}
       <section id="work-with-us" className="py-16 bg-black text-white relative overflow-hidden">
         {/* Matrix rain animation - subtle dark version */}
-        <MatrixRain color="#333333" speed={50} opacity="opacity-15" />
+        <MatrixRain color="#333333" speed={50} opacity="opacity-40" />
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <p className="text-sm text-gray-400 uppercase tracking-widest mb-2">WORK WITH US</p>
