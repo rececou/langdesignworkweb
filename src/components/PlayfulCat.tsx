@@ -2,207 +2,267 @@
 
 import { useEffect, useRef, useState, useCallback } from 'react';
 
-// Fluffy white cat SVG
-const CatSVG = ({ size = 80 }) => (
-  <svg viewBox="0 0 120 100" width={size} height={size * 0.83} xmlns="http://www.w3.org/2000/svg">
-    {/* Tail */}
-    <path
-      d="M85 75 C95 65, 105 55, 100 45 C95 35, 85 40, 90 50"
-      fill="none"
-      stroke="#F5F5F5"
-      strokeWidth="8"
-      strokeLinecap="round"
-      className="cat-tail"
-    />
-    {/* Body */}
-    <ellipse cx="60" cy="70" rx="30" ry="22" fill="#F8F8F8" stroke="#E0E0E0" strokeWidth="1.5" />
-    {/* Fur texture */}
-    <path d="M40 70 Q45 65, 50 70" fill="none" stroke="#E0E0E0" strokeWidth="0.5" />
-    <path d="M55 75 Q60 70, 65 75" fill="none" stroke="#E0E0E0" strokeWidth="0.5" />
-    <path d="M70 68 Q75 63, 80 68" fill="none" stroke="#E0E0E0" strokeWidth="0.5" />
-    {/* Head */}
-    <circle cx="45" cy="45" r="22" fill="#F8F8F8" stroke="#E0E0E0" strokeWidth="1.5" />
-    {/* Ears */}
-    <polygon points="28,30 35,12 42,28" fill="#F8F8F8" stroke="#E0E0E0" strokeWidth="1.5" />
-    <polygon points="52,28 60,12 65,30" fill="#F8F8F8" stroke="#E0E0E0" strokeWidth="1.5" />
-    {/* Inner ears */}
-    <polygon points="30,28 35,16 40,27" fill="#FFE4E1" />
-    <polygon points="54,27 60,16 63,28" fill="#FFE4E1" />
-    {/* Eyes */}
-    <ellipse cx="37" cy="43" rx="4" ry="5" fill="#FFB6C1" />
-    <ellipse cx="53" cy="43" rx="4" ry="5" fill="#FFB6C1" />
-    <ellipse cx="37" cy="43" rx="2" ry="3" fill="#333" />
-    <ellipse cx="53" cy="43" rx="2" ry="3" fill="#333" />
-    {/* Eye shine */}
-    <circle cx="36" cy="42" r="1" fill="white" />
-    <circle cx="52" cy="42" r="1" fill="white" />
-    {/* Nose */}
-    <polygon points="45,50 43,52 47,52" fill="#FFB6C1" />
-    {/* Mouth */}
-    <path d="M43,53 Q45,56 47,53" fill="none" stroke="#E0E0E0" strokeWidth="1" />
-    <path d="M45,52 L45,53" fill="none" stroke="#E0E0E0" strokeWidth="1" />
-    {/* Whiskers */}
-    <line x1="25" y1="48" x2="35" y2="50" stroke="#E0E0E0" strokeWidth="0.8" />
-    <line x1="25" y1="52" x2="35" y2="52" stroke="#E0E0E0" strokeWidth="0.8" />
-    <line x1="55" y1="50" x2="65" y2="48" stroke="#E0E0E0" strokeWidth="0.8" />
-    <line x1="55" y1="52" x2="65" y2="52" stroke="#E0E0E0" strokeWidth="0.8" />
-    {/* Paws */}
-    <ellipse cx="40" cy="90" rx="8" ry="5" fill="#F8F8F8" stroke="#E0E0E0" strokeWidth="1.5" />
-    <ellipse cx="55" cy="90" rx="8" ry="5" fill="#F8F8F8" stroke="#E0E0E0" strokeWidth="1.5" />
-    {/* Paw pads */}
-    <circle cx="40" cy="90" r="2" fill="#FFE4E1" />
-    <circle cx="55" cy="90" r="2" fill="#FFE4E1" />
-  </svg>
-);
+// Lazy Cream Cat SVG based on reference image
+const CatSVG = ({ size = 120, state }: { size: number; state: string }) => {
+  // Colors
+  const cream = '#F5F5DC';
+  const creamDark = '#E8E8D0';
+  const pink = '#FFB6C1';
+  const outline = '#D3D3D3';
+
+  const isLying = state === 'lying' || state === 'wagging';
+  const isStanding = state === 'standing' || state === 'walking' || state === 'reaching';
+
+  return (
+    <svg
+      viewBox="0 0 200 160"
+      width={size}
+      height={size * 0.8}
+      style={{ overflow: 'visible' }}
+    >
+      <defs>
+        <radialGradient id="furGrad" cx="50%" cy="30%" r="70%">
+          <stop offset="0%" stopColor={cream} />
+          <stop offset="100%" stopColor={creamDark} />
+        </radialGradient>
+      </defs>
+
+      {/* Tail */}
+      <path
+        d={
+          isLying
+            ? 'M160 100 Q 190 90, 185 60 Q 180 30, 150 40 Q 130 45, 140 70'
+            : 'M150 110 Q 180 100, 185 70 Q 190 40, 160 30 Q 140 20, 130 50'
+        }
+        fill="none"
+        stroke={cream}
+        strokeWidth="18"
+        strokeLinecap="round"
+        className={isLying ? 'animate-tail-wag' : ''}
+        style={{ filter: `drop-shadow(0 0 4px ${outline})` }}
+      />
+
+      {/* Body (Lying vs Standing) */}
+      <g style={{ transition: 'all 1s ease' }}>
+        {isLying ? (
+          // Lying down body
+          <>
+            <ellipse
+              cx="100"
+              cy="100"
+              rx="60"
+              ry="35"
+              fill="url(#furGrad)"
+              stroke={outline}
+              strokeWidth="2"
+            />
+            {/* Fluff details */}
+            <path d="M60 90 Q 80 85, 100 90" fill="none" stroke={outline} strokeWidth="1" opacity="0.5" />
+            <path d="M110 100 Q 130 95, 150 100" fill="none" stroke={outline} strokeWidth="1" opacity="0.5" />
+          </>
+        ) : (
+          // Standing body
+          <>
+            <ellipse
+              cx="100"
+              cy="100"
+              rx="50"
+              ry="40"
+              fill="url(#furGrad)"
+              stroke={outline}
+              strokeWidth="2"
+            />
+          </>
+        )}
+      </g>
+
+      {/* Legs */}
+      <g style={{ transition: 'all 0.5s ease' }}>
+        {isLying ? (
+          <>
+            {/* Front paws (lying) */}
+            <ellipse cx="70" cy="125" rx="12" ry="8" fill={cream} stroke={outline} strokeWidth="1.5" />
+            <ellipse cx="90" cy="125" rx="12" ry="8" fill={cream} stroke={outline} strokeWidth="1.5" />
+            {/* Back legs (tucked) */}
+            <ellipse cx="140" cy="110" rx="15" ry="10" fill={cream} stroke={outline} strokeWidth="1.5" />
+          </>
+        ) : (
+          <>
+            {/* Standing legs */}
+            <path d="M75 130 L 75 145" stroke={cream} strokeWidth="8" strokeLinecap="round" />
+            <path d="M125 130 L 125 145" stroke={cream} strokeWidth="8" strokeLinecap="round" />
+            <ellipse cx="75" cy="145" rx="8" ry="5" fill={cream} stroke={outline} strokeWidth="1" />
+            <ellipse cx="125" cy="145" rx="8" ry="5" fill={cream} stroke={outline} strokeWidth="1" />
+          </>
+        )}
+      </g>
+
+      {/* Head Group */}
+      <g style={{ transition: 'all 1s ease', transform: isLying ? 'translateY(0)' : 'translateY(-10px)' }}>
+        {/* Ears */}
+        <polygon points="70,50 80,25 90,50" fill={cream} stroke={outline} strokeWidth="1.5" />
+        <polygon points="110,50 120,25 130,50" fill={cream} stroke={outline} strokeWidth="1.5" />
+        <polygon points="73,48 80,30 87,48" fill={pink} />
+        <polygon points="113,48 120,30 127,48" fill={pink} />
+
+        {/* Head Shape */}
+        <circle cx="100" cy="60" r="35" fill="url(#furGrad)" stroke={outline} strokeWidth="2" />
+
+        {/* Face Details */}
+        {/* Cheeks/Fluff */}
+        <path d="M75 65 Q 85 75, 100 70" fill="none" stroke={outline} strokeWidth="1" opacity="0.4" />
+        <path d="M100 70 Q 115 75, 125 65" fill="none" stroke={outline} strokeWidth="1" opacity="0.4" />
+
+        {/* Eyes (Sleepy/Lazy) */}
+        {state === 'lying' || state === 'wagging' ? (
+          <>
+            {/* Closed eyes (curved lines) */}
+            <path d="M85 60 Q 90 63, 95 60" fill="none" stroke="#333" strokeWidth="2" strokeLinecap="round" />
+            <path d="M105 60 Q 110 63, 115 60" fill="none" stroke="#333" strokeWidth="2" strokeLinecap="round" />
+          </>
+        ) : (
+          <>
+            {/* Open eyes (dots) */}
+            <circle cx="90" cy="60" r="2.5" fill="#333" />
+            <circle cx="110" cy="60" r="2.5" fill="#333" />
+          </>
+        )}
+
+        {/* Nose */}
+        <polygon points="98,68 102,68 100,72" fill={pink} />
+
+        {/* Mouth */}
+        <path d="M98 72 Q 100 75, 102 72" fill="none" stroke="#333" strokeWidth="1.5" strokeLinecap="round" />
+        <path d="M100 72 L 100 70" fill="none" stroke="#333" strokeWidth="1.5" />
+
+        {/* Whiskers */}
+        <line x1="70" y1="68" x2="85" y2="70" stroke={outline} strokeWidth="1" opacity="0.6" />
+        <line x1="72" y1="74" x2="85" y2="74" stroke={outline} strokeWidth="1" opacity="0.6" />
+        <line x1="115" y1="70" x2="130" y2="68" stroke={outline} strokeWidth="1" opacity="0.6" />
+        <line x1="115" y1="74" x2="128" y2="74" stroke={outline} strokeWidth="1" opacity="0.6" />
+      </g>
+
+      {/* Reaching Paw (only when reaching) */}
+      {state === 'reaching' && (
+        <g className="animate-paw-reach">
+          <ellipse cx="140" cy="80" rx="10" ry="15" fill={cream} stroke={outline} strokeWidth="1.5" />
+          <ellipse cx="140" cy="70" rx="8" ry="10" fill={cream} stroke={outline} strokeWidth="1" />
+        </g>
+      )}
+    </svg>
+  );
+};
 
 export default function PlayfulCat() {
-  const [pos, setPos] = useState({ x: 10, y: 50 });
-  const [isPouncing, setIsPouncing] = useState(false);
-  const [targetPos, setTargetPos] = useState<{ x: number; y: number } | null>(null);
+  const [state, setState] = useState<'lying' | 'wagging' | 'standing' | 'walking' | 'reaching'>('lying');
+  const [pos, setPos] = useState({ x: 15, y: 50 });
   const [scale, setScale] = useState(1);
-  const [rotation, setRotation] = useState(0);
-  const [pawReaching, setPawReaching] = useState(false);
-  const posRef = useRef({ x: 10, y: 50, vx: 0, vy: 0 });
+  const [targetPos, setTargetPos] = useState<{ x: number; y: number } | null>(null);
+
+  const posRef = useRef({ x: 15, y: 50 });
   const animRef = useRef<number>(0);
-  const stateRef = useRef<'idle' | 'walking' | 'pouncing' | 'playing'>('idle');
-  const nextStateTime = useRef(Date.now() + 3000);
-  const targetTextRef = useRef<{ x: number; y: number } | null>(null);
+  const stateRef = useRef(state);
+  const nextStateTime = useRef(Date.now() + 5000);
+  const reachTime = useRef(Date.now());
 
-  // Find text elements to play with
-  useEffect(() => {
-    const findTextTargets = () => {
-      const hero = document.querySelector('section.relative');
-      if (!hero) return null;
-      const texts = hero.querySelectorAll('h1, p, span');
-      if (texts.length === 0) return null;
-      const textEl = texts[Math.floor(Math.random() * texts.length)] as HTMLElement;
-      const rect = textEl.getBoundingClientRect();
-      const heroRect = hero.getBoundingClientRect();
-      return {
-        x: ((rect.left - heroRect.left) / heroRect.width) * 100,
-        y: ((rect.top - heroRect.top) / heroRect.height) * 100,
-      };
+  // Sync ref
+  useEffect(() => { stateRef.current = state; }, [state]);
+
+  // Find text targets
+  const findTextTarget = useCallback(() => {
+    const hero = document.querySelector('section.relative');
+    if (!hero) return null;
+    const texts = hero.querySelectorAll('h1, p, span');
+    if (texts.length === 0) return null;
+    const textEl = texts[Math.floor(Math.random() * texts.length)] as HTMLElement;
+    const rect = textEl.getBoundingClientRect();
+    const heroRect = hero.getBoundingClientRect();
+    return {
+      x: ((rect.left - heroRect.left) / heroRect.width) * 100,
+      y: ((rect.top - heroRect.top) / heroRect.height) * 100,
     };
-
-    const interval = setInterval(() => {
-      if (stateRef.current === 'idle' || stateRef.current === 'walking') {
-        targetTextRef.current = findTextTargets();
-      }
-    }, 5000);
-    return () => clearInterval(interval);
   }, []);
 
+  // Main animation loop
   const animate = useCallback(() => {
     const now = Date.now();
-    const state = posRef.current;
+    const current = posRef.current;
+    const currentState = stateRef.current;
 
+    // State machine logic
     if (now > nextStateTime.current) {
-      // Pick next action
-      const rand = Math.random();
-      if (rand < 0.3 && targetTextRef.current) {
-        // Pounce at text!
-        stateRef.current = 'pouncing';
-        setIsPouncing(true);
-        setPawReaching(true);
-        setTargetPos({ x: targetTextRef.current.x, y: targetTextRef.current.y });
-        nextStateTime.current = now + 2000;
-      } else if (rand < 0.6) {
-        // Walk around
-        stateRef.current = 'walking';
-        setIsPouncing(false);
-        setPawReaching(false);
-        setTargetPos({
-          x: 10 + Math.random() * 80,
-          y: 20 + Math.random() * 60,
-        });
-        nextStateTime.current = now + 3000 + Math.random() * 4000;
-      } else {
-        // Sit/Idle
-        stateRef.current = 'idle';
-        setIsPouncing(false);
-        setPawReaching(false);
-        setTargetPos(null);
-        nextStateTime.current = now + 2000 + Math.random() * 3000;
+      switch (currentState) {
+        case 'lying':
+          setState('wagging');
+          nextStateTime.current = now + 3000; // Wag for 3s
+          break;
+        case 'wagging':
+          setState('standing');
+          nextStateTime.current = now + 1000; // Stand for 1s
+          break;
+        case 'standing':
+          // Pick a target (text or random)
+          if (Math.random() > 0.3) {
+            const t = findTextTarget();
+            if (t) {
+              setTargetPos(t);
+              setState('reaching');
+              reachTime.current = now;
+              nextStateTime.current = now + 2000; // Reach for 2s
+            } else {
+              setState('walking');
+              setTargetPos({ x: 10 + Math.random() * 80, y: 30 + Math.random() * 40 });
+              nextStateTime.current = now + 4000;
+            }
+          } else {
+            setState('walking');
+            setTargetPos({ x: 10 + Math.random() * 80, y: 30 + Math.random() * 40 });
+            nextStateTime.current = now + 4000;
+          }
+          break;
+        case 'reaching':
+          if (now > reachTime.current + 2000) {
+            setState('lying');
+            nextStateTime.current = now + 6000 + Math.random() * 4000; // Lie down for 6-10s
+          }
+          break;
+        case 'walking':
+          if (targetPos) {
+            const dx = targetPos.x - current.x;
+            const dy = targetPos.y - current.y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist < 3) {
+              setState('lying');
+              nextStateTime.current = now + 5000 + Math.random() * 5000;
+            }
+          }
+          break;
       }
     }
 
-    if (stateRef.current === 'pouncing' && targetPos) {
-      // Fast movement towards target
-      const dx = targetPos.x - state.x;
-      const dy = targetPos.y - state.y;
+    // Movement logic (Walking/Reaching)
+    if ((currentState === 'walking' || currentState === 'reaching') && targetPos) {
+      const dx = targetPos.x - current.x;
+      const dy = targetPos.y - current.y;
       const dist = Math.sqrt(dx * dx + dy * dy);
 
-      if (dist < 3) {
-        // Reached target! Play with it
-        stateRef.current = 'playing';
-        setIsPouncing(false);
-        setPawReaching(true);
-        state.vx = (Math.random() - 0.5) * 0.5;
-        state.vy = (Math.random() - 0.5) * 0.5;
-        nextStateTime.current = now + 1500;
-      } else {
-        state.vx += (dx / dist) * 0.8;
-        state.vy += (dy / dist) * 0.8;
+      if (dist > 0.5) {
+        // Slow, lazy walk speed
+        const speed = 0.03;
+        const vx = (dx / dist) * speed;
+        const vy = (dy / dist) * speed;
+
+        current.x += vx;
+        current.y += vy;
+
+        // Face direction
+        setScale(vx > 0 ? 1 : -1);
       }
-    } else if (targetPos && stateRef.current === 'walking') {
-      // Walk towards target
-      const dx = targetPos.x - state.x;
-      const dy = targetPos.y - state.y;
-      const dist = Math.sqrt(dx * dx + dy * dy);
-
-      if (dist < 2) {
-        state.vx *= 0.9;
-        state.vy *= 0.9;
-      } else {
-        state.vx += (dx / dist) * 0.15;
-        state.vy += (dy / dist) * 0.15;
-      }
-    } else if (stateRef.current === 'playing') {
-      // Bounce around playfully
-      state.vx += (Math.random() - 0.5) * 0.6;
-      state.vy += (Math.random() - 0.5) * 0.6;
-    } else {
-      // Idle - gentle breathing
-      state.vx *= 0.9;
-      state.vy *= 0.9;
+      setPos({ x: current.x, y: current.y });
     }
-
-    // Damping
-    state.vx *= 0.94;
-    state.vy *= 0.94;
-
-    // Keep within bounds
-    const margin = 5;
-    if (state.x < margin) state.vx += 0.5;
-    if (state.x > 95) state.vx -= 0.5;
-    if (state.y < margin) state.vy += 0.5;
-    if (state.y > 80) state.vy -= 0.5;
-
-    // Update position
-    state.x += state.vx;
-    state.y += state.vy;
-
-    // Direction (flip cat)
-    if (Math.abs(state.vx) > 0.1) {
-      setScale(state.vx > 0 ? -1 : 1);
-    }
-
-    // Rotation based on movement
-    const angle = state.vx * 15;
-    setRotation(angle);
-
-    // Scale bounce when pouncing
-    if (stateRef.current === 'pouncing') {
-      setScale((scale > 0 ? 1 : -1) * (1 + Math.sin(now / 100) * 0.1));
-    } else if (stateRef.current === 'idle') {
-      // Gentle breathing
-      setScale((scale > 0 ? 1 : -1) * (1 + Math.sin(now / 800) * 0.03));
-    }
-
-    setPos({ x: state.x, y: state.y });
 
     animRef.current = requestAnimationFrame(animate);
-  }, [targetPos]);
+  }, [targetPos, findTextTarget]);
 
   useEffect(() => {
     animRef.current = requestAnimationFrame(animate);
@@ -212,37 +272,37 @@ export default function PlayfulCat() {
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
       <style jsx>{`
-        @keyframes catTailWag {
+        @keyframes tailWag {
           0%, 100% { transform: rotate(0deg); }
-          25% { transform: rotate(10deg); }
-          75% { transform: rotate(-10deg); }
+          25% { transform: rotate(15deg); }
+          75% { transform: rotate(-15deg); }
         }
         @keyframes pawReach {
-          0%, 100% { transform: translateY(0); }
-          50% { transform: translateY(-5px); }
+          0%, 100% { transform: translateY(0) rotate(0deg); }
+          50% { transform: translateY(-20px) rotate(-20deg); }
         }
-        .cat-tail {
-          transform-origin: 85px 75px;
-          animation: catTailWag 2s ease-in-out infinite;
+        .animate-tail-wag {
+          transform-origin: 160px 100px;
+          animation: tailWag 3s ease-in-out infinite;
         }
-        .cat-paw-reaching {
-          animation: pawReach 0.5s ease-in-out infinite;
+        .animate-paw-reach {
+          transform-origin: 140px 95px;
+          animation: pawReach 1.5s ease-in-out infinite;
         }
       `}</style>
 
       {/* Cat */}
       <div
-        className={pawReaching ? 'cat-paw-reaching' : ''}
         style={{
           position: 'absolute',
           left: `${pos.x}%`,
           top: `${pos.y}%`,
-          transform: `translate(-50%, -50%) rotate(${rotation}deg) scaleX(${scale})`,
-          transition: stateRef.current === 'idle' ? 'transform 0.3s ease' : 'none',
-          filter: 'drop-shadow(0 2px 8px rgba(255,255,255,0.3))',
+          transform: `translate(-50%, -50%) scaleX(${scale})`,
+          filter: 'drop-shadow(0 4px 12px rgba(0,0,0,0.2))',
+          transition: 'transform 0.5s ease',
         }}
       >
-        <CatSVG size={isPouncing ? 90 : 75} />
+        <CatSVG size={state === 'lying' ? 100 : 130} state={state} />
       </div>
     </div>
   );
