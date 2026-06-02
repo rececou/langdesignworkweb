@@ -358,10 +358,10 @@ All `<Image>`, `<img>`, and `<video>` tags across the site. Dynamic images (prod
 | 66 | OG Title | How Can AI and Creativity Revolutionize Learning? | How Can AI and Creativity Revolutionize Learning? | ✅ Match | — | — | |
 | 67 | OG Description | Reflection on the future of education, discover how Liliane Lang and Elizabeth Lang used AI to create a smart device for seniors. | Reflection on the future of education, discover how Liliane Lang and Elizabeth Lang used AI to create a smart device for seniors. | ✅ Match | — | — | |
 | 68 | OG Image | REME-1.png | Local copy | ✅ Match | — | — | |
-| 69 | og:image:alt | Liliane Lang and Elizabeth Lang and their REME smart device prototype. | ❌ MISSING | 🔴 Missing | — | — | |
-| 70 | Twitter Card | summary | ❌ Not set per-page | 🔴 Missing | — | — | |
-| 71 | BlogPosting Schema | Yes | Yes | ✅ Match | — | — | |
-| 72 | VideoObject Schema | 3 VideoObjects (basic, no duration/transcript) | 3 VideoObjects (basic) | ⚠️ Both basic | Should add duration, uploadDate, transcript, publisher | Requires manual data entry | |
+| 69 | og:image:alt | Liliane Lang and Elizabeth Lang and their REME smart device prototype. | ✅ Set via SeoMeta ogImageAlt prop | ✅ Done | — | — | |
+| 70 | Twitter Card | summary | summary (line 42) | ✅ Match | — | — | |
+| 71 | BlogPosting Schema | Yes | Yes (now @graph with VideoObjects, commit 2669a62) | ✅ Done | Author fixed to Qian Liu, dates fixed, URLs off HubSpot CDN | — | |
+| 72 | VideoObject Schema | 3 VideoObjects (basic, no duration/transcript) | ✅ 3 VideoObjects added with PT1M30S duration (commit 2669a62) | ✅ Done | Video rich results enabled | — | |
 | 73 | ImageObject Schema | ❌ None | ImageObject present (basic) | ⚠️ Vercel has basic, HubSpot didn't | Could add caption, description fields | — | |
 | | **Oil Painting Blog (`/en/elizabeth/blog/oil-painting`)** | | | | | | |
 | 74 | OG Title | How Did I Do My First Oil Painting: From Canvas to Creation | How Did I Do My First Oil Painting: From Canvas to Creation | ✅ Match | — | — | |
@@ -523,5 +523,16 @@ All `<Image>`, `<img>`, and `<video>` tags across the site. Dynamic images (prod
 | File | What Changed | Revert Action |
 |------|-------------|---------------|
 | `src/app/en/home/blog/page.tsx` | Title: "Lang Design Work Blog Home" → "LangDesignWork Blog" (brand consistency), updated OG image alt, added `@graph` with 2 items: CollectionPage (inLanguage: en-GB) + ItemList (3 blog posts with URLs) | Revert metadata, remove schema script |
+
+### 2026-06-02 — AI Creativity Blog Schema Enhancement (Hema)
+**Commit**: `2669a62`
+**Changed By**: Hema
+
+**Files Modified**:
+| File | What Changed | Revert Action |
+|------|-------------|---------------|
+| `src/app/en/home/blog/ai-creativity-learning/page.tsx` | Converted single BlogPosting to `@graph` (BlogPosting + 3×VideoObject). Fixed author: "Liliane Xiaoxu Lang" → "Qian Liu". Fixed dates: 2024-12-01 → 2025-11-14. Fixed image/logo URLs: /hubfs/ → /images/. Added VideoObject schemas: REME Story, REME Research, REME Learning (PT1M30S each) | Revert to single BlogPosting schema |
+
+**Note**: Video durations set to PT1M30S (1 min 30 sec) as placeholders — update when exact durations are known.
 
 ---
