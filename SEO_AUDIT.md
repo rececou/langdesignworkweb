@@ -251,3 +251,164 @@ All `<Image>`, `<img>`, and `<video>` tags across the site. Dynamic images (prod
 - [ ] Add `hreflang` tags for ZH/EN page alternates
 - [ ] Velvet Essence page has no HubSpot equivalent — SEO values created from scratch
 - [ ] Download actual blog images for tote-bag page (placeholder paths: `/blog-tote-shoe.jpg`, `/blog-tote-flower.jpg`, `/blog-tote-book.jpg`, `/blog-shantell.jpg`)
+---
+
+## HUBSPOT ADDITIONAL SNIPPET — COMPLETE AUDIT & GAP ANALYSIS
+
+*Scraped from live HubSpot site on 2026-06-02. This captures ALL custom code injected via HubSpot page settings → Additional Snippets (not just basic meta tags).*
+
+---
+
+### TRACKING PIXELS & INTEGRATIONS AUDIT
+
+| Integration | HubSpot (Live) | Vercel (Current) | Gap | Action Required |
+|------------|---------------|------------------|-----|-----------------|
+| **GA4** (`G-8S28SC7LSQ`) | ✅ All 12 pages (gtag.js) | ❌ **NOT INTEGRATED** | 🔴 Missing entirely | Add gtag.js to layout.tsx |
+| **Facebook Pixel** (`1727019827969098`) | ✅ All 12 pages (fbq init + track PageView) | ❌ **NOT INTEGRATED** | 🔴 Missing entirely | Add fbq script to layout.tsx |
+| **LinkedIn Insight Tag** (`8304644`) | ✅ All 12 pages (insight.min.js) | ❌ **NOT INTEGRATED** | 🔴 Missing entirely | Add LinkedIn tag to layout.tsx |
+| **TikTok Pixel** | ✅ `/partner/kidslabuk` only | ❌ Link only, NO pixel | 🔴 Missing | Add TikTok pixel to Kidlab page if needed |
+| **HubSpot Tracking** (`244077776`) | ✅ js.hs-scripts.com loader | ✅ Present (HubSpotTracking.tsx) | ✅ OK | No action needed |
+| **HubSpot Forms** | ✅ js.hsforms.net/embed/v2.js | ✅ Present (HubSpotTracking.tsx) | ✅ OK | No action needed |
+| **Google Ads** | ❌ Not found | ❌ Not needed | ✅ OK | No action needed |
+| **Hotjar** | ❌ Not found | ❌ Not needed | ✅ OK | No action needed |
+
+---
+
+### PAGE-BY-PAGE ADDITIONAL SNIPPET COMPARISON
+
+**Legend:** ✅ = Match / Present | ⚠️ = Partial / Different | ❌ = Missing | 🔴 = Critical gap
+
+| # | Feature | HubSpot (Additional Snippet) | Vercel (Current Code) | Gap Analysis | Pro (Add) | Con (Don't Add / Modify) | Lucy's Comment |
+|---|---------|------------------------------|----------------------|--------------|-----------|-------------------------|----------------|
+| | **Homepage (`/`)** | | | | | | |
+| 1 | OG Title | LangDesignWork \| Home | LangDesignWork \| Home | ✅ Match | — | — | |
+| 2 | OG Description | Creativity. Community. Commerce... | Creativity. Community. Commerce... | ✅ Match | — | — | |
+| 3 | OG Image | LangDesignWorkLogo - social_300_175-2.png | /images/og-home.png | ✅ Local copy | — | — | |
+| 4 | og:image:alt | Lang Design Work Social Media | ❌ MISSING | 🔴 Missing | Accessibility + social sharing quality | Adds minor overhead | |
+| 5 | Twitter Card | summary_large_image | summary_large_image (SeoMeta default) | ✅ Match | — | — | |
+| 6 | Organization Schema | Yes (5 sameAs: LinkedIn, Facebook, YouTube, Instagram, X) | Yes (3 sameAs: LinkedIn, YouTube, Instagram) | ⚠️ Missing Facebook & X | Completes social graph | Facebook page may be inactive | |
+| 7 | WebSite Schema | Yes | Yes | ✅ Match | — | — | |
+| | **Liliane Page (`/liliane`)** | | | | | | |
+| 8 | OG Title | Liliane Xiaoxu Lang \| Ideas & Prototyping \| LangDesignWork | Meet Liliane \| LangDesignWork | ⚠️ Different — Vercel simplified | HubSpot title is more descriptive for SEO | Shorter title may be cleaner for sharing | |
+| 9 | OG Description | Join Liliane Xiaoxu Lang on the Discover Channel! Explore debates, creative projects, and inspirational insights. | Liliane is the creative force behind... | ⚠️ Different — HubSpot mentions "Discover Channel" | HubSpot desc matches URL intent better | Vercel version is more personal | |
+| 10 | OG Image | LangDesignWorkLogo - social_300_175-1.png | /images/og-liliane.png | ✅ Local copy | — | — | |
+| 11 | og:image:alt | Liliane Xiaoxu Lang Discover Channel – creativity, debates, and insights | ❌ MISSING | 🔴 Missing | Accessibility + social sharing | — | |
+| 12 | Twitter Card | summary_large_image | ❌ Not set per-page | 🔴 Missing | Proper Twitter sharing | — | |
+| 13 | Person Schema | Full: name, jobTitle ("Innovator & Student"), description, image (Liliane Xiaoxu Lang.jpg), affiliation | Basic: @type: Person only | 🔴 Missing jobTitle, description, image, affiliation | Rich results, Google Knowledge Graph | — | |
+| 14 | VideoObject Schema | Yes: "Liliane Lang Discover Channel, AI powered prototype", duration PT2M28S, thumbnail REME-1.png, transcript text, publisher, embedUrl | ❌ MISSING | 🔴 Completely missing | Video rich results in Google Search, video carousel eligibility | — | |
+| 15 | ImageObject Schema | 5 ImageObjects: hero image (representativeOfPage: true), REME prototype, Reflections, Ideas, Rugby — each with caption + description | ❌ MISSING | 🔴 Completely missing | Google Images rich results, image captions in search | — | |
+| 16 | WebPage Schema | Yes: url=/discover, name, description, primaryImageOfPage, relatedLink, about, inLanguage | ❌ MISSING | 🔴 Completely missing | Page structure understanding by search engines | — | |
+| | **Liliane Create (`/liliane-create`)** | | | | | | |
+| 17 | OG Title | Liliane Xiaoxu Lang — Creation \| LangDesignWork | ❓ Needs verification | ❓ Unknown | — | — | |
+| 18 | OG Description | Liliane Xiaoxu Lang's video gallery showcasing her ideas, creative process, and the path from ideation to creation. | ❓ Needs verification | ❓ Unknown | — | — | |
+| 19 | OG Image | raccoon.jpeg (clay raccoon) | ❓ Needs verification | ❓ Unknown | — | — | |
+| 20 | og:image:alt | Hand-crafted clay raccoon by Liliane Xiaoxu Lang | ❌ MISSING | 🔴 Missing | — | — | |
+| 21 | Twitter Card | summary_large_image | ❌ Not set | 🔴 Missing | — | — | |
+| 22 | Person Schema | Full: name, jobTitle ("Creator & Student"), description, image (raccoon_social.jpeg) | ❓ Partial | 🔴 Missing jobTitle, description | — | — | |
+| 23 | VideoObject Schema | 2 videos: "Sew and Style Your Top" (PT2M46S), "Make an Adorable Clay Raccoon" (PT1M26S) | ❌ MISSING | 🔴 Completely missing | Video rich results for both videos | — | |
+| | **Elizabeth Page (`/elizabeth`)** | | | | | | |
+| 24 | OG Title | Elizabeth Xiaoyue Lang \| Art & Custom Design \| LangDesignWork | Elizabeth Xiaoyue Lang \| Art & Custom Design \| LangDesignWork | ✅ Match | — | — | |
+| 25 | OG Description | Explore the creative journey of Elizabeth Xiaoyue Lang... | Explore the creative journey of Elizabeth Xiaoyue Lang... | ✅ Match | — | — | |
+| 26 | OG Image | LangDesignWorkLogo - social_300_175-2.png | /images/og-elizabeth.png | ✅ Local copy | — | — | |
+| 27 | og:image:alt | Lang Design Work Social Media | ❌ MISSING | 🔴 Missing | — | — | |
+| 28 | Twitter Card | summary_large_image | ❌ Not set per-page | 🔴 Missing | — | — | |
+| 29 | Person Schema | Full: name, jobTitle ("Artist & Student"), description, image (Elizabeth Xiaoyue Lang.jpg) | Basic: @type: Person only | 🔴 Missing jobTitle, description, image | Knowledge Graph eligibility | — | |
+| 30 | ItemList Schema | Yes (6 items) | ❌ MISSING | 🔴 Missing | Google may show item list in search | — | |
+| | **Elizabeth Custom Design (`/elizabeth-custom-design`)** | | | | | | |
+| 31 | OG Title | Custom Design by Elizabeth Xiaoyue Lang \| LangDesignWork | Custom Design by Elizabeth Xiaoyue Lang \| LangDesignWork | ✅ Match | — | — | |
+| 32 | OG Description | Explore the custom illustration & design portfolio of Elizabeth Xiaoyue Lang. Discover unique, playful, and colourful work. | Explore the custom illustration & design portfolio... | ✅ Match | — | — | |
+| 33 | OG Image | girl with umbrella_social.jpeg | ❌ No dedicated OG image | 🔴 Missing | Social sharing shows relevant image | — | |
+| 34 | og:image:alt | Elizabeth Xiaoyue Lang Custom Design | ❌ MISSING | 🔴 Missing | — | — | |
+| 35 | Twitter Card | summary_large_image | ❌ Not set | 🔴 Missing | — | — | |
+| 36 | Person Schema | Full: name, jobTitle ("Creator & Designer"), description, image (girl with umbrella_social.jpeg) | ❌ MISSING | 🔴 Completely missing | Knowledge Graph, rich results | — | |
+| 37 | WebPage Schema | Yes: url, name, description | ❌ MISSING | 🔴 Missing | Page structure for search engines | — | |
+| 38 | ImageGallery Schema | Yes | ❌ MISSING | 🔴 Missing | Google Image search for gallery pages | — | |
+| 39 | Product Schema | 2 Products | ❌ MISSING | 🔴 Missing | Product rich results (price, availability) | May need real product data | |
+| 40 | ItemList Schema | Yes (2 items) | ❌ MISSING | 🔴 Missing | — | — | |
+| | **Remecou (`/remecou`)** | | | | | | |
+| 41 | OG Title | Remecou \| Sustainable Goods Operations \| LangDesignWork | Remecou \| Sustainable Goods Operations \| LangDesignWork | ✅ Match | — | — | |
+| 42 | OG Description | Hong Kong operations model for sustainable goods... | Hong Kong operations model for sustainable goods... | ✅ Match | — | — | |
+| 43 | OG Image | Remecou logo_featured.jpeg | /images/og-remecou.jpeg | ✅ Local copy | — | — | |
+| 44 | og:image:alt | ❌ MISSING on HubSpot too | ❌ MISSING | ✅ Both missing | Could add alt text | — | |
+| 45 | Twitter Card | summary_large_image | ❌ Not set per-page | 🔴 Missing | — | — | |
+| 46 | Organization Schema | Remecou + LangDesignWork | LangDesignWork only | ⚠️ Missing Remecou Organization | Brand separation for search engines | — | |
+| 47 | WebPage Schema | Yes: url, name, description | ❌ MISSING | 🔴 Missing | — | — | |
+| | **Kidlab UK (`/partner/kidslabuk`)** | | | | | | |
+| 48 | OG Title | Kidlab UK \| DIY STEM Kits \| LangDesignWork Partner | Kidlab UK \| DIY STEM Kits \| LangDesignWork Partner | ✅ Match | — | — | |
+| 49 | OG Description | Swap screen time for hands-on discovery... | Swap screen time for hands-on discovery... | ✅ Match | — | — | |
+| 50 | OG Image | kidlab_logo_web_social_feature.jpeg | /images/og-kidlab.jpeg | ✅ Local copy | — | — | |
+| 51 | og:image:alt | kidlab logo | ❌ MISSING | 🔴 Missing | — | — | |
+| 52 | Twitter Card | summary (not large) | summary_large_image (SeoMeta default) | ⚠️ Different — HubSpot uses summary | HubSpot choice may be intentional for logo-only image | Large image looks better in Twitter | |
+| 53 | Organization Schema | Kidlab UK + Lang Design Work | LangDesignWork only | ⚠️ Missing Kidlab Organization | Partner brand recognition | — | |
+| 54 | WebPage Schema | Yes: url, name, description | ❌ MISSING | 🔴 Missing | — | — | |
+| | **Velvet Essence (`/partner/velvetessencedesign`)** | | | | | | |
+| 55 | OG Title | ❌ 404 — does not exist on HubSpot | SEO values created from scratch | ✅ New page | — | — | |
+| 56 | OG Image | N/A | Inherits parent or default | ⚠️ No dedicated image | Should add dedicated OG image | — | |
+| 57 | og:image:alt | N/A | ❌ MISSING | 🔴 Missing | — | — | |
+| 58 | Twitter Card | N/A | ❌ Not set | 🔴 Missing | — | — | |
+| 59 | Organization Schema | N/A | ❌ MISSING | 🔴 Missing — should add | Brand recognition for new partner | — | |
+| 60 | Product Schema | N/A | ❌ MISSING | 🔴 Missing — should add | Product rich results for 8 products | — | |
+| | **Blog Home (`/blog`)** | | | | | | |
+| 61 | OG Title | Lang Design Work Blog Home | Lang Design Work Blog Home | ✅ Match | — | — | |
+| 62 | OG Description | Explore ideas, creative projects, and reflections... | Explore ideas, creative projects, and reflections... | ✅ Match | — | — | |
+| 63 | OG Image | ❌ MISSING on HubSpot too | ❌ MISSING | ✅ Both missing | Should add blog OG image | — | |
+| 64 | Twitter Card | summary | summary_large_image (SeoMeta default) | ⚠️ Different | Summary may be intentional for text-only blog | — | |
+| 65 | JSON-LD | ❌ NONE on HubSpot | ❌ NONE | ✅ Both missing | Could add Blog schema | — | |
+| | **AI Creativity Blog (`/en/home/blog/ai-creativity-learning`)** | | | | | | |
+| 66 | OG Title | How Can AI and Creativity Revolutionize Learning? | How Can AI and Creativity Revolutionize Learning? | ✅ Match | — | — | |
+| 67 | OG Description | Reflection on the future of education, discover how Liliane Lang and Elizabeth Lang used AI to create a smart device for seniors. | Reflection on the future of education, discover how Liliane Lang and Elizabeth Lang used AI to create a smart device for seniors. | ✅ Match | — | — | |
+| 68 | OG Image | REME-1.png | Local copy | ✅ Match | — | — | |
+| 69 | og:image:alt | Liliane Lang and Elizabeth Lang and their REME smart device prototype. | ❌ MISSING | 🔴 Missing | — | — | |
+| 70 | Twitter Card | summary | ❌ Not set per-page | 🔴 Missing | — | — | |
+| 71 | BlogPosting Schema | Yes | Yes | ✅ Match | — | — | |
+| 72 | VideoObject Schema | 3 VideoObjects (basic, no duration/transcript) | 3 VideoObjects (basic) | ⚠️ Both basic | Should add duration, uploadDate, transcript, publisher | Requires manual data entry | |
+| 73 | ImageObject Schema | ❌ None | ImageObject present (basic) | ⚠️ Vercel has basic, HubSpot didn't | Could add caption, description fields | — | |
+| | **Oil Painting Blog (`/en/elizabeth/blog/oil-painting`)** | | | | | | |
+| 74 | OG Title | How Did I Do My First Oil Painting: From Canvas to Creation | How Did I Do My First Oil Painting: From Canvas to Creation | ✅ Match | — | — | |
+| 75 | OG Description | Explore Elizabeth Xiaoyue Lang's first oil painting... | Explore Elizabeth Xiaoyue Lang's first oil painting... | ✅ Match | — | — | |
+| 76 | OG Image | Elizabeth.jpeg | Inherits /elizabeth | ⚠️ Different image source | HubSpot had dedicated image | — | |
+| 77 | og:image:alt | elizabeth lang oil painting | ❌ MISSING | 🔴 Missing | — | — | |
+| 78 | Twitter Card | summary_large_image | ❌ Not set per-page | 🔴 Missing | — | — | |
+| 79 | BlogPosting Schema | Yes (×2) | Yes (×1) | ⚠️ HubSpot had 2, Vercel has 1 | Apply BlogPosting schema to all blog posts | — | |
+| | **Tote Bag Blog (`/en/liliane/blog/tote-bag`)** | | | | | | |
+| 80 | OG Title | Looking for Your Next Creative Idea? Discover Inspiration Through Everyday Design | Different (simplified) | ⚠️ Vercel simplified | HubSpot title is more engaging for clicks | Vercel title may be cleaner | |
+| 81 | OG Description | Liliane Xiaoxu Lang explores how everyday design inspires creativity, turning simple ideas into stylish personalized tote bags. | Different | ⚠️ Vercel different | HubSpot desc is more specific | — | |
+| 82 | OG Image | lily blog email top banner-1.jpeg | Inherits /liliane | ⚠️ Different image source | HubSpot had dedicated blog banner | — | |
+| 83 | og:image:alt | Shantell Morrison book tote bag | ❌ MISSING | 🔴 Missing | — | — | |
+| 84 | Twitter Card | summary_large_image | ❌ Not set per-page | 🔴 Missing | — | — | |
+| 85 | BlogPosting Schema | Yes (×2) | Yes (×1) | ⚠️ HubSpot had 2, Vercel has 1 | Apply BlogPosting schema to all blog posts | — | |
+
+---
+
+### TRACKING INTEGRATION PRIORITY MATRIX
+
+| Priority | Integration | Impact | Effort | Recommendation |
+|----------|------------|--------|--------|----------------|
+| **P1** | GA4 (`G-8S28SC7LSQ`) | Critical — all analytics data lost | Low (1 script tag) | ✅ Add immediately |
+| **P1** | Facebook Pixel (`1727019827969098`) | High — ad retargeting, conversion tracking | Low (1 script tag) | ✅ Add immediately |
+| **P2** | LinkedIn Insight Tag (`8304644`) | Medium — B2B audience tracking | Low (1 script tag) | ⏳ Add after GA4 + FB |
+| **P3** | TikTok Pixel (Kidlab only) | Low — only needed if running TikTok ads | Low | ⏳ Add only if running TikTok ads for Kidlab |
+
+---
+
+### RECOMMENDED ACTIONS SUMMARY
+
+| # | Action | Pages Affected | Priority | Complexity |
+|---|--------|---------------|----------|------------|
+| 1 | Add GA4 tracking (gtag.js) to layout.tsx | All 12 pages | P1 | Low |
+| 2 | Add Facebook Pixel to layout.tsx | All 12 pages | P1 | Low |
+| 3 | Add LinkedIn Insight Tag to layout.tsx | All 12 pages | P2 | Low |
+| 4 | Add og:image:alt to all pages with OG images | 10 pages | P2 | Low |
+| 5 | Enhance Person schema with jobTitle, description, image | /liliane, /liliane-create, /elizabeth, /elizabeth-custom-design | P2 | Medium |
+| 6 | Add VideoObject schema with duration, transcript, publisher | /liliane, /liliane-create, AI creativity blog | P2 | Medium |
+| 7 | Add ImageObject schema with captions | /liliane (5 images) | P3 | Medium |
+| 8 | Add WebPage schema to all pages | All 12 pages | P3 | Medium |
+| 9 | Add Organization schema for partners | /remecou, /partner/kidslabuk, /partner/velvetessencedesign | P3 | Low |
+| 10 | Add ImageGallery + Product schemas | /elizabeth-custom-design, /partner/velvetessencedesign | P3 | Medium |
+| 11 | Add dedicated OG images where missing | /elizabeth-custom-design, /partner/velvetessencedesign, /blog | P2 | Low |
+| 12 | Apply BlogPosting schema to ALL blog posts | All current and future blog posts | P2 | Low |
+| 13 | Fix OG titles/descriptions to match HubSpot where Vercel differs | /liliane, /en/liliane/blog/tote-bag | P2 | Low |
+| 14 | Add per-page Twitter meta tags | All pages | P3 | Low |
+| 15 | Restore missing sameAs links (Facebook, X) | Homepage | P3 | Low |
+
+---
