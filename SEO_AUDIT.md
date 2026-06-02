@@ -450,4 +450,22 @@ All `<Image>`, `<img>`, and `<video>` tags across the site. Dynamic images (prod
 
 **Impact**: 15 files changed, 144 insertions, 9 deletions
 
+### 2026-06-02 — Liliane Page Schema Enhancement (Hema)
+**Commit**: `18a60d3`
+**Changed By**: Hema
+
+**Files Modified**:
+| File | What Changed | Revert Action |
+|------|-------------|---------------|
+| `src/app/liliane/page.tsx` | Converted Person schema to `@graph` with 7 items: Person (added description + affiliation), VideoObject (duration PT2M28S, transcript, publisher), 5× ImageObject (captions + descriptions), WebPage (primaryImageOfPage) | Revert to single Person schema |
+
+### 2026-06-02 — Liliane Create Page Person Schema (Hema)
+**Commit**: `bc47069`
+**Changed By**: Hema
+
+**Files Modified**:
+| File | What Changed | Revert Action |
+|------|-------------|---------------|
+| `src/app/liliane-create/page.tsx` | Added Person schema: jobTitle "Creator & Student", description, affiliation to LangDesignWork | Remove script block |
+
 ---
