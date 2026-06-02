@@ -117,7 +117,7 @@
 **Files Modified**:
 | File | What Changed | Revert Action |
 |------|-------------|---------------|
-| `src/app/partner/kidslabuk/page.tsx` | Reduced from 12 to 8 products (removed CTA cards), 4-col grid → 2 rows | Revert to 12-item version |
+| `src/app/partner/kidslabuk/page.tsx` | 8 products hardcoded (removed 2 hidden extras — Music Box, Newton's Pendulum — from array). 4-col grid, 2 rows. `.slice(0, 8)` removed since array now exactly 8 items. | Revert to original version |
 
 ---
 
