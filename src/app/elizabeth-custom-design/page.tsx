@@ -14,6 +14,7 @@ export default function ElizabethCustomDesignPage() {
         ogImage="/images/velvet-essence-logo.jpg"
         ogImageAlt="Elizabeth Xiaoyue Lang Custom Design"
         canonical="https://www.langdesignwork.com/elizabeth-custom-design"
+        noindex={true}
       />
 
       {/* JSON-LD Schema */}

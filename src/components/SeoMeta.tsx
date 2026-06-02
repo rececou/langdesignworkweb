@@ -15,6 +15,7 @@ interface SeoMetaProps {
   twitterTitle?: string;
   twitterDescription?: string;
   twitterImage?: string;
+  noindex?: boolean; // Set true to prevent Google indexing (for draft/WIP pages)
 }
 
 export default function SeoMeta({
@@ -30,6 +31,7 @@ export default function SeoMeta({
   twitterTitle,
   twitterDescription,
   twitterImage,
+  noindex = false,
 }: SeoMetaProps) {
   useEffect(() => {
     document.title = title;
@@ -47,7 +49,7 @@ export default function SeoMeta({
     const setProp = (name: string, content: string) => setMeta(name, content, 'property');
 
     setMeta('description', description);
-    setMeta('robots', 'index, follow');
+    setMeta('robots', noindex ? 'noindex, nofollow' : 'index, follow');
     setProp('og:title', ogTitle || title);
     setProp('og:description', ogDescription || description);
     setProp('og:type', ogType);

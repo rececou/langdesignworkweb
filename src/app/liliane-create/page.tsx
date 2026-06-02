@@ -13,6 +13,7 @@ export default function LilianeCreatePage() {
         ogImage="/images/og-liliane.png"
         ogImageAlt="Hand-crafted clay raccoon by Liliane Xiaoxu Lang"
         canonical="https://www.langdesignwork.com/liliane-create"
+        noindex={true}
       />
 
       {/* JSON-LD Person Schema */}
