@@ -468,4 +468,13 @@ All `<Image>`, `<img>`, and `<video>` tags across the site. Dynamic images (prod
 |------|-------------|---------------|
 | `src/app/liliane-create/page.tsx` | Added Person schema: jobTitle "Creator & Student", description, affiliation to LangDesignWork | Remove script block |
 
+### 2026-06-02 — Elizabeth Page Person Schema Enhancement (Hema)
+**Commit**: `1daa9c1`
+**Changed By**: Hema
+
+**Files Modified**:
+| File | What Changed | Revert Action |
+|------|-------------|---------------|
+| `src/app/elizabeth/page.tsx` | Updated Person schema: jobTitle "Artist & Student" (from HubSpot), enhanced description, added image URL + affiliation to LangDesignWork | Revert script block |
+
 ---
