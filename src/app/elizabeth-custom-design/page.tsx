@@ -3,9 +3,11 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Link from 'next/link';
 import SeoMeta from '@/components/SeoMeta';
+import Image from 'next/image';
 
 const TITLE = "Custom Design by Elizabeth Xiaoyue Lang | LangDesignWork";
 const DESC = "Explore the custom illustration & design portfolio of Elizabeth Xiaoyue Lang. Discover unique, playful, and colourful work.";
+const HS = "https://www.langdesignwork.com/hubfs";
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -15,29 +17,64 @@ export const metadata: Metadata = {
     description: DESC,
     type: 'website',
     url: 'https://www.langdesignwork.com/elizabeth-custom-design',
-    images: [{ url: '/images/og-elizabeth.png', alt: 'Elizabeth Xiaoyue Lang Custom Design' }],
+    images: [{ url: `${HS}/girl%20with%20umbrella_social.jpeg`, alt: 'Elizabeth Xiaoyue Lang Custom Design' }],
     siteName: 'LangDesignWork',
   },
   twitter: {
     card: 'summary_large_image',
     title: TITLE,
     description: DESC,
-    images: ['/images/og-elizabeth.png'],
+    images: [`${HS}/girl%20with%20umbrella_social.jpeg`],
   },
   alternates: {
     canonical: 'https://www.langdesignwork.com/elizabeth-custom-design',
   },
 };
 
+const galleryItems = [
+  {
+    src: `${HS}/butterfly%20legs.jpeg`,
+    name: "Whimsical Butterfly",
+    desc: "Custom fashion character illustration",
+  },
+  {
+    src: `${HS}/girl%20handstand%20moment.jpeg`,
+    name: "Upside-Down Energy",
+    desc: "Custom character illustration",
+  },
+  {
+    src: `${HS}/girl%20listens%20to%20the%20music%20moment.jpeg`,
+    name: "Daydreams in Stereo",
+    desc: "Custom character illustration",
+  },
+];
+
+const products = [
+  {
+    name: "Whimsical Butterfly Tote Bag",
+    desc: "This reusable cotton tote features an imaginative illustration, designed for those who love bold, expressive style, blends fashion and art into everyday accessory.",
+    image: `${HS}/butterfly%20legs_tote_sku001.jpeg`,
+    price: "13.99",
+    etsy: "https://www.etsy.com/listing/4426365006",
+  },
+  {
+    name: "Daydreams in Stereo Tote Bag",
+    desc: "Hand-printed tote bag with Daydreams in Stereo design by Elizabeth Xiaoyue Lang.",
+    image: `${HS}/girl%20listens%20to%20the%20music%20moment_tote.jpeg`,
+    price: "13.99",
+    etsy: "https://www.etsy.com/listing/4426475502",
+  },
+];
+
 export default function ElizabethCustomDesignPage() {
   return (
     <>
       <SeoMeta
-        title="Custom Design by Elizabeth Xiaoyue Lang | LangDesignWork"
-        description="Explore the custom illustration & design portfolio of Elizabeth Xiaoyue Lang. Discover unique, playful, and colourful work."
-        ogTitle="Custom Design by Elizabeth Xiaoyue Lang | LangDesignWork"
-        ogDescription="Explore the custom illustration & design portfolio of Elizabeth Xiaoyue Lang. Discover unique, playful, and colourful work."
-        ogImage="/images/velvet-essence-logo.jpg"
+        title={TITLE}
+        description={DESC}
+        ogTitle={TITLE}
+        ogDescription={DESC}
+        ogImage={`${HS}/girl%20with%20umbrella_social.jpeg`}
         ogImageAlt="Elizabeth Xiaoyue Lang Custom Design"
         canonical="https://www.langdesignwork.com/elizabeth-custom-design"
       />
@@ -53,56 +90,46 @@ export default function ElizabethCustomDesignPage() {
                 '@type': 'Person',
                 name: 'Elizabeth Xiaoyue Lang',
                 jobTitle: 'Creator & Designer',
-                description: 'Explore the custom illustration & design portfolio of Elizabeth Xiaoyue Lang. Discover unique, playful, and colourful work.',
-                image: 'https://www.langdesignwork.com/images/og-elizabeth.png',
+                description: DESC,
+                image: `${HS}/girl%20with%20umbrella_social.jpeg`,
                 url: 'https://www.langdesignwork.com/elizabeth-custom-design',
+                knowsAbout: ["Custom Illustration", "Digital Art", "Character Design", "Product Design", "Graphic Design"],
               },
               {
                 '@type': 'WebPage',
-                '@id': 'https://www.langdesignwork.com/elizabeth-custom-design',
                 url: 'https://www.langdesignwork.com/elizabeth-custom-design',
-                name: 'Custom Design by Elizabeth Xiaoyue Lang | LangDesignWork',
-                description: 'Explore the custom illustration & design portfolio of Elizabeth Xiaoyue Lang. Discover unique, playful, and colourful work.',
-                mainEntity: { '@type': 'Person', name: 'Elizabeth Xiaoyue Lang' },
+                name: TITLE,
+                description: DESC,
+                primaryImageOfPage: {
+                  '@type': 'ImageObject',
+                  url: `${HS}/girl%20with%20umbrella_social.jpeg`,
+                },
               },
               {
                 '@type': 'ImageGallery',
-                name: 'Elizabeth Xiaoyue Lang Custom Design Portfolio',
-                description: 'Custom illustration and design portfolio featuring unique, playful, and colourful artwork.',
+                name: 'Design Examples - Custom Illustration Portfolio',
+                description: 'Examples of custom illustration work showcasing unique designs',
                 url: 'https://www.langdesignwork.com/elizabeth-custom-design',
+                image: galleryItems.map((item) => ({
+                  '@type': 'ImageObject',
+                  contentUrl: item.src,
+                  name: item.name,
+                  description: item.desc,
+                })),
               },
-              {
+              ...products.map((p) => ({
                 '@type': 'Product',
-                name: 'Whimsical Butterfly Tote Bag',
-                description: 'Hand-printed tote bag with whimsical butterfly design by Elizabeth Xiaoyue Lang, sold at Velvet Essence Design Etsy shop.',
+                name: p.name,
+                description: p.desc,
+                image: p.image,
                 offers: {
                   '@type': 'Offer',
-                  price: '13.99',
+                  price: p.price,
                   priceCurrency: 'GBP',
                   availability: 'https://schema.org/InStock',
-                  url: 'https://www.etsy.com/listing/4426365006',
+                  url: p.etsy,
                 },
-              },
-              {
-                '@type': 'Product',
-                name: 'Daydreams in Stereo Tote Bag',
-                description: 'Hand-printed tote bag with Daydreams in Stereo design by Elizabeth Xiaoyue Lang, sold at Velvet Essence Design Etsy shop.',
-                offers: {
-                  '@type': 'Offer',
-                  price: '13.99',
-                  priceCurrency: 'GBP',
-                  availability: 'https://schema.org/InStock',
-                  url: 'https://www.etsy.com/listing/4426475502',
-                },
-              },
-              {
-                '@type': 'ItemList',
-                name: 'Velvet Essence Design Products',
-                itemListElement: [
-                  { '@type': 'ListItem', position: 1, item: { '@type': 'Product', name: 'Whimsical Butterfly Tote Bag', url: 'https://www.etsy.com/listing/4426365006' } },
-                  { '@type': 'ListItem', position: 2, item: { '@type': 'Product', name: 'Daydreams in Stereo Tote Bag', url: 'https://www.etsy.com/listing/4426475502' } },
-                ],
-              },
+              })),
             ],
           }),
         }}
@@ -110,22 +137,80 @@ export default function ElizabethCustomDesignPage() {
 
       <Header locale="en" />
 
-      <section className="bg-gray-50 py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-4xl font-bold mb-4">Elizabeth — Custom Design</h1>
-          <p className="text-gray-600 max-w-2xl">
+      {/* Hero */}
+      <section className="bg-black text-white py-20 relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <span className="inline-block font-inter text-xs font-medium tracking-[1.5px] uppercase text-[#FF6B6B] mb-3">
+            CUSTOM DESIGN
+          </span>
+          <h1 className="text-4xl md:text-5xl font-bold mb-4 font-space">Elizabeth — Custom Design</h1>
+          <p className="text-gray-300 max-w-2xl text-lg leading-relaxed">
             Custom illustration and design portfolio by Elizabeth Xiaoyue Lang. Commission pieces and personal projects.
           </p>
         </div>
       </section>
 
+      {/* Gallery */}
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-2xl font-bold mb-8 font-space">Design Portfolio</h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {galleryItems.map((item, i) => (
+              <article key={i} className="group bg-gray-50 rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300">
+                <div className="relative aspect-square overflow-hidden">
+                  <Image
+                    src={item.src}
+                    alt={item.name}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-300"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  />
+                </div>
+                <div className="p-5">
+                  <h3 className="text-lg font-bold mb-1 font-space">{item.name}</h3>
+                  <p className="text-gray-500 text-sm">{item.desc}</p>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Products */}
+      <section className="py-16 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-2xl font-bold mb-4 font-space">Available on Etsy</h2>
+          <p className="text-gray-600 mb-8 max-w-2xl">
+            Personal, expressive, handmade. Elizabeth creates custom artwork available through our partner Velvet Essence Design on Etsy.
+          </p>
           <div className="grid md:grid-cols-2 gap-8">
-            {[1, 2, 3, 4].map((i) => (
-              <div key={i} className="bg-gray-100 aspect-[4/3] rounded-lg flex items-center justify-center">
-                <span className="text-gray-400">Custom Design {i}</span>
-              </div>
+            {products.map((p, i) => (
+              <article key={i} className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+                <div className="relative aspect-[4/3] overflow-hidden">
+                  <Image
+                    src={p.image}
+                    alt={p.name}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
+                </div>
+                <div className="p-5">
+                  <h3 className="text-lg font-bold mb-2 font-space">{p.name}</h3>
+                  <p className="text-gray-600 text-sm mb-4">{p.desc}</p>
+                  <div className="flex items-center justify-between">
+                    <span className="text-xl font-bold text-[#FF6B6B]">£{p.price}</span>
+                    <Link
+                      href={p.etsy}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-block bg-black text-white px-5 py-2 rounded text-sm font-medium hover:bg-gray-800 transition-colors"
+                    >
+                      View on Etsy →
+                    </Link>
+                  </div>
+                </div>
+              </article>
             ))}
           </div>
         </div>
