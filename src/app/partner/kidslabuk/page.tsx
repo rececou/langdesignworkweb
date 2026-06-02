@@ -103,14 +103,30 @@ export default function KidlabPage() {
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             "@context": "https://schema.org",
-            "@type": "Organization",
-            name: "Kidlab UK",
-            url: "https://www.langdesignwork.com/partner/kidslabuk",
-            description: "DIY wooden STEM kits and educational toys for curious kids. Hands-on learning from £9.99.",
-            logo: "/kidlab-logo.jpg",
-            sameAs: [
-              "https://kidlabuk.etsy.com/",
-              "https://www.tiktok.com/@kidlab.uk",
+            "@graph": [
+              {
+                "@type": "Organization",
+                name: "Kidlab UK",
+                url: "https://www.langdesignwork.com/partner/kidslabuk",
+                description: "DIY wooden STEM kits and educational toys for curious kids. Hands-on learning from £9.99.",
+                logo: "https://www.langdesignwork.com/kidlab-logo.jpg",
+                sameAs: [
+                  "https://kidlabuk.etsy.com/",
+                  "https://www.tiktok.com/@kidlab.uk",
+                ],
+              },
+              {
+                "@type": "WebPage",
+                "@id": "https://www.langdesignwork.com/partner/kidslabuk",
+                url: "https://www.langdesignwork.com/partner/kidslabuk",
+                name: "Kidlab UK | DIY STEM Kits & Educational Toys | LangDesignWork Partner",
+                description: "Swap screen time for hands-on discovery. KidLab UK DIY STEM kits and educational toys for curious kids — fun, practical, eco-friendly.",
+                mainEntity: {
+                  "@type": "Service",
+                  name: "Kidlab UK STEM Discovery Community",
+                  description: "A community focused on hands-on building, reducing screen time, and discovering engineering through practical DIY gadgets.",
+                },
+              },
             ],
           }),
         }}
