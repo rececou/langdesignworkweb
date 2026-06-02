@@ -349,11 +349,11 @@ All `<Image>`, `<img>`, and `<video>` tags across the site. Dynamic images (prod
 | 59 | Organization Schema | N/A | ❌ MISSING | 🔴 Missing — should add | Brand recognition for new partner | — | |
 | 60 | Product Schema | N/A | ❌ MISSING | 🔴 Missing — should add | Product rich results for 8 products | — | |
 | | **Blog Home (`/blog`)** | | | | | | |
-| 61 | OG Title | Lang Design Work Blog Home | Lang Design Work Blog Home | ✅ Match | — | — | |
+| 61 | OG Title | Lang Design Work Blog Home | LangDesignWork Blog (commit 80dd1ae) | ✅ Improved — brand consistency | Title shortened, spaces removed | — | |
 | 62 | OG Description | Explore ideas, creative projects, and reflections... | Explore ideas, creative projects, and reflections... | ✅ Match | — | — | |
 | 63 | OG Image | ❌ MISSING on HubSpot too | ❌ MISSING | ✅ Both missing | Should add blog OG image | — | |
 | 64 | Twitter Card | summary | summary_large_image (SeoMeta default) | ⚠️ Different | Summary may be intentional for text-only blog | — | |
-| 65 | JSON-LD | ❌ NONE on HubSpot | ❌ NONE | ✅ Both missing | Could add Blog schema | — | |
+| 65 | JSON-LD | ❌ NONE on HubSpot | ✅ Added CollectionPage + ItemList (commit 80dd1ae) | ✅ Done | CollectionPage identifies blog index, ItemList lists 3 posts | — | |
 | | **AI Creativity Blog (`/en/home/blog/ai-creativity-learning`)** | | | | | | |
 | 66 | OG Title | How Can AI and Creativity Revolutionize Learning? | How Can AI and Creativity Revolutionize Learning? | ✅ Match | — | — | |
 | 67 | OG Description | Reflection on the future of education, discover how Liliane Lang and Elizabeth Lang used AI to create a smart device for seniors. | Reflection on the future of education, discover how Liliane Lang and Elizabeth Lang used AI to create a smart device for seniors. | ✅ Match | — | — | |
@@ -514,5 +514,14 @@ All `<Image>`, `<img>`, and `<video>` tags across the site. Dynamic images (prod
 | `src/app/partner/velvetessencedesign/page.tsx` | Added `@graph` with 3 items: Organization (name, Etsy/TikTok sameAs, London address), WebPage (name, description, mainEntity → Organization), ItemList (8 collection items by name only — no prices, to avoid stale price mismatch) | Remove script block |
 
 **Note**: Skipped individual Product schemas — static build means prices would drift from live Etsy listings. ItemList provides collection structure without price penalty risk.
+
+### 2026-06-02 — Blog Home SEO + Schema Enhancement (Hema)
+**Commit**: `80dd1ae`
+**Changed By**: Hema
+
+**Files Modified**:
+| File | What Changed | Revert Action |
+|------|-------------|---------------|
+| `src/app/en/home/blog/page.tsx` | Title: "Lang Design Work Blog Home" → "LangDesignWork Blog" (brand consistency), updated OG image alt, added `@graph` with 2 items: CollectionPage (inLanguage: en-GB) + ItemList (3 blog posts with URLs) | Revert metadata, remove schema script |
 
 ---
