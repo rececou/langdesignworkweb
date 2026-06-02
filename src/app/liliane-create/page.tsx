@@ -3,6 +3,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import SeoMeta from '@/components/SeoMeta';
 import VideoPlayer from '@/components/VideoPlayer';
+import ButterflyRain from '@/components/ButterflyRain';
 
 const TITLE = "Liliane Xiaoxu Lang — Creation | LangDesignWork";
 const DESC = "Liliane Xiaoxu Lang's video gallery showcasing her ideas, creative process, and the path from ideation to creation.";
@@ -37,7 +38,7 @@ const videos = [
     src: "/videos/liliane-create/sew-video.mp4",
     poster: "/videos/liliane-create/sew-cover.jpeg",
     duration: "PT2M46S",
-    date: "December 2025",
+    date: "2025",
   },
   {
     title: "Make an Adorable Clay Raccoon from Scratch",
@@ -45,7 +46,7 @@ const videos = [
     src: "/videos/liliane-create/raccoon-video.mp4",
     poster: "/videos/liliane-create/raccoon-cover.jpg",
     duration: "PT1M26S",
-    date: "December 2025",
+    date: "2025",
   },
 ];
 
@@ -105,13 +106,20 @@ export default function LilianeCreatePage() {
       <Header locale="en" />
 
       {/* Hero */}
-      <section className="bg-black text-white py-20 relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <section className="relative bg-gradient-to-br from-gray-950 via-gray-900 to-red-950 text-white overflow-hidden">
+        <ButterflyRain count={5} />
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-10 left-10 w-2 h-2 bg-red-400 rounded-full animate-pulse" />
+          <div className="absolute top-32 right-20 w-3 h-3 bg-pink-400 rounded-full animate-pulse" style={{ animationDelay: '1s' }} />
+          <div className="absolute bottom-20 left-1/3 w-2 h-2 bg-orange-400 rounded-full animate-pulse" style={{ animationDelay: '2s' }} />
+          <div className="absolute top-1/2 right-1/4 w-1.5 h-1.5 bg-red-300 rounded-full animate-pulse" style={{ animationDelay: '0.5s' }} />
+        </div>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
           <span className="inline-block font-inter text-xs font-medium tracking-[1.5px] uppercase text-[#FF6B6B] mb-3">
             CREATION
           </span>
-          <h1 className="text-4xl md:text-5xl font-bold mb-4 font-space">Liliane — Creation</h1>
-          <p className="text-gray-300 max-w-2xl text-lg leading-relaxed">
+          <h1 className="text-4xl lg:text-6xl font-bold mb-4 leading-tight">Liliane — Creation</h1>
+          <p className="text-xl text-gray-300 max-w-2xl mb-8 leading-relaxed">
             Video gallery showcasing Liliane&apos;s creative process and projects from ideation to creation.
           </p>
         </div>
