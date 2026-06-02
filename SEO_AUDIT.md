@@ -367,16 +367,16 @@ All `<Image>`, `<img>`, and `<video>` tags across the site. Dynamic images (prod
 | 74 | OG Title | How Did I Do My First Oil Painting: From Canvas to Creation | How Did I Do My First Oil Painting: From Canvas to Creation | ✅ Match | — | — | |
 | 75 | OG Description | Explore Elizabeth Xiaoyue Lang's first oil painting... | Explore Elizabeth Xiaoyue Lang's first oil painting... | ✅ Match | — | — | |
 | 76 | OG Image | Elizabeth.jpeg | Inherits /elizabeth | ⚠️ Different image source | HubSpot had dedicated image | — | |
-| 77 | og:image:alt | elizabeth lang oil painting | ❌ MISSING | 🔴 Missing | — | — | |
-| 78 | Twitter Card | summary_large_image | ❌ Not set per-page | 🔴 Missing | — | — | |
-| 79 | BlogPosting Schema | Yes (×2) | Yes (×1) | ⚠️ HubSpot had 2, Vercel has 1 | Apply BlogPosting schema to all blog posts | — | |
+| 77 | og:image:alt | elizabeth lang oil painting | ✅ Set via SeoMeta ogImageAlt prop | ✅ Done | — | — | |
+| 78 | Twitter Card | summary_large_image | summary_large_image (SeoMeta default) | ✅ Match | — | — | |
+| 79 | BlogPosting Schema | Yes (×2) | ✅ @graph with BlogPosting + VideoObject + ImageObject (commit 3451fd8) | ✅ Done | Added YouTube VideoObject, ImageObject for painting, image field, dateModified | — | |
 | | **Tote Bag Blog (`/en/liliane/blog/tote-bag`)** | | | | | | |
 | 80 | OG Title | Looking for Your Next Creative Idea? Discover Inspiration Through Everyday Design | Different (simplified) | ⚠️ Vercel simplified | HubSpot title is more engaging for clicks | Vercel title may be cleaner | |
 | 81 | OG Description | Liliane Xiaoxu Lang explores how everyday design inspires creativity, turning simple ideas into stylish personalized tote bags. | Different | ⚠️ Vercel different | HubSpot desc is more specific | — | |
 | 82 | OG Image | lily blog email top banner-1.jpeg | Inherits /liliane | ⚠️ Different image source | HubSpot had dedicated blog banner | — | |
-| 83 | og:image:alt | Shantell Morrison book tote bag | ❌ MISSING | 🔴 Missing | — | — | |
-| 84 | Twitter Card | summary_large_image | ❌ Not set per-page | 🔴 Missing | — | — | |
-| 85 | BlogPosting Schema | Yes (×2) | Yes (×1) | ⚠️ HubSpot had 2, Vercel has 1 | Apply BlogPosting schema to all blog posts | — | |
+| 83 | og:image:alt | Shantell Morrison book tote bag | ✅ Set via SeoMeta ogImageAlt prop | ✅ Done | — | — | |
+| 84 | Twitter Card | summary_large_image | summary_large_image (SeoMeta default) | ✅ Match | — | — | |
+| 85 | BlogPosting Schema | Yes (×2) | ✅ @graph with BlogPosting + 3×ImageObject (commit 3451fd8) | ✅ Done | Added 3 ImageObjects (Shoe/Flower/Book Tote), image field, dateModified | — | |
 
 ---
 
@@ -534,5 +534,23 @@ All `<Image>`, `<img>`, and `<video>` tags across the site. Dynamic images (prod
 | `src/app/en/home/blog/ai-creativity-learning/page.tsx` | Converted single BlogPosting to `@graph` (BlogPosting + 3×VideoObject). Fixed author: "Liliane Xiaoxu Lang" → "Qian Liu". Fixed dates: 2024-12-01 → 2025-11-14. Fixed image/logo URLs: /hubfs/ → /images/. Added VideoObject schemas: REME Story, REME Research, REME Learning (PT1M30S each) | Revert to single BlogPosting schema |
 
 **Note**: Video durations set to PT1M30S (1 min 30 sec) as placeholders — update when exact durations are known.
+
+### 2026-06-02 — Oil Painting Blog Schema Enhancement (Hema)
+**Commit**: `3451fd8`
+**Changed By**: Hema
+
+**Files Modified**:
+| File | What Changed | Revert Action |
+|------|-------------|---------------|
+| `src/app/en/elizabeth/blog/oil-painting/page.tsx` | Converted single BlogPosting to `@graph` (BlogPosting + VideoObject + ImageObject). Added image field, dateModified. YouTube VideoObject: thumbnail, embedUrl, contentUrl, duration PT1M30S. ImageObject: featured painting with caption | Revert to single BlogPosting schema |
+
+### 2026-06-02 — Tote Bag Blog Schema Enhancement (Hema)
+**Commit**: `3451fd8`
+**Changed By**: Hema
+
+**Files Modified**:
+| File | What Changed | Revert Action |
+|------|-------------|---------------|
+| `src/app/en/liliane/blog/tote-bag/page.tsx` | Converted single BlogPosting to `@graph` (BlogPosting + 3×ImageObject). Added image field, dateModified. 3 ImageObjects: Shoe Tote, Flower Tote, Book Tote with captions and descriptions | Revert to single BlogPosting schema |
 
 ---
