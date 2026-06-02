@@ -55,18 +55,35 @@ export default function RemecouPage() {
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             '@context': 'https://schema.org',
-            '@type': 'Organization',
-            name: 'Remecou Trading Limited',
-            description: 'Hong Kong operations model for sustainable goods. AI-assisted sourcing from China, content co-creation with local partners, and in-market distribution.',
-            url: 'https://www.langdesignwork.com/remecou',
-            logo: 'https://www.langdesignwork.com/images/remecou-logo.jpeg',
-            image: 'https://www.langdesignwork.com/images/og-remecou.jpeg',
-            address: {
-              '@type': 'PostalAddress',
-              addressLocality: 'Hong Kong',
-              addressCountry: 'HK',
-            },
-            sameAs: ['https://www.langdesignwork.com/remecou'],
+            '@graph': [
+              {
+                '@type': 'Organization',
+                name: 'Remecou Trading Limited',
+                description: 'Hong Kong operations model for sustainable goods. AI-assisted sourcing from China, content co-creation with local partners, and in-market distribution.',
+                url: 'https://www.langdesignwork.com/remecou',
+                logo: 'https://www.langdesignwork.com/images/remecou-logo.jpeg',
+                image: 'https://www.langdesignwork.com/images/og-remecou.jpeg',
+                address: {
+                  '@type': 'PostalAddress',
+                  addressLocality: 'Hong Kong',
+                  addressCountry: 'HK',
+                },
+                sameAs: ['https://www.langdesignwork.com/remecou'],
+              },
+              {
+                '@type': 'WebPage',
+                '@id': 'https://www.langdesignwork.com/remecou',
+                url: 'https://www.langdesignwork.com/remecou',
+                name: 'Remecou | Sustainable Goods Operations | LangDesignWork',
+                description: 'Hong Kong operations model for sustainable goods. AI-assisted sourcing from China, content co-creation with local partners, and in-market distribution.',
+                inLanguage: 'en-GB',
+                mainEntity: {
+                  '@type': 'Organization',
+                  name: 'Remecou Trading Limited',
+                  url: 'https://www.langdesignwork.com/remecou',
+                },
+              },
+            ],
           }),
         }}
       />
