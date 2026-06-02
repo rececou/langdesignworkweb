@@ -25,21 +25,44 @@ export default function OilPaintingBlogPage() {
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             '@context': 'https://schema.org',
-            '@type': 'BlogPosting',
-            headline: 'How Did I Do My First Oil Painting: From Canvas to Creation',
-            author: {
-              '@type': 'Person',
-              name: 'Elizabeth Xiaoyue Lang',
-              url: 'https://www.langdesignwork.com/elizabeth',
-            },
-            datePublished: '2025-11-02',
-            publisher: {
-              '@type': 'Organization',
-              name: 'LangDesignWork',
-              url: 'https://www.langdesignwork.com',
-            },
-            description: 'Elizabeth Xiaoyue Lang shares her journey of creating her first oil painting at the Hong Kong Art School.',
-            mainEntityOfPage: 'https://www.langdesignwork.com/en/elizabeth/blog/oil-painting',
+            '@graph': [
+              {
+                '@type': 'BlogPosting',
+                headline: 'How Did I Do My First Oil Painting: From Canvas to Creation',
+                image: 'https://www.langdesignwork.com/boy-oil-painting.jpg',
+                author: {
+                  '@type': 'Person',
+                  name: 'Elizabeth Xiaoyue Lang',
+                  url: 'https://www.langdesignwork.com/elizabeth',
+                },
+                datePublished: '2025-11-02',
+                dateModified: '2025-11-02',
+                publisher: {
+                  '@type': 'Organization',
+                  name: 'LangDesignWork',
+                  url: 'https://www.langdesignwork.com',
+                },
+                description: 'Elizabeth Xiaoyue Lang shares her journey of creating her first oil painting at the Hong Kong Art School.',
+                mainEntityOfPage: 'https://www.langdesignwork.com/en/elizabeth/blog/oil-painting',
+              },
+              {
+                '@type': 'VideoObject',
+                name: 'Behind the Scenes: From Canvas to Creation',
+                description: 'Behind the scenes video showing the oil painting process from start to finish.',
+                thumbnailUrl: 'https://img.youtube.com/vi/1JkgOeQgKdM/maxresdefault.jpg',
+                embedUrl: 'https://www.youtube.com/embed/1JkgOeQgKdM',
+                contentUrl: 'https://www.youtube.com/watch?v=1JkgOeQgKdM',
+                uploadDate: '2025-11-02',
+                duration: 'PT1M30S',
+                publisher: { '@type': 'Organization', name: 'LangDesignWork' },
+              },
+              {
+                '@type': 'ImageObject',
+                contentUrl: 'https://www.langdesignwork.com/boy-oil-painting.jpg',
+                description: "Elizabeth's first oil painting — a portrait of a little boy, inspired by Hong Kong Art School classes.",
+                caption: 'First oil painting: portrait of a little boy',
+              },
+            ],
           }),
         }}
       />

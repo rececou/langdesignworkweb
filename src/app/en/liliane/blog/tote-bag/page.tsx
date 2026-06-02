@@ -25,21 +25,45 @@ export default function ToteBagBlogPage() {
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             '@context': 'https://schema.org',
-            '@type': 'BlogPosting',
-            headline: 'Looking for Your Next Creative Idea? Discover Inspiration Through Everyday Design',
-            author: {
-              '@type': 'Person',
-              name: 'Liliane Xiaoxu Lang',
-              url: 'https://www.langdesignwork.com/liliane',
-            },
-            datePublished: '2025-11-04',
-            publisher: {
-              '@type': 'Organization',
-              name: 'LangDesignWork',
-              url: 'https://www.langdesignwork.com',
-            },
-            description: 'Liliane Xiaoxu Lang explores how inspiration can be found in the simple designs and everyday moments around us.',
-            mainEntityOfPage: 'https://www.langdesignwork.com/en/liliane/blog/tote-bag',
+            '@graph': [
+              {
+                '@type': 'BlogPosting',
+                headline: 'Looking for Your Next Creative Idea? Discover Inspiration Through Everyday Design',
+                image: 'https://www.langdesignwork.com/blog-tote-book.jpg',
+                author: {
+                  '@type': 'Person',
+                  name: 'Liliane Xiaoxu Lang',
+                  url: 'https://www.langdesignwork.com/liliane',
+                },
+                datePublished: '2025-11-04',
+                dateModified: '2025-11-04',
+                publisher: {
+                  '@type': 'Organization',
+                  name: 'LangDesignWork',
+                  url: 'https://www.langdesignwork.com',
+                },
+                description: 'Liliane Xiaoxu Lang explores how inspiration can be found in the simple designs and everyday moments around us.',
+                mainEntityOfPage: 'https://www.langdesignwork.com/en/liliane/blog/tote-bag',
+              },
+              {
+                '@type': 'ImageObject',
+                contentUrl: 'https://www.langdesignwork.com/blog-tote-shoe.jpg',
+                description: "Shoe tote bag with glam design — 'A little glam never hurt anyone'",
+                caption: 'Shoe Tote — glam and feminine design',
+              },
+              {
+                '@type': 'ImageObject',
+                contentUrl: 'https://www.langdesignwork.com/blog-tote-flower.jpg',
+                description: 'Floral tote bag with vibrant bouquet and baby blue bow',
+                caption: 'Flower Tote — vibrant floral design with baby blue bow',
+              },
+              {
+                '@type': 'ImageObject',
+                contentUrl: 'https://www.langdesignwork.com/blog-tote-book.jpg',
+                description: 'Book and coffee tote bag — for readers and coffee lovers',
+                caption: 'Book Tote — for lovers of good stories and strong coffee',
+              },
+            ],
           }),
         }}
       />
