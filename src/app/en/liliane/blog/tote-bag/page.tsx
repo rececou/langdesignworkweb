@@ -71,11 +71,17 @@ export default function ToteBagBlogPage() {
 
       <article className="bg-white">
         {/* Hero header */}
-        <section className="relative bg-gradient-to-br from-gray-950 via-gray-900 to-pink-950 text-white overflow-hidden">
-          <div className="absolute inset-0 opacity-10">
-            <div className="absolute top-10 left-10 w-2 h-2 bg-pink-400 rounded-full animate-pulse" />
-            <div className="absolute top-32 right-20 w-3 h-3 bg-rose-400 rounded-full animate-pulse" style={{ animationDelay: '1s' }} />
-            <div className="absolute bottom-20 left-1/3 w-2 h-2 bg-purple-400 rounded-full animate-pulse" style={{ animationDelay: '2s' }} />
+        <section className="relative bg-gradient-to-br from-gray-950 via-pink-950 to-rose-900 text-white overflow-hidden">
+          {/* Cinematic glow orbs */}
+          <div className="absolute inset-0 overflow-hidden pointer-events-none">
+            <div className="absolute top-[10%] right-[15%] w-48 h-48 bg-pink-500/10 rounded-full blur-3xl" />
+            <div className="absolute bottom-[15%] left-[20%] w-40 h-40 bg-rose-500/10 rounded-full blur-3xl" />
+            {/* Floating particles */}
+            <div className="absolute top-[15%] left-[15%] w-2 h-2 bg-pink-400 rounded-full animate-pulse" style={{ animationDuration: '2s' }} />
+            <div className="absolute top-[30%] right-[25%] w-1.5 h-1.5 bg-rose-300 rounded-full animate-pulse" style={{ animationDuration: '3s', animationDelay: '0.5s' }} />
+            <div className="absolute bottom-[20%] left-[30%] w-2 h-2 bg-purple-400 rounded-full animate-pulse" style={{ animationDuration: '2.5s', animationDelay: '1s' }} />
+            <div className="absolute top-[45%] right-[15%] w-1 h-1 bg-pink-300 rounded-full animate-pulse" style={{ animationDuration: '4s', animationDelay: '1.5s' }} />
+            <div className="absolute bottom-[35%] right-[30%] w-1.5 h-1.5 bg-rose-400 rounded-full animate-pulse" style={{ animationDuration: '3.5s', animationDelay: '0.8s' }} />
           </div>
           <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
             <Link href="/en/home/blog" className="text-sm text-gray-300 hover:text-white mb-6 inline-flex items-center gap-1 transition-colors">

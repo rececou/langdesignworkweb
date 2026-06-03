@@ -88,10 +88,21 @@ export default function BlogIndexPage() {
         }}
       />
 
-      <section className="bg-gray-50 py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-4xl font-bold mb-4">Blog</h1>
-          <p className="text-gray-600">Creative ideas, design inspiration, and insights from the LangDesignWork community.</p>
+      <section className="relative bg-gradient-to-br from-gray-950 via-gray-900 to-gray-800 text-white py-20 lg:py-28 overflow-hidden">
+        {/* Cinematic glow orbs */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute top-[10%] right-[15%] w-48 h-48 bg-indigo-500/10 rounded-full blur-3xl" />
+          <div className="absolute bottom-[15%] left-[20%] w-40 h-40 bg-purple-500/10 rounded-full blur-3xl" />
+          {/* Floating particles */}
+          <div className="absolute top-[15%] left-[15%] w-2 h-2 bg-indigo-400 rounded-full animate-pulse" style={{ animationDuration: '2s' }} />
+          <div className="absolute top-[30%] right-[25%] w-1.5 h-1.5 bg-purple-300 rounded-full animate-pulse" style={{ animationDuration: '3s', animationDelay: '0.5s' }} />
+          <div className="absolute bottom-[20%] left-[30%] w-2 h-2 bg-blue-400 rounded-full animate-pulse" style={{ animationDuration: '2.5s', animationDelay: '1s' }} />
+          <div className="absolute top-[45%] right-[15%] w-1 h-1 bg-indigo-300 rounded-full animate-pulse" style={{ animationDuration: '4s', animationDelay: '1.5s' }} />
+          <div className="absolute bottom-[35%] right-[30%] w-1.5 h-1.5 bg-purple-400 rounded-full animate-pulse" style={{ animationDuration: '3.5s', animationDelay: '0.8s' }} />
+        </div>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h1 className="text-4xl lg:text-5xl font-bold mb-4">Blog</h1>
+          <p className="text-lg text-gray-300 max-w-2xl">Creative ideas, design inspiration, and insights from the LangDesignWork community.</p>
         </div>
       </section>
 
