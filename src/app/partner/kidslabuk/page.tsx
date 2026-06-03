@@ -6,6 +6,7 @@ import Footer from '@/components/Footer';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useContactModal } from '@/components/ContactModal';
+import VideoPlayer from '@/components/VideoPlayer';
 
 
 
@@ -113,6 +114,26 @@ export default function KidlabPage() {
                   description: "A community focused on hands-on building, reducing screen time, and discovering engineering through practical DIY gadgets.",
                 },
               },
+              {
+                "@type": "VideoObject",
+                name: "Crossing the road STEM kit — Kidlab UK",
+                description: "Kidlab UK crossing the road STEM kit — hands-on DIY learning about road safety.",
+                contentUrl: "https://www.langdesignwork.com/videos/kidlabuk/crossing-the-road.mp4",
+                embedUrl: "https://www.youtube.com/embed/yZenvfh05No",
+                thumbnailUrl: "https://www.langdesignwork.com/images/kidlabuk/crossing-the-road-cover.jpg",
+                uploadDate: "2025-12-01",
+                publisher: { "@type": "Organization", name: "LangDesignWork" },
+              },
+              {
+                "@type": "VideoObject",
+                name: "The STEM Grand Prix — Kidlab UK",
+                description: "Kidlab UK STEM Grand Prix — drone racing and creative STEM competition for kids.",
+                contentUrl: "https://www.langdesignwork.com/videos/kidlabuk/stem-grand-prix.mp4",
+                embedUrl: "https://www.youtube.com/embed/3OID15SZx30",
+                thumbnailUrl: "https://www.langdesignwork.com/images/kidlabuk/stem-grand-prix-cover.jpg",
+                uploadDate: "2025-12-01",
+                publisher: { "@type": "Organization", name: "LangDesignWork" },
+              },
             ],
           }),
         }}
@@ -193,24 +214,24 @@ export default function KidlabPage() {
           <h2 className="text-2xl font-bold mb-2">See It In Action</h2>
           <p className="text-sm text-gray-500 mb-8">Kids building STEM kits — watch the fun</p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-2xl mx-auto">
-            <div className="relative aspect-[9/16] max-w-[260px] mx-auto rounded-xl overflow-hidden shadow-lg bg-black">
-              <iframe
-                src="https://www.youtube.com/embed/3OID15SZx30?rel=0"
-                title="Kidlab UK video 1"
-                className="absolute inset-0 w-full h-full"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              />
-            </div>
-            <div className="relative aspect-[9/16] max-w-[260px] mx-auto rounded-xl overflow-hidden shadow-lg bg-black">
-              <iframe
-                src="https://www.youtube.com/embed/yZenvfh05No?rel=0"
-                title="Kidlab UK video 2"
-                className="absolute inset-0 w-full h-full"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              />
-            </div>
+            <article className="bg-white rounded-xl overflow-hidden shadow-lg">
+              <div className="relative aspect-[9/16] bg-black">
+                <VideoPlayer
+                  src="/videos/kidlabuk/crossing-the-road.mp4"
+                  poster="/images/kidlabuk/crossing-the-road-cover.jpg"
+                  title="Crossing the road STEM kit — Kidlab UK"
+                />
+              </div>
+            </article>
+            <article className="bg-white rounded-xl overflow-hidden shadow-lg">
+              <div className="relative aspect-[9/16] bg-black">
+                <VideoPlayer
+                  src="/videos/kidlabuk/stem-grand-prix.mp4"
+                  poster="/images/kidlabuk/stem-grand-prix-cover.jpg"
+                  title="The STEM Grand Prix — Kidlab UK"
+                />
+              </div>
+            </article>
           </div>
         </div>
       </section>
