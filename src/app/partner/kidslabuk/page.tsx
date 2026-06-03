@@ -119,28 +119,35 @@ export default function KidlabPage() {
       />
 
       {/* Hero */}
-      <section className="bg-yellow-50 py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative bg-gradient-to-br from-gray-950 via-yellow-950 to-amber-900 text-white overflow-hidden">
+        {/* Cinematic particles */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-80">
+          <div className="absolute top-[15%] left-[15%] w-2 h-2 bg-yellow-400 rounded-full animate-pulse" style={{ animationDuration: '2s' }} />
+          <div className="absolute top-[30%] right-[25%] w-1.5 h-1.5 bg-amber-300 rounded-full animate-pulse" style={{ animationDuration: '3s', animationDelay: '0.5s' }} />
+          <div className="absolute bottom-[20%] left-[30%] w-2 h-2 bg-yellow-300 rounded-full animate-pulse" style={{ animationDuration: '2.5s', animationDelay: '1s' }} />
+          <div className="absolute top-[45%] right-[15%] w-1 h-1 bg-amber-400 rounded-full animate-pulse" style={{ animationDuration: '4s', animationDelay: '1.5s' }} />
+          <div className="absolute bottom-[35%] left-[20%] w-1.5 h-1.5 bg-yellow-500 rounded-full animate-pulse" style={{ animationDuration: '3.5s', animationDelay: '0.8s' }} />
+        </div>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
           <div className="flex items-center gap-4 mb-6">
-            <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center overflow-hidden relative shadow-sm">
+            <div className="w-20 h-20 rounded-full overflow-hidden bg-white/10 backdrop-blur-sm shadow-2xl relative">
               <Image
                 src="/kidlab-logo.jpg"
                 alt="Kidlab UK"
-                width={80}
-                height={80}
+                fill
                 className="object-cover"
               />
             </div>
             <div>
-              <p className="text-sm text-gray-400 uppercase tracking-widest">EDUCATIONAL TOYS</p>
+              <p className="text-sm text-yellow-400 uppercase tracking-widest">EDUCATIONAL TOYS</p>
               <h1 className="text-4xl font-bold">Kidlab UK</h1>
             </div>
           </div>
-          <p className="text-gray-600 max-w-2xl mb-8">
+          <p className="text-gray-300 max-w-2xl mb-8">
             DIY wooden STEM kits that get children building, thinking, and exploring through hands-on play. Starting from just £5.50.
           </p>
           <div className="flex gap-4">
-            <Link href="https://kidlabuk.etsy.com/" target="_blank" rel="noopener noreferrer" className="bg-[#FF6B6B] text-white px-6 py-3 rounded hover:bg-[#ff5252] transition-colors font-medium">
+            <Link href="https://kidlabuk.etsy.com/" target="_blank" rel="noopener noreferrer" className="bg-[#FF6B6B] text-white px-6 py-3 rounded hover:bg-[#ff5252] transition-all hover:scale-105 font-medium">
               Shop on Etsy →
             </Link>
           </div>

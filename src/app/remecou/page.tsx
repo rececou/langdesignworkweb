@@ -90,14 +90,22 @@ export default function RemecouPage() {
       <Header locale="en" />
 
       {/* Hero */}
-      <section className="relative bg-gradient-to-br from-gray-950 via-gray-900 to-emerald-950 text-white overflow-hidden">
-        {/* Animated background dots */}
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-10 left-10 w-2 h-2 bg-emerald-400 rounded-full animate-pulse" />
-          <div className="absolute top-32 right-20 w-3 h-3 bg-teal-400 rounded-full animate-pulse" style={{ animationDelay: '1s' }} />
-          <div className="absolute bottom-20 left-1/3 w-2 h-2 bg-green-400 rounded-full animate-pulse" style={{ animationDelay: '2s' }} />
-          <div className="absolute top-1/2 right-1/4 w-1.5 h-1.5 bg-emerald-300 rounded-full animate-pulse" style={{ animationDelay: '0.5s' }} />
-          <div className="absolute bottom-10 right-10 w-2 h-2 bg-teal-300 rounded-full animate-pulse" style={{ animationDelay: '1.5s' }} />
+      <section className="relative bg-gradient-to-r from-gray-950 via-emerald-950 to-emerald-900 text-white overflow-hidden">
+        {/* Cinematic blurry color lights - community glow from right fading to dark on left */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          {/* Right side - warm community glow */}
+          <div className="absolute top-0 right-0 w-[50%] h-full bg-gradient-to-l from-emerald-500/15 via-teal-400/10 to-transparent blur-3xl" />
+          <div className="absolute top-[10%] right-[15%] w-64 h-64 bg-emerald-400/20 rounded-full blur-[100px]" />
+          <div className="absolute bottom-[15%] right-[25%] w-48 h-48 bg-teal-300/15 rounded-full blur-[80px]" />
+          <div className="absolute top-[40%] right-[30%] w-32 h-32 bg-green-300/20 rounded-full blur-[60px]" />
+          {/* Left side - subtle cool glow */}
+          <div className="absolute top-[20%] left-[10%] w-40 h-40 bg-emerald-900/30 rounded-full blur-[70px]" />
+          {/* Floating particles */}
+          <div className="absolute top-[15%] right-[20%] w-2 h-2 bg-emerald-400 rounded-full animate-pulse" style={{ animationDuration: '2s' }} />
+          <div className="absolute top-[30%] right-[35%] w-1.5 h-1.5 bg-teal-300 rounded-full animate-pulse" style={{ animationDuration: '3s', animationDelay: '0.5s' }} />
+          <div className="absolute bottom-[25%] right-[15%] w-2 h-2 bg-green-400 rounded-full animate-pulse" style={{ animationDuration: '2.5s', animationDelay: '1s' }} />
+          <div className="absolute top-[50%] right-[45%] w-1 h-1 bg-emerald-300 rounded-full animate-pulse" style={{ animationDuration: '4s', animationDelay: '1.5s' }} />
+          <div className="absolute bottom-[40%] right-[30%] w-1.5 h-1.5 bg-teal-400 rounded-full animate-pulse" style={{ animationDuration: '3.5s', animationDelay: '0.8s' }} />
         </div>
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32">

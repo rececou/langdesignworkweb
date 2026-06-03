@@ -168,24 +168,31 @@ export default function VelvetEssencePage() {
       />
 
       {/* Hero */}
-      <section className="bg-pink-50 py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative bg-gradient-to-br from-gray-950 via-pink-950 to-rose-900 text-white overflow-hidden">
+        {/* Cinematic particles */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-80">
+          <div className="absolute top-[15%] right-[15%] w-2 h-2 bg-pink-400 rounded-full animate-pulse" style={{ animationDuration: '2s' }} />
+          <div className="absolute top-[30%] left-[25%] w-1.5 h-1.5 bg-rose-300 rounded-full animate-pulse" style={{ animationDuration: '3s', animationDelay: '0.5s' }} />
+          <div className="absolute bottom-[20%] right-[30%] w-2 h-2 bg-pink-300 rounded-full animate-pulse" style={{ animationDuration: '2.5s', animationDelay: '1s' }} />
+          <div className="absolute top-[45%] left-[15%] w-1 h-1 bg-rose-400 rounded-full animate-pulse" style={{ animationDuration: '4s', animationDelay: '1.5s' }} />
+          <div className="absolute bottom-[35%] right-[20%] w-1.5 h-1.5 bg-pink-500 rounded-full animate-pulse" style={{ animationDuration: '3.5s', animationDelay: '0.8s' }} />
+        </div>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
           <div className="flex items-center gap-4 mb-6">
-            <div className="w-20 h-20 rounded-full overflow-hidden bg-pink-100">
+            <div className="w-20 h-20 rounded-full overflow-hidden bg-white/10 backdrop-blur-sm shadow-2xl relative">
               <Image
                 src="/images/velvet-essence-logo.jpg"
                 alt="Velvet Essence Design"
-                width={80}
-                height={80}
+                fill
                 className="object-cover"
               />
             </div>
             <div>
-              <p className="text-sm text-gray-400 uppercase tracking-widest">FASHION & PRINT</p>
+              <p className="text-sm text-pink-400 uppercase tracking-widest">FASHION & PRINT</p>
               <h1 className="text-4xl font-bold">Velvet Essence Design</h1>
             </div>
           </div>
-          <p className="text-gray-600 max-w-2xl mb-8">
+          <p className="text-gray-300 max-w-2xl mb-8">
             Hand-printed t-shirts and tote bags, wearable art made with care and creativity.
           </p>
           <div className="flex flex-wrap gap-4">
@@ -193,7 +200,7 @@ export default function VelvetEssencePage() {
               href="https://www.etsy.com/shop/VelvetEssenceDesign?etsrc=sdt"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-[#FF6B6B] text-white px-6 py-3 rounded hover:bg-[#ff5252] transition-colors font-medium"
+              className="bg-[#FF6B6B] text-white px-6 py-3 rounded hover:bg-[#ff5252] transition-all hover:scale-105 font-medium"
             >
               Shop on Etsy →
             </Link>
@@ -201,7 +208,7 @@ export default function VelvetEssencePage() {
               href="https://www.tiktok.com/@velvetessencetotebags"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-black text-white px-6 py-3 rounded hover:bg-gray-800 transition-colors font-medium flex items-center gap-2"
+              className="bg-white/10 backdrop-blur-sm text-white px-6 py-3 rounded hover:bg-white/20 transition-all hover:scale-105 font-medium flex items-center gap-2 border border-white/20"
             >
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1v-3.5a6.37 6.37 0 0 0-.79-.05A6.34 6.34 0 0 0 3.15 15a6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.34-6.34V8.75a8.18 8.18 0 0 0 4.76 1.52v-3.4a4.85 4.85 0 0 1-1-.18z"/>
@@ -210,7 +217,7 @@ export default function VelvetEssencePage() {
             </Link>
             <button
               onClick={open}
-              className="border-2 border-[#FF6B6B] text-[#FF6B6B] px-6 py-3 rounded hover:bg-[#FF6B6B] hover:text-white transition-colors font-medium"
+              className="border-2 border-[#FF6B6B] text-[#FF6B6B] px-6 py-3 rounded hover:bg-[#FF6B6B] hover:text-white transition-all hover:scale-105 font-medium"
             >
               Get in Touch
             </button>
