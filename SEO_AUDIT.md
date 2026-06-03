@@ -3,7 +3,7 @@
 ## Document Info
 - **Created**: 2026-06-01
 - **Author**: Hema (AI Agent)
-- **Last Updated**: 2026-06-01
+- **Last Updated**: 2026-06-03
 - **Purpose**: Track all SEO/metadata changes for auditing. Enables reverting to HubSpot values if needed.
 
 ---
@@ -118,6 +118,178 @@
 | File | What Changed | Revert Action |
 |------|-------------|---------------|
 | `src/app/partner/kidslabuk/page.tsx` | 8 products hardcoded (removed 2 hidden extras — Music Box, Newton's Pendulum — from array). 4-col grid, 2 rows. `.slice(0, 8)` removed since array now exactly 8 items. | Revert to original version |
+
+---
+
+### 2026-06-02 — Schema Enhancement: Elizabeth Page + SCHEMA_REFERENCE.md Created (Hema)
+**Commit**: `b768ae7`
+**Changed By**: Hema (AI Agent)
+
+**Files Modified**:
+| File | What Changed | Revert Action |
+|------|-------------|---------------|
+| `src/app/elizabeth/page.tsx` | Updated Elizabeth schema to match real content: added VisualArtwork entries (×8 with artMedium + dateCreated), ImageGallery with dates, CreativeWork for all artworks | Revert to pre-commit version |
+| `SCHEMA_REFERENCE.md` | Created — centralized schema inventory with Summary table, Action Required section, per-page details | Delete file |
+
+---
+
+### 2026-06-02 — Schema: Add WebPage to liliane-create (Hema)
+**Commit**: `c5dcb4c`
+**Changed By**: Hema (AI Agent)
+
+**Files Modified**:
+| File | What Changed | Revert Action |
+|------|-------------|---------------|
+| `src/app/liliane-create/page.tsx` | Added WebPage entry to @graph schema (name, description, inLanguage, primaryImageOfPage) | Remove WebPage entry from @graph |
+| `SCHEMA_REFERENCE.md` | Updated liliane-create status: ✅ Complete, added schema details | Revert entry |
+
+---
+
+### 2026-06-02 — Merge: Deploy All Rebuilt Pages (Hema)
+**Commit**: `2e8d19b`
+**Changed By**: Hema (AI Agent)
+
+**Files Modified**:
+| File | What Changed | Revert Action |
+|------|-------------|---------------|
+| Multiple | Merge branch: deployed all rebuilt pages with schema, content, animations, and fixes | Revert merge commit |
+
+---
+
+### 2026-06-02 — YouTube Shorts, Mobile Nav, Cinematic Hero, FluffyCat (Hema)
+**Commit**: `232fa46`
+**Changed By**: Hema (AI Agent)
+
+**Files Modified**:
+| File | What Changed | Revert Action |
+|------|-------------|---------------|
+| `src/app/partner/kidslabuk/page.tsx` | Added YouTube Shorts embeds for partner videos | Remove YouTube Shorts embeds |
+| `src/app/partner/velvetessencedesign/page.tsx` | Added YouTube Shorts embeds | Remove YouTube Shorts embeds |
+| `components/Header.jsx` | Implemented mobile hamburger menu, collapsible nav sections, language switcher integration | Revert to pre-commit version |
+| `src/app/page.tsx` | Cinematic homepage hero: dark gray/charcoal gradient, staggered particles, glow orbs, matrix rain (20% opacity, slower speed), text fade-in | Revert hero section |
+| `components/FluffyCat.jsx` | Enabled horizontal rolling animation (12s loop), added sparkle trail, fixed z-index layering (ball: 20, content: 25), boosted glow for mobile visibility | Revert animation changes |
+| `src/app/page.tsx` | Fixed JSX text bug: replaced literal `\n` escape string with proper line breaks | Revert to pre-fix version |
+
+---
+
+### 2026-06-02 — Chinese Pages Rebuild: /zh-cn/liliane & /zh-cn/elizabeth (Hema)
+**Commit**: `e07ef4e`
+**Changed By**: Hema (AI Agent)
+
+**Files Modified**:
+| File | What Changed | Revert Action |
+|------|-------------|---------------|
+| `src/app/zh-cn/liliane/page.tsx` | Full rebuild: red gradient hero, butterfly animation, interactive cards, real images, SeoMeta component, full schema | Revert to pre-rebuild version |
+| `src/app/zh-cn/elizabeth/page.tsx` | Full rebuild: purple gradient hero, FluffyCat animation, gallery grid, real assets, SeoMeta, schema | Revert to pre-rebuild version |
+
+---
+
+### 2026-06-02 — Cinematic Hero Banners: All Pages (Hema)
+**Commit**: `c010b72`
+**Changed By**: Hema (AI Agent)
+
+**Files Modified**:
+| File | What Changed | Revert Action |
+|------|-------------|---------------|
+| All page files | Applied cinematic hero pattern globally: page-matched gradients, blur-3xl glow orbs, 5 staggered floating particles per hero | Revert hero sections |
+| `src/app/remecou/page.tsx` | Dark gray → emerald gradient hero, right-to-left layout, community/welcome theme | Revert hero |
+| `src/app/partner/kidslabuk/page.tsx` | Dark gradient hero with thematic glow | Revert hero |
+| `src/app/partner/velvetessencedesign/page.tsx` | Dark gradient hero with thematic glow | Revert hero |
+
+---
+
+### 2026-06-02 — Cinematic Hero Banners: Blog Pages (Hema)
+**Commit**: `a4ab224`
+**Changed By**: Hema (AI Agent)
+
+**Files Modified**:
+| File | What Changed | Revert Action |
+|------|-------------|---------------|
+| `src/app/en/home/blog/ai-creativity-learning/page.tsx` | Added thematic glow orbs + staggered particles to hero | Revert hero |
+| `src/app/en/elizabeth/blog/oil-painting/page.tsx` | Added thematic glow orbs + staggered particles to hero | Revert hero |
+| `src/app/en/liliane/blog/tote-bag/page.tsx` | Added thematic glow orbs + staggered particles to hero | Revert hero |
+| Blog index page | Added thematic glow orbs + staggered particles to hero | Revert hero |
+
+---
+
+### 2026-06-02 — YouTube Iframe Fix: Static Export (Hema)
+**Commit**: `293f518`
+**Changed By**: Hema (AI Agent)
+
+**Files Modified**:
+| File | What Changed | Revert Action |
+|------|-------------|---------------|
+| `src/app/partner/kidslabuk/page.tsx` | Removed `loading="lazy"` from YouTube iframes so videos load in static export | Re-add `loading="lazy"` |
+| `src/app/partner/velvetessencedesign/page.tsx` | Removed `loading="lazy"` from YouTube iframes | Re-add `loading="lazy"` |
+
+---
+
+### 2026-06-02 — Video URL Updates + Kidlab UK Video Order Swap (Hema)
+**Commit**: `84ac170`
+**Changed By**: Hema (AI Agent)
+
+**Files Modified**:
+| File | What Changed | Revert Action |
+|------|-------------|---------------|
+| `src/app/partner/kidslabuk/page.tsx` | Swapped video order, updated YouTube embed URLs, added `?rel=0` parameter | Revert video order and URLs |
+| `src/app/partner/velvetessencedesign/page.tsx` | Updated YouTube embed URLs, added `?rel=0` parameter | Revert URLs |
+
+---
+
+### 2026-06-02 — Self-Hosted Videos: Velvet Essence (Hema)
+**Commit**: `1db68f4`
+**Changed By**: Hema (AI Agent)
+
+**Files Modified**:
+| File | What Changed | Revert Action |
+|------|-------------|---------------|
+| `src/app/partner/velvetessencedesign/page.tsx` | Replaced YouTube embeds with self-hosted HTML5 `<video>` elements, added VideoObject schema (contentUrl + embedUrl) | Revert to YouTube iframes |
+| `public/videos/` | Uploaded self-hosted MP4 videos and cover images | Delete uploaded files |
+
+---
+
+### 2026-06-02 — Self-Hosted Videos: Kidlab UK (Hema)
+**Commit**: `64e190a`
+**Changed By**: Hema (AI Agent)
+
+**Files Modified**:
+| File | What Changed | Revert Action |
+|------|-------------|---------------|
+| `src/app/partner/kidslabuk/page.tsx` | Replaced YouTube embeds with self-hosted HTML5 `<video>` elements, added VideoObject schema (contentUrl + embedUrl) | Revert to YouTube iframes |
+| `public/videos/` | Uploaded self-hosted MP4 videos and cover images | Delete uploaded files |
+
+---
+
+### 2026-06-02 — Replace IG Videos with TikTok Versions: Velvet Essence (Hema)
+**Commit**: `450bd01`
+**Changed By**: Hema (AI Agent)
+
+**Files Modified**:
+| File | What Changed | Revert Action |
+|------|-------------|---------------|
+| `src/app/partner/velvetessencedesign/page.tsx` | Replaced Instagram video embeds with TikTok versions: football_tt + raccoon with tshirt TT | Revert to IG embeds |
+
+---
+
+### 2026-06-02 — Copy: Velvet Essence Subtitle Update (Hema)
+**Commit**: `9ee3914`
+**Changed By**: Hema (AI Agent)
+
+**Files Modified**:
+| File | What Changed | Revert Action |
+|------|-------------|---------------|
+| `src/app/partner/velvetessencedesign/page.tsx` | Updated video section subtitle to "Hand-printed designs — find your vibe" | Revert to previous subtitle |
+
+---
+
+### 2026-06-02 — Media: Raccoon Video Cover Swap (Hema)
+**Commit**: `8c4da13`
+**Changed By**: Hema (AI Agent)
+
+**Files Modified**:
+| File | What Changed | Revert Action |
+|------|-------------|---------------|
+| `src/app/partner/velvetessencedesign/page.tsx` | Replaced raccoon video cover image with Raccoon_main.jpg | Revert to previous cover |
 
 ---
 
