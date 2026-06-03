@@ -251,7 +251,6 @@ export default function VelvetEssencePage() {
                 className="absolute inset-0 w-full h-full"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
-                loading="lazy"
               />
             </div>
             <div className="relative aspect-[9/16] max-w-[260px] mx-auto rounded-xl overflow-hidden shadow-lg bg-black">
@@ -261,7 +260,6 @@ export default function VelvetEssencePage() {
                 className="absolute inset-0 w-full h-full"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
-                loading="lazy"
               />
             </div>
           </div>
