@@ -263,7 +263,7 @@ export default function VelvetEssencePage() {
       <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl font-bold mb-2">See It In Action</h2>
-          <p className="text-sm text-gray-500 mb-8">Hand-printed designs — watch the process</p>
+          <p className="text-sm text-gray-500 mb-8">Hand-printed designs — find your vibe</p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-2xl mx-auto">
             <article className="bg-white rounded-xl overflow-hidden shadow-lg">
               <div className="relative aspect-[9/16] bg-black">
