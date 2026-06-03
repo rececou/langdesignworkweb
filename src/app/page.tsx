@@ -44,7 +44,9 @@ export default function Home() {
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 animate-fade-in">
-            <span className="text-white">Create.</span>{' '}\n            <span className="text-white">Experiment.</span>{' '}\n            <span className="text-[#FF6B6B]">Fun.</span>
+            <span className="text-white">Create.</span>{' '}
+            <span className="text-white">Experiment.</span>{' '}
+            <span className="text-[#FF6B6B]">Fun.</span>
           </h1>
           <p className="text-lg md:text-xl text-gray-300 max-w-2xl mb-10 animate-fade-in" style={{ animationDelay: '0.3s' }}>
             A portfolio community for makers and creators, a launchpad for real products everyone can enjoy.
