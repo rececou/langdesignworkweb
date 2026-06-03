@@ -255,7 +255,7 @@ export default function VelvetEssencePage() {
             </div>
             <div className="relative aspect-[9/16] max-w-[260px] mx-auto rounded-xl overflow-hidden shadow-lg bg-black">
               <iframe
-                src="https://www.youtube.com/embed/izBj-xSjloQ"
+                src="https://www.youtube.com/embed/T9_axyS5kxc?rel=0"
                 title="Velvet Essence Design video 2"
                 className="absolute inset-0 w-full h-full"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

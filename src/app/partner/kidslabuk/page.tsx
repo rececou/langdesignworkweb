@@ -195,7 +195,7 @@ export default function KidlabPage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-2xl mx-auto">
             <div className="relative aspect-[9/16] max-w-[260px] mx-auto rounded-xl overflow-hidden shadow-lg bg-black">
               <iframe
-                src="https://www.youtube.com/embed/yZenvfh05No"
+                src="https://www.youtube.com/embed/3OID15SZx30?rel=0"
                 title="Kidlab UK video 1"
                 className="absolute inset-0 w-full h-full"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -204,7 +204,7 @@ export default function KidlabPage() {
             </div>
             <div className="relative aspect-[9/16] max-w-[260px] mx-auto rounded-xl overflow-hidden shadow-lg bg-black">
               <iframe
-                src="https://www.youtube.com/embed/3OID15SZx30"
+                src="https://www.youtube.com/embed/yZenvfh05No?rel=0"
                 title="Kidlab UK video 2"
                 className="absolute inset-0 w-full h-full"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
