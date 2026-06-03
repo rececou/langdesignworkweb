@@ -6,6 +6,7 @@ import Footer from '@/components/Footer';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useContactModal } from '@/components/ContactModal';
+import VideoPlayer from '@/components/VideoPlayer';
 import { useEffect, useState } from 'react';
 
 
@@ -162,6 +163,26 @@ export default function VelvetEssencePage() {
                   { "@type": "ListItem", position: 8, name: "Champagne Coaster Set" },
                 ],
               },
+              {
+                "@type": "VideoObject",
+                name: "Football Tshirt IG — Velvet Essence Design",
+                description: "Velvet Essence Design football t-shirt showcase on Instagram — hand-printed wearable art.",
+                contentUrl: "https://www.langdesignwork.com/videos/kidlabuk/football-tshirt.mp4",
+                embedUrl: "https://www.youtube.com/embed/DM_-OAzOFME",
+                thumbnailUrl: "https://www.langdesignwork.com/images/kidlabuk/football-tshirt-cover.jpg",
+                uploadDate: "2025-12-01",
+                publisher: { "@type": "Organization", name: "LangDesignWork" },
+              },
+              {
+                "@type": "VideoObject",
+                name: "Raccoon with Tshirt IG — Velvet Essence Design",
+                description: "Velvet Essence Design raccoon mascot with t-shirt showcase on Instagram — creative fashion branding.",
+                contentUrl: "https://www.langdesignwork.com/videos/kidlabuk/raccoon-tshirt.mp4",
+                embedUrl: "https://www.youtube.com/embed/xMy1x127OrI",
+                thumbnailUrl: "https://www.langdesignwork.com/images/kidlabuk/raccoon-thumbnail.jpg",
+                uploadDate: "2025-12-01",
+                publisher: { "@type": "Organization", name: "LangDesignWork" },
+              },
             ],
           }),
         }}
@@ -244,24 +265,24 @@ export default function VelvetEssencePage() {
           <h2 className="text-2xl font-bold mb-2">See It In Action</h2>
           <p className="text-sm text-gray-500 mb-8">Hand-printed designs — watch the process</p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-2xl mx-auto">
-            <div className="relative aspect-[9/16] max-w-[260px] mx-auto rounded-xl overflow-hidden shadow-lg bg-black">
-              <iframe
-                src="https://www.youtube.com/embed/xMy1x127OrI"
-                title="Velvet Essence Design video 1"
-                className="absolute inset-0 w-full h-full"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              />
-            </div>
-            <div className="relative aspect-[9/16] max-w-[260px] mx-auto rounded-xl overflow-hidden shadow-lg bg-black">
-              <iframe
-                src="https://www.youtube.com/embed/T9_axyS5kxc?rel=0"
-                title="Velvet Essence Design video 2"
-                className="absolute inset-0 w-full h-full"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              />
-            </div>
+            <article className="bg-white rounded-xl overflow-hidden shadow-lg">
+              <div className="relative aspect-[9/16] bg-black">
+                <VideoPlayer
+                  src="/videos/kidlabuk/football-tshirt.mp4"
+                  poster="/images/kidlabuk/football-tshirt-cover.jpg"
+                  title="Football Tshirt IG — Velvet Essence Design"
+                />
+              </div>
+            </article>
+            <article className="bg-white rounded-xl overflow-hidden shadow-lg">
+              <div className="relative aspect-[9/16] bg-black">
+                <VideoPlayer
+                  src="/videos/kidlabuk/raccoon-tshirt.mp4"
+                  poster="/images/kidlabuk/raccoon-thumbnail.jpg"
+                  title="Raccoon with Tshirt IG — Velvet Essence Design"
+                />
+              </div>
+            </article>
           </div>
         </div>
       </section>
