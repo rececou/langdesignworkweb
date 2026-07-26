@@ -3,7 +3,7 @@
 ## Document Info
 - **Created**: 2026-06-01
 - **Author**: Hema (AI Agent)
-- **Last Updated**: 2026-06-03
+- **Last Updated**: 2026-07-26
 - **Purpose**: Track all SEO/metadata changes for auditing. Enables reverting to HubSpot values if needed.
 
 ---
@@ -734,5 +734,64 @@ All `<Image>`, `<img>`, and `<video>` tags across the site. Dynamic images (prod
 |------|-------------|---------------|
 | `src/app/layout.tsx` | Added `icons: { icon: "/images/logo.svg" }` to restore LangDesignWork favicon in browser tabs | Remove icons property from metadata |
 | `src/app/page.tsx` | Updated bottom banner (Remecou CTA) `MatrixRain`: changed color `#333333` → `#FF6B6B`, opacity `opacity-40` → `opacity-30` to match hero section visibility | Revert MatrixRain props to previous values |
+
+---
+
+## CHANGE LOG — 26 Jul 2026 Session (Reme)
+
+First commits to `main` since 3 Jun 2026 (7+ week gap). Repo cloned fresh from `https://github.com/rececou/langdesignworkweb`, local build verified (`npm run build`) before every push.
+
+### 2026-07-26 — Remecou Contact Email Update (Reme)
+**Commit**: `9d4db4c`
+**Changed By**: Reme
+
+**Files Modified**:
+| File | What Changed | Revert Action |
+|------|-------------|---------------|
+| `src/app/remecou/page.tsx` | Contact line changed from `lucy@langdesignwork.com` to `remecou.trading@gmail.com` (OI-028) | Revert string back to `lucy@langdesignwork.com` |
+
+### 2026-07-26 — Favicon: Replace Untouched Next.js Default (Reme)
+**Commit**: `6402053`
+**Changed By**: Reme
+
+**Root cause**: `src/app/favicon.ico` was still the generic default icon that ships with every `create-next-app` project — never replaced during the HubSpot→Vercel migration. Next.js serves that file at `/favicon.ico` automatically, and Google Search (and most crawlers) fetch `/favicon.ico` directly as a fallback regardless of `<link>` tags in `<head>`, so Search results showed the generic default instead of the LangDesignWork logo. Hema's 2026-06-02 favicon fix (see entry above) only added the SVG to `metadata.icons` for browser tabs — it didn't touch the actual `/favicon.ico` file, and Google's favicon crawler doesn't support SVG anyway (requires ICO/PNG/GIF).
+
+**Files Modified**:
+| File | What Changed | Revert Action |
+|------|-------------|---------------|
+| `src/app/favicon.ico` | Replaced with a real multi-resolution icon (16/32/48/64px) generated from `public/images/logo.svg` via `sharp` + `png-to-ico` | Restore previous default Next.js icon (not recoverable from git history pre-migration; would need regenerating from a fresh `create-next-app`) |
+| `src/app/apple-icon.png` | New file — 180×180 apple-touch-icon generated from the same logo | Delete file |
+| `public/favicon.ico` | Deleted — orphaned duplicate (639KB), unused and shadowed by `src/app/favicon.ico` in Next.js's routing | Restore from git history if needed |
+| `src/app/layout.tsx` | `metadata.icons` expanded from a single SVG entry to `{ icon: [ico, svg], apple: apple-icon.png }` — ICO first for Google/legacy crawler compatibility, SVG kept for modern browsers | Revert to single `icon: "/images/logo.svg"` |
+
+**Verified**: downloaded live `/favicon.ico` post-deploy, byte-for-byte match with the new generated file (32,038 bytes vs previous 25,931-byte default).
+
+### 2026-07-26 — Fix: Page-Specific OG/Title Tags Never Reached Crawlers (Reme)
+**Commit**: `754bc3a`
+**Changed By**: Reme
+
+**Root cause**: Every page below is a `'use client'` component (uses hooks like `useContactModal`, animation state, etc. directly in the page). Next.js does not allow a `metadata` export in a client-component file, so these pages set their title/OG tags via a custom `SeoMeta` component instead — a client component that writes `<meta>` tags into `document.head` inside a `useEffect`. With `output: 'export'`, the static HTML file is what crawlers actually read; client-side DOM mutations after hydration never reach them. Confirmed via `curl` (no JS) against the live site before fixing: `/remecou` and `/partner/kidslabuk` were both serving the **homepage's** `og:title`, `og:image`, and `og:url` instead of their own.
+
+**Fix pattern**: same one already used correctly by `elizabeth/layout.tsx` — a sibling server-component `layout.tsx` in each route folder that exports real Next.js `metadata`, wrapping the existing client `page.tsx` unchanged. No page.tsx content or behavior touched.
+
+**Files Added** (10 new `layout.tsx` files, one per route):
+| File | Notes |
+|------|-------|
+| `src/app/remecou/layout.tsx` | Title/description/OG image sourced from existing `SeoMeta` props already in `page.tsx` |
+| `src/app/partner/kidslabuk/layout.tsx` | Same |
+| `src/app/partner/velvetessencedesign/layout.tsx` | OG image is still the raw `velvet-essence-logo.jpg` (not a dedicated 1200×630 banner) — flagged as a follow-up, not addressed tonight |
+| `src/app/liliane/layout.tsx` | Same |
+| `src/app/zh-cn/layout.tsx` | **New** — this page previously had zero custom metadata at all (no SeoMeta, no export), inherited the English homepage defaults. Wrote fresh Chinese title/description from scratch, matching actual page content |
+| `src/app/zh-cn/liliane/layout.tsx` | Same pattern, Chinese copy already existed in SeoMeta props |
+| `src/app/zh-cn/elizabeth/layout.tsx` | Same |
+| `src/app/en/elizabeth/blog/oil-painting/layout.tsx` | `type: "article"` per original HubSpot og:type |
+| `src/app/en/liliane/blog/tote-bag/layout.tsx` | `type: "article"` |
+| `src/app/en/home/blog/ai-creativity-learning/layout.tsx` | `type: "article"` |
+
+**Revert Action**: delete the 10 new layout.tsx files. Pages will silently fall back to the previous (broken) behavior — not recommended.
+
+**Verified**: local `npm run build` output inspected directly (`out/*/index.html`) for correct tags before pushing; after deploy, re-verified all 10 URLs live via `curl` against raw HTML — each now serves its own title, og:title, og:image, og:image:alt, and og:url (previously all pointed at the homepage).
+
+**Superseded note**: this makes the "Blog SEO Audit" sheet's "Can Fix Now? NO — HubSpot Starter restriction" notes (for oil-painting and tote-bag) obsolete — both pages live entirely in this repo now, no HubSpot restriction applies.
 
 ---
