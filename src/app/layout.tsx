@@ -13,7 +13,11 @@ export const metadata: Metadata = {
   description: "Creativity. Community. Commerce. LangDesignWork brings together independent makers, partner brands, and the audiences in one place.",
   metadataBase: new URL(SITE_URL),
   icons: {
-    icon: "/images/logo.svg",
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/images/logo.svg", type: "image/svg+xml" },
+    ],
+    apple: "/apple-icon.png",
   },
   openGraph: {
     type: "website",
