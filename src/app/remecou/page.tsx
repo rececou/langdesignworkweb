@@ -266,7 +266,7 @@ export default function RemecouPage() {
           <FadeIn>
             <p className="text-sm text-emerald-600 uppercase tracking-widest mb-4">WORK WITH REMECOU</p>
             <h2 className="text-3xl font-bold mb-4">Interested in partnering with us?</h2>
-            <p className="text-sm text-gray-500 mb-8">Contact: lucy@langdesignwork.com</p>
+            <p className="text-sm text-gray-500 mb-8">Contact: remecou.trading@gmail.com</p>
             <button
               onClick={open}
               className="bg-emerald-500 text-white px-10 py-4 rounded-lg hover:bg-emerald-400 transition-all hover:scale-105 font-medium text-lg shadow-lg hover:shadow-xl"
